@@ -19,7 +19,8 @@ if astronvim.default_colorscheme then
     )
   end
 end
-
+-- Start selfmade changes.
+-- Environment customized
 if vim.loop.os_uname().sysname == "Windows_NT" then
   -- print("Windows_NT env config.")
   -- vim.o.shell = "pwsh.exe"
@@ -38,6 +39,13 @@ command -bang WQ wq<bang>
 vim.cmd([[colorscheme sonokai]])
 vim.cmd([[set guifont=Iosevka\ Nerd\ Font\ Mono:h12]])
 
+-- kickstart.nvim
+
+
+
+
+
+-- Nvim init.lua plugin.
 require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)
 
 return {
@@ -51,3 +59,5 @@ return {
     },
   },
 }
+
+

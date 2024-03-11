@@ -1,6 +1,11 @@
+
+
+
+
 return {
   "mfussenegger/nvim-dap",
-  enabled = vim.fn.has "win32" == 0,
+  -- enabled = vim.fn.has "win32" == 0,
+  enabled = true,
   dependencies = {
     {
       "jay-babu/mason-nvim-dap.nvim",
