@@ -20,12 +20,22 @@ if astronvim.default_colorscheme then
   end
 end
 
-
-
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  -- print("Windows_NT env config.")
+  -- vim.o.shell = "pwsh.exe"
+  vim.cmd([[set shell=pwsh
+  set shellcmdflag=-command
+  set shellquote=\"
+  set shellxquote=]])
+else
+  -- print("Unix env config.")  
+end
+vim.cmd([[
+command -bang Q quit<bang>
+command -bang W write<bang>
+command -bang WQ wq<bang>
+]])
 vim.cmd([[colorscheme sonokai]])
-vim.cmd([[command -bang Q quit<bang>]])
-
-vim.cmd([[command -bang W write<bang>]])
 vim.cmd([[set guifont=Iosevka\ Nerd\ Font\ Mono:h12]])
 
 require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)
