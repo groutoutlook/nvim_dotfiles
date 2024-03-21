@@ -35,6 +35,7 @@ vim.cmd([[
 command -bang Q quit<bang>
 command -bang W write<bang>
 command -bang WQ wq<bang>
+command -bang Wq wq<bang>
 ]])
 vim.cmd([[colorscheme sonokai]])
 vim.cmd([[set guifont=Iosevka\ Nerd\ Font\ Mono:h12]])
