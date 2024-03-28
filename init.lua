@@ -40,6 +40,17 @@ command -bang Wq wq<bang>
 vim.cmd([[colorscheme sonokai]])
 vim.cmd([[set guifont=Iosevka\ Nerd\ Font\ Mono:h12]])
 
+vim.api.nvim_create_user_command("Cppath", function()
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+vim.cmd([[
+command -bang CPPA Cppath
+command Cppa Cppath
+cnoremap cppa Cppath
+]])
 -- kickstart.nvim
 
 
