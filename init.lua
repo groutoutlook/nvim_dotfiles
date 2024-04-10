@@ -53,6 +53,9 @@ vim.api.nvim_set_keymap('i',';u',"<C-o>u", {noremap = true, silent = true , desc
 vim.api.nvim_set_keymap('i',';r',"<C-o><C-r>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap('i',';q',"<cmd>quit<CR>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap('i','qqq',"<Esc>", {noremap = true, silent = true , desc = "Escape" })
+vim.api.nvim_set_keymap('i','yyy',"<Esc>yy", {noremap = true, silent = true , desc = "Escape and yank" })
+vim.api.nvim_set_keymap('n','qq',"<Esc>", {noremap = true, silent = true , desc = "Escape in normal mode"})
+vim.api.nvim_set_keymap('t','jkjk',"<C-/><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
 
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
@@ -79,3 +82,6 @@ vim.keymap.set('n',"<Leader>fs",function() require("resession").load() end,{nore
 vim.keymap.set('n',"<Leader>fl",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
 vim.keymap.set('n',"<Leader>..",function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,{noremap = true, desc = "Load last session" })
 
+-- TODO: check if there is more todo, 
+-- TODO: config ToDo comment keymap things to navigate between todos faster.
+vim.keymap.set('n',";ft","<cmd>TodoTelescope<cr>",{noremap = true, desc = "find TODO FIXME BUG etc.." })
