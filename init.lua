@@ -56,7 +56,8 @@ vim.api.nvim_set_keymap('i',';q',"<cmd>quit<CR>", {noremap = true, silent = true
 vim.api.nvim_set_keymap('i','qqq',"<Esc>", {noremap = true, silent = true , desc = "Escape" })
 vim.api.nvim_set_keymap('i','yyy',"<Esc>yy", {noremap = true, silent = true , desc = "Escape and yank" })
 vim.api.nvim_set_keymap('n','qq',"<Esc>", {noremap = true, silent = true , desc = "Escape in normal mode"})
-vim.api.nvim_set_keymap('t','jkjk',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
+vim.api.nvim_set_keymap('t','kkk',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
+vim.api.nvim_set_keymap('t','jjj',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
 
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
