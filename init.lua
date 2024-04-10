@@ -47,6 +47,7 @@ command -bang WQ wq<bang>
 command -bang Wq wq<bang>
 command -bang CPPA Cppath
 cnoremap cppa Cppath
+set conceallevel=2
 ]])
 --Basic Lua
 vim.api.nvim_set_keymap('i',';u',"<C-o>u", {noremap = true, silent = true , desc = "Undo Insert Mode" })

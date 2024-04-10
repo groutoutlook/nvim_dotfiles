@@ -20,7 +20,16 @@ return {
     workspaces = {
       {
         name = "Vault_2401",
-        path = "D:\\ProgramDataD\\Notes\\Obsidian\\Vault_2401",
+        path = function()
+          local out = ""
+          if vim.loop.os_uname().sysname == "Windows_NT" then
+            out = "D:\\ProgramDataD\\Notes\\Obsidian\\Vault_2401"
+          else
+            out = "/storage/emulated/0/Note"
+          end
+        return out
+        end
+
       },
       {
         name = "work",
@@ -245,6 +254,7 @@ return {
     post_set_workspace = function(client, workspace) end,
   },
 
+  
   -- Optional, configure additional syntax highlighting / extmarks.
   -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
   ui = {
