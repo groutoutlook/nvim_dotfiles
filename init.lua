@@ -18,6 +18,7 @@ end
 require "lazy_setup"
 require "polish"
 -- Neovim env.
+-- Vanilla mapping
 if vim.loop.os_uname().sysname == "Windows_NT" then
   -- print("Windows_NT env config.")
   -- vim.o.shell = "pwsh.exe"
@@ -37,31 +38,7 @@ vim.api.nvim_create_user_command("Cppath", function()
     vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
-
-
-vim.api.nvim_set_keymap('i',';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr><Esc>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
-vim.api.nvim_set_keymap('i',';wq',"<cmd>wqall<CR>", {noremap = true, silent = true , desc = "Write and Quit Insert Mode" })
-vim.api.nvim_set_keymap('i',';wl',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
-vim.api.nvim_set_keymap('i',';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
-vim.api.nvim_set_keymap('i',';u',"<C-o>u", {noremap = true, silent = true , desc = "Undo Insert Mode" })
-vim.api.nvim_set_keymap('i',';r',"<C-o><C-r>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
-vim.api.nvim_set_keymap('i',';q',"<cmd>quit<CR>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
-vim.api.nvim_set_keymap('i','qqq',"<Esc>", {noremap = true, silent = true , desc = "Escape" })
-vim.api.nvim_set_keymap('n',';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Term Normal Mode" })
-vim.api.nvim_set_keymap('n',';wq',"<cmd>wqall<cr>", {noremap = true, silent = true , desc = "Write and Term Normal Mode" })
-vim.api.nvim_set_keymap('n',';wl',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
-vim.api.nvim_set_keymap('n',';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
-vim.api.nvim_set_keymap('c','wt',"wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Toggle terminal" })
-vim.api.nvim_set_keymap('c','wl',"wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load terminal" })
--- Keymap set.
-vim.keymap.set('i',';fb',function() require("telescope.builtin").buffers() end , {noremap = true, silent = true , desc = "Redo Insert Mode" })
-vim.keymap.set('n',';fb',function() require("telescope.builtin").buffers() end, {noremap = true, silent = true , desc = "Redo Insert Mode" })
-
-vim.keymap.set('n',"<Leader>fs",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
-vim.keymap.set('n',"<Leader>fl",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
-vim.keymap.set('n',"<Leader>..",function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,{noremap = true, desc = "Load last session" })
-
-
+-- Move basic vim mapping to here since I break those keymap beneath them frequently.
 vim.cmd([[
 colorscheme torte
 command -bang Q quit<bang>
@@ -71,3 +48,32 @@ command -bang Wq wq<bang>
 command -bang CPPA Cppath
 command Cppa Cppath
 ]])
+
+vim.api.nvim_set_keymap('i',';u',"<C-o>u", {noremap = true, silent = true , desc = "Undo Insert Mode" })
+vim.api.nvim_set_keymap('i',';r',"<C-o><C-r>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
+vim.api.nvim_set_keymap('i',';q',"<cmd>quit<CR>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
+vim.api.nvim_set_keymap('i','qqq',"<Esc>", {noremap = true, silent = true , desc = "Escape" })
+
+--Plugin related mapping.
+--Heavily related to plugins and astronvim core.
+vim.api.nvim_set_keymap('i',';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr><Esc>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
+vim.api.nvim_set_keymap('i',';wq',"<cmd>wqall<CR>", {noremap = true, silent = true , desc = "Write and Quit Insert Mode" })
+vim.api.nvim_set_keymap('i',';wl',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
+vim.api.nvim_set_keymap('i',';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
+
+vim.api.nvim_set_keymap('n',';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Term Normal Mode" })
+vim.api.nvim_set_keymap('n',';wq',"<cmd>wqall<cr>", {noremap = true, silent = true , desc = "Write and Term Normal Mode" })
+vim.api.nvim_set_keymap('n',';wl',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
+vim.api.nvim_set_keymap('n',';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
+
+vim.api.nvim_set_keymap('c','wt',"wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Toggle terminal" })
+vim.api.nvim_set_keymap('c','wl',"wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load terminal" })
+
+-- Keymap set. More like Lua than the above setup
+vim.keymap.set('i',';fb',function() require("telescope.builtin").buffers() end , {noremap = true, silent = true , desc = "Redo Insert Mode" })
+vim.keymap.set('n',';fb',function() require("telescope.builtin").buffers() end, {noremap = true, silent = true , desc = "Redo Insert Mode" })
+
+vim.keymap.set('n',"<Leader>fs",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
+vim.keymap.set('n',"<Leader>fl",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
+vim.keymap.set('n',"<Leader>..",function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,{noremap = true, desc = "Load last session" })
+
