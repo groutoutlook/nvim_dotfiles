@@ -55,16 +55,16 @@ vim.api.nvim_set_keymap('i',';r',"<C-o><C-r>", {noremap = true, silent = true , 
 vim.api.nvim_set_keymap('i',';q',"<cmd>quit<CR>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap('i','qqq',"<Esc>", {noremap = true, silent = true , desc = "Escape" })
 vim.api.nvim_set_keymap('i','yyy',"<Esc>yy", {noremap = true, silent = true , desc = "Escape and yank" })
-vim.api.nvim_set_keymap('n','qq',"<Esc>", {noremap = true, silent = true , desc = "Escape in normal mode"})
 vim.api.nvim_set_keymap('t','kkk',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
 vim.api.nvim_set_keymap('t','jjj',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
 
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
-vim.keymap.set({'n','i'},';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr><Esc>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
 vim.keymap.set({'n','i'},';wq',"<cmd>wqall<CR>", {noremap = true, silent = true , desc = "Write and Quit Insert Mode" })
 vim.keymap.set({'n','i'},';wf',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
 vim.keymap.set({'n','i'},';wl',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
+vim.keymap.set({'n','i'},';wg',"<cmd>wall<CR><cmd>ToggleTerm<cr><cmd>startinsert<cr><cmd>call feedkeys(\"git cij\")<cr>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
+vim.keymap.set({'n','i'},';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
 vim.keymap.set({'n','i'},';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
 
 vim.api.nvim_set_keymap('c','wt',"wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Toggle terminal" })
