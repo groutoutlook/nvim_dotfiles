@@ -51,3 +51,6 @@ tags
 
 #My config.
 node_modules/
+dot
+pwsh
+
