@@ -46,9 +46,9 @@ command -bang W write<bang>
 command -bang WQ wq<bang>
 command -bang Wq wq<bang>
 command -bang CPPA Cppath
-command Cppa Cppath
+cnoremap cppa Cppath
 ]])
-
+--Basic Lua
 vim.api.nvim_set_keymap('i',';u',"<C-o>u", {noremap = true, silent = true , desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap('i',';r',"<C-o><C-r>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap('i',';q',"<cmd>quit<CR>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
@@ -58,11 +58,13 @@ vim.api.nvim_set_keymap('i','qqq',"<Esc>", {noremap = true, silent = true , desc
 --Heavily related to plugins and astronvim core.
 vim.api.nvim_set_keymap('i',';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr><Esc>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
 vim.api.nvim_set_keymap('i',';wq',"<cmd>wqall<CR>", {noremap = true, silent = true , desc = "Write and Quit Insert Mode" })
+vim.api.nvim_set_keymap('i',';wf',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
 vim.api.nvim_set_keymap('i',';wl',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
 vim.api.nvim_set_keymap('i',';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
 
 vim.api.nvim_set_keymap('n',';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Term Normal Mode" })
 vim.api.nvim_set_keymap('n',';wq',"<cmd>wqall<cr>", {noremap = true, silent = true , desc = "Write and Term Normal Mode" })
+vim.api.nvim_set_keymap('n',';wf',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
 vim.api.nvim_set_keymap('n',';wl',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
 vim.api.nvim_set_keymap('n',';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
 
