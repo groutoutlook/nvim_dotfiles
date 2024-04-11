@@ -57,16 +57,16 @@ vim.api.nvim_set_keymap('i','qq',"<Esc>", {noremap = true, silent = true , desc 
 vim.api.nvim_set_keymap('i','yyy',"<Esc>yy", {noremap = true, silent = true , desc = "Escape and yank." })
 vim.api.nvim_set_keymap('i','ddd',"<Esc>dd", {noremap = true, silent = true , desc = "Escape and delete line." })
 vim.api.nvim_set_keymap('i','vvv',"<Esc>v$", {noremap = true, silent = true , desc = "Escape and Visual line." })
+vim.api.nvim_set_keymap('i',';/',"<Esc><Leader>/", {noremap = true, silent = true , desc = "Comment in Insert Mode." })
 vim.api.nvim_set_keymap('t','qqq',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
-vim.api.nvim_set_keymap('t',';;;',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
 
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
 vim.keymap.set({'n','i'},';wq',"<cmd>wqall<CR>", {noremap = true, silent = true , desc = "Write and Quit Insert Mode" })
-vim.keymap.set({'n','i'},';wg',"<cmd>wall<CR><cmd>ToggleTerm<cr><cmd>startinsert<cr>git cij<cr>", {noremap = true, silent = true , desc = "Write and git Insert Mode" })
-vim.keymap.set({'n','i'},';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
+vim.keymap.set({'n','i'},';wg',"<cmd>ToggleTerm<cr><cmd>startinsert<cr>git cij<cr><cmd>wall<CR>", {noremap = true, silent = true , desc = "Write and git Insert Mode" })
+vim.keymap.set({'n','i'},';wt',"<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr><cmd>wall<CR>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
 vim.keymap.set({'n','i'},';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
 
 -- TODO: check if there is more todo, 
 -- Now it's on the telescope.lua custom files.
-
+vim.keymap.set('i',";/",function() require("Comment.api").toggle.linewise.count(vim.v.count1) end,{noremap = true, desc = "Load last session" })
