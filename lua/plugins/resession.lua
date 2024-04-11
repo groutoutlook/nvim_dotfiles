@@ -1,3 +1,33 @@
+-- My course remap. Want to move it out of init.lua.
+vim.keymap.set('i',';fb',function() require("telescope.builtin").buffers() end , {noremap = true, silent = true , desc = "Redo Insert Mode" })
+vim.keymap.set('n',';fb',function() require("telescope.builtin").buffers() end, {noremap = true, silent = true , desc = "Redo Insert Mode" })
+
+vim.keymap.set('n',"<Leader>fs",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
+vim.keymap.set('n',"<Leader>fl",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
+vim.keymap.set('n',"<Leader>..",function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,{noremap = true, desc = "Load last session" })
+
+vim.keymap.set({'n','i'},";fs",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
+vim.keymap.set({'n','i'},";fl",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
+local function callSession(opts)
+  local short_name = opts.args
+  local session_name = ""
+  if (short_name == "pwsh") then
+    session_name = "pwsh_settings"
+  elseif(short_name == "nvim") then
+    session_name = "nvim_dotfiles"
+  elseif(short_name == "hw") then
+    session_name = "Highway"
+  elseif(short_name == "linux") then
+    session_name = "linux_env"
+  elseif(short_name == "obs") then
+    session_name = "obsidian"
+  end
+  -- print(session_name)
+  require("resession").load(session_name)
+end
+vim.api.nvim_create_user_command("Session", callSession, {nargs = "?"})
+vim.api.nvim_set_keymap('c','sss',"Session", {noremap = true, silent = true , desc = "Open Session" })
+vim.api.nvim_set_keymap('c','ssp',"Session pwsh", {noremap = true, silent = true , desc = "Load pwsh_settings session" })
 return {
   "stevearc/resession.nvim",
   lazy = true,
