@@ -1,7 +1,7 @@
 -- My course remap. Want to move it out of init.lua.
-vim.keymap.set({'n','i'},';fs',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
-vim.keymap.set({'n','i'},';wf',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
-vim.keymap.set({'n','i'},';wl',"<cmd>wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
+vim.keymap.set({'n','i'},';fs',"<cmd>wall!<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
+vim.keymap.set({'n','i'},';wf',"<cmd>wall!<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
+vim.keymap.set({'n','i'},';wl',"<cmd>wall!<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load session" })
 
 vim.keymap.set('n',"<Leader>fs",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
 vim.keymap.set('n',"<Leader>fl",function() require("resession").load() end,{noremap = true, desc = "Load last session" })

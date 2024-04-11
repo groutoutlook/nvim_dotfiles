@@ -61,9 +61,9 @@ vim.api.nvim_set_keymap('t','jjj',"<C-\\><C-n>", {noremap = true, silent = true 
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
 vim.keymap.set({'n','i'},';wq',"<cmd>wqall<CR>", {noremap = true, silent = true , desc = "Write and Quit Insert Mode" })
-vim.keymap.set({'n','i'},';wg',"<cmd>wall<CR><cmd>ToggleTerm<cr><cmd>startinsert<cr>git cij<cr>", {noremap = true, silent = true , desc = "Write and git Insert Mode" })
-vim.keymap.set({'n','i'},';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr><cmd>startinsert<cr>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
-vim.keymap.set({'n','i'},';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
+vim.keymap.set({'n','i'},';wg',"<cmd>wall!<CR><cmd>ToggleTerm<cr><cmd>startinsert<cr>git cij<cr>", {noremap = true, silent = true , desc = "Write and git Insert Mode" })
+vim.keymap.set({'n','i'},';wt',"<cmd>wall!<CR><cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
+vim.keymap.set({'n','i'},';ww',"<cmd>wall!<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
 
 -- TODO: check if there is more todo, 
 -- Now it's on the telescope.lua custom files.
