@@ -68,4 +68,3 @@ vim.keymap.set({'n','i'},';ww',"<cmd>wall<CR><cmd>lua require('resession').save(
 -- TODO: check if there is more todo, 
 -- Now it's on the telescope.lua custom files.
 
-vim.keymap.set({'n','i'},';fs',"<cmd>wall<CR>:Session ", {noremap = true, silent = true , desc = "Write and Save session" })
