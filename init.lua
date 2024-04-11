@@ -97,7 +97,17 @@ local function callSession(opts)
   -- print(session_name)
   require("resession").load(session_name)
 end
-vim.api.nvim_create_user_command("Ses", callSession, {nargs = "?"})
+vim.api.nvim_create_user_command("Session", callSession, {nargs = "?"})
+vim.api.nvim_set_keymap('c','ses',"Session ", {noremap = true, silent = true , desc = "Open Session" })
+vim.api.nvim_set_keymap('c','ssp',"Session pwsh", {noremap = true, silent = true , desc = "Load pwsh_settings session" })
+local function newSession(opts)
+  local session_name = opts.args
+  
+  -- print(session_name)
+  require("resession").save(session_name)
+end
+vim.api.nvim_create_user_command("NewSession", callSession, {nargs = "?"})
+vim.api.nvim_set_keymap('c','news',"NewSession ", {noremap = true, silent = true , desc = "Write and Load terminal" })
 
 -- TODO: check if there is more todo, 
 -- TODO: config ToDo comment keymap things to navigate between todos faster.
