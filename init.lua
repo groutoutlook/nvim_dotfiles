@@ -79,8 +79,10 @@ vim.keymap.set('n',"<Leader>fl",function() require("resession").load() end,{nore
 vim.keymap.set('n',"<Leader>..",function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,{noremap = true, desc = "Load last session" })
 
 vim.keymap.set({'n','i'},";fs",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
+vim.keymap.set({'n','i'},";fl",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
 -- TODO: check if there is more todo, 
 -- TODO: config ToDo comment keymap things to navigate between todos faster.
+
 vim.keymap.set({'n','i'},";ft","<cmd>TodoTelescope<cr>",{noremap = true, desc = "find TODO FIXME BUG etc.." })
 vim.keymap.set({'n','i'},";fn",function() require("telescope").extensions.notify.notify() end,{noremap = true, desc = "find notifications" })
 vim.keymap.set({'n','i'},";fw",function() require("telescope.builtin").live_grep() end,{noremap = true, desc = "find notifications" })
