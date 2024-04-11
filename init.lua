@@ -57,7 +57,7 @@ vim.api.nvim_set_keymap('i','qq',"<Esc>", {noremap = true, silent = true , desc 
 vim.api.nvim_set_keymap('i','yyy',"<Esc>yy", {noremap = true, silent = true , desc = "Escape and yank." })
 vim.api.nvim_set_keymap('i','ddd',"<Esc>dd", {noremap = true, silent = true , desc = "Escape and delete line." })
 vim.api.nvim_set_keymap('i','vvv',"<Esc>v$", {noremap = true, silent = true , desc = "Escape and Visual line." })
-vim.api.nvim_set_keymap('t','kkk',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
+vim.api.nvim_set_keymap('t','qqq',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
 vim.api.nvim_set_keymap('t',';;;',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
 
 --Plugin related mapping.
