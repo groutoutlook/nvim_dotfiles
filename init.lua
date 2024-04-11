@@ -68,4 +68,4 @@ vim.keymap.set({'n','i'},';ww',"<cmd>wall<CR><cmd>lua require('resession').save(
 
 -- TODO: check if there is more todo, 
 -- Now it's on the telescope.lua custom files.
-vim.keymap.set('i',";/",function() require("Comment.api").toggle.linewise.count(vim.v.count1) end,{noremap = true, desc = "Comment the line in Insert Mode" })
+vim.keymap.set({'n','i'},";/",function() require("Comment.api").toggle.linewise.count(vim.v.count1) end,{noremap = true, desc = "Comment the line in Insert Mode" })
