@@ -67,8 +67,8 @@ vim.keymap.set({'n','i'},';wg',"<cmd>wall<CR><cmd>ToggleTerm<cr><cmd>startinsert
 vim.keymap.set({'n','i'},';wt',"<cmd>wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
 vim.keymap.set({'n','i'},';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
 
-vim.api.nvim_set_keymap('c','wt',"wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Toggle terminal" })
-vim.api.nvim_set_keymap('c','wl',"wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load terminal" })
+-- vim.api.nvim_set_keymap('c','wt',"wall<CR><cmd>ToggleTerm<cr>", {noremap = true, silent = true , desc = "Write and Toggle terminal" })
+-- vim.api.nvim_set_keymap('c','wl',"wall<CR><cmd>lua require('resession').load()<cr>", {noremap = true, silent = true , desc = "Write and Load terminal" })
 
 -- Keymap set. More like Lua than the above setup
 vim.keymap.set('i',';fb',function() require("telescope.builtin").buffers() end , {noremap = true, silent = true , desc = "Redo Insert Mode" })
@@ -98,16 +98,15 @@ local function callSession(opts)
   require("resession").load(session_name)
 end
 vim.api.nvim_create_user_command("Session", callSession, {nargs = "?"})
-vim.api.nvim_set_keymap('c','ses',"Session ", {noremap = true, silent = true , desc = "Open Session" })
+vim.api.nvim_set_keymap('c','sss',"Session", {noremap = true, silent = true , desc = "Open Session" })
 vim.api.nvim_set_keymap('c','ssp',"Session pwsh", {noremap = true, silent = true , desc = "Load pwsh_settings session" })
-local function newSession(opts)
-  local session_name = opts.args
-  
-  -- print(session_name)
-  require("resession").save(session_name)
-end
-vim.api.nvim_create_user_command("NewSession", callSession, {nargs = "?"})
-vim.api.nvim_set_keymap('c','news',"NewSession ", {noremap = true, silent = true , desc = "Write and Load terminal" })
+-- local function newSession(opts)
+--   local session_name = opts.args
+--   -- print(session_name)
+--   require("resession").save(session_name)
+-- end
+-- vim.api.nvim_create_user_command("NewSession", callSession, {nargs = "?"})
+-- vim.api.nvim_set_keymap('c','news',"NewSession", {noremap = true, silent = true , desc = "Write and Load terminal" })
 
 -- TODO: check if there is more todo, 
 -- TODO: config ToDo comment keymap things to navigate between todos faster.
