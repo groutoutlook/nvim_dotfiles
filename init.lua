@@ -36,6 +36,7 @@ end
 vim.api.nvim_set_keymap('i',';u',"<C-o>u", {noremap = true, silent = true , desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap('i',';r',"<C-o><C-r>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap('i',';q',"<cmd>quit<CR>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
+vim.api.nvim_set_keymap('i',';pp',"<cmd>paste<CR>", {noremap = true, silent = true , desc = "Paste Insert Mode" })
 vim.api.nvim_set_keymap('i','qq',"<Esc>", {noremap = true, silent = true , desc = "Escape." })
 vim.api.nvim_set_keymap('i','yyy',"<Esc>yy", {noremap = true, silent = true , desc = "Escape and yank." })
 vim.api.nvim_set_keymap('i','ddd',"<Esc>dd", {noremap = true, silent = true , desc = "Escape and delete line." })
@@ -52,3 +53,6 @@ vim.keymap.set({'n','i'},';ww',"<cmd>wall<CR><cmd>lua require('resession').save(
 -- TODO: check if there is more todo, 
 -- Now it's on the telescope.lua custom files.
 vim.keymap.set({'n','i'},";/",function() require("Comment.api").toggle.linewise.count(vim.v.count1) end,{noremap = true, desc = "Comment the line in Insert Mode" })
+vim.keymap.set({'n','i'},";cst","<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>cst<cr>",{noremap = true, desc = "CodeStat in ToggleTerm" })
+vim.keymap.set({'n','i'},";tj","<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>j<space>",{noremap = true, desc = "Journal (ready) in ToggleTerm" })
+vim.keymap.set({'n','i'},";to","<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>obs<space>",{noremap = true, desc = "Obsidian (ready) in ToggleTerm " })
