@@ -6,5 +6,5 @@ vim.keymap.set({'n','i'},";fw",function() require("telescope.builtin").live_grep
 vim.keymap.set({'n','i'},';fb',function() require("telescope.builtin").buffers() end , {noremap = true, silent = true , desc = "Redo Insert Mode" })
 
 return {
-  
+    
 }
