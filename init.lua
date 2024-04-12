@@ -19,40 +19,72 @@ require "lazy_setup"
 require "polish"
 
 -- vim settings.
-vim.cmd([[
+vim.cmd [[
 set guifont=Iosevka\ Nerd\ Font\ Mono:h12
 set conceallevel=2
-]])
-
-local colorscheme = "torte"
-local ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-vim.o.background = "dark" -- or "light" for light mode
-if not ok then
-  vim.notify("colorscheme " .. colorscheme .. " not found!")
-  return
-end
+colorscheme torte
+]]
 
 --Basic Lua
-vim.api.nvim_set_keymap('i',';u',"<C-o>u", {noremap = true, silent = true , desc = "Undo Insert Mode" })
-vim.api.nvim_set_keymap('i',';r',"<C-o><C-r>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
-vim.api.nvim_set_keymap('i',';q',"<cmd>quit<CR>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
-vim.api.nvim_set_keymap('i',';pp',"<cmd>paste<CR>", {noremap = true, silent = true , desc = "Paste Insert Mode" })
-vim.api.nvim_set_keymap('i','qq',"<Esc>", {noremap = true, silent = true , desc = "Escape." })
-vim.api.nvim_set_keymap('i','yyy',"<Esc>yy", {noremap = true, silent = true , desc = "Escape and yank." })
-vim.api.nvim_set_keymap('i','ddd',"<Esc>dd", {noremap = true, silent = true , desc = "Escape and delete line." })
-vim.api.nvim_set_keymap('i','vvv',"<Esc>v$", {noremap = true, silent = true , desc = "Escape and Visual line." })
-vim.api.nvim_set_keymap('t','qqq',"<C-\\><C-n>", {noremap = true, silent = true , desc = "Escape in terminal mode"})
+vim.api.nvim_set_keymap("i", ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
+vim.api.nvim_set_keymap("i", ";r", "<C-o><C-r>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
+vim.api.nvim_set_keymap("i", ";q", "<cmd>quit<CR>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
+vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, desc = "Escape." })
+vim.api.nvim_set_keymap("i", "yyy", "<Esc>yy", { noremap = true, silent = true, desc = "Escape and yank." })
+vim.api.nvim_set_keymap("i", "ddd", "<Esc>dd", { noremap = true, silent = true, desc = "Escape and delete line." })
+vim.api.nvim_set_keymap("i", "vvv", "<Esc>v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
+vim.api.nvim_set_keymap("t", "qqq", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Escape in terminal mode" })
 
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
-vim.keymap.set({'n','i'},';wq',"<cmd>wqall<CR>", {noremap = true, silent = true , desc = "Write and Quit Insert Mode" })
-vim.keymap.set({'n','i'},';wg',"<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>git cij<cr><cmd>wall<CR>", {noremap = true, silent = true , desc = "Write and git Insert Mode" })
-vim.keymap.set({'n','i'},';wt',"<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr><cmd>wall<CR>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
-vim.keymap.set({'n','i'},';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
+vim.keymap.set(
+  { "n", "i" },
+  ";wq",
+  "<cmd>wqall<CR>",
+  { noremap = true, silent = true, desc = "Write and Quit Insert Mode" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";wg",
+  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>git cij<cr><cmd>wall<CR>",
+  { noremap = true, silent = true, desc = "Write and git Insert Mode" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";wt",
+  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr><cmd>wall<CR>",
+  { noremap = true, silent = true, desc = "Write and Term Insert Mode" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";ww",
+  "<cmd>wall<CR><cmd>lua require('resession').save()<cr>",
+  { noremap = true, silent = true, desc = "Write and Save session" }
+)
 
--- TODO: check if there is more todo, 
+-- TODO: check if there is more todo,
 -- Now it's on the telescope.lua custom files.
-vim.keymap.set({'n','i'},";/",function() require("Comment.api").toggle.linewise.count(vim.v.count1) end,{noremap = true, desc = "Comment the line in Insert Mode" })
-vim.keymap.set({'n','i'},";cst","<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>cst<cr>",{noremap = true, desc = "CodeStat in ToggleTerm" })
-vim.keymap.set({'n','i'},";tj","<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>j<space>",{noremap = true, desc = "Journal (ready) in ToggleTerm" })
-vim.keymap.set({'n','i'},";to","<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>obs<space>",{noremap = true, desc = "Obsidian (ready) in ToggleTerm " })
+vim.keymap.set(
+  { "n", "i" },
+  ";/",
+  function() require("Comment.api").toggle.linewise.count(vim.v.count1) end,
+  { noremap = true, desc = "Comment the line in Insert Mode" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";cst",
+  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>cst<cr>",
+  { noremap = true, desc = "CodeStat in ToggleTerm" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";tj",
+  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>j<space>",
+  { noremap = true, desc = "Journal (ready) in ToggleTerm" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";to",
+  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>obs<space>",
+  { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
+)

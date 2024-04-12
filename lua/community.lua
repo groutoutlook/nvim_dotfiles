@@ -11,6 +11,6 @@ return {
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.utility.noice-nvim" },
-  -- { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.code-runner.overseer-nvim" },
   -- import/override with your plugins folder
 }
