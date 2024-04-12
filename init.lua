@@ -17,6 +17,13 @@ end
 
 require "lazy_setup"
 require "polish"
+vim.cmd [[
+colorscheme torte
+command -bang Q quit<bang>
+command -bang W write<bang>
+command -bang WQ wq<bang>
+command -bang Wq wq<bang>
+]]
 
 -- vim settings.
 vim.cmd [[
