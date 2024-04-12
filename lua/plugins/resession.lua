@@ -84,8 +84,6 @@ local function saveSession(opts)
 end
 vim.api.nvim_create_user_command("Session", callSession, { nargs = "?" })
 vim.api.nvim_create_user_command("Savess", saveSession, { nargs = "?" })
--- vim.api.nvim_set_keymap('c','ss',"Session<C-l>", {noremap = true, silent = true , desc = "Open Session" })
--- vim.api.nvim_set_keymap('c','sp',"Session pwsh<C-l>", {noremap = true, silent = true , desc = "Load pwsh_settings session" })
 
 return {
   "stevearc/resession.nvim",

@@ -25,7 +25,7 @@ command -bang Wq wq<bang>
 ]]
 -- vim settings.
 vim.cmd [[
-set guifont=Iosevka\ Nerd\ Font\ Mono:h12
+set guifont=Iosevka\ Nerd\ Font\ Mono:h10
 set conceallevel=2
 colorscheme torte
 ]]
