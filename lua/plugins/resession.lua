@@ -10,7 +10,7 @@ vim.keymap.set('n',"<Leader>..",function() require("resession").load(vim.fn.getc
 vim.keymap.set({'n','i'},";fs",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
 vim.keymap.set({'n','i'},";fl",function() require("resession").load "Last Session" end,{noremap = true, desc = "Load last session" })
 vim.keymap.set({'n','i'},";sl",function() require("resession").load "Last Session" end,{noremap = true, desc = "Load last session" })
-vim.keymap.set({'n','i'},";f.",function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,{noremap = true, desc = "Load last session" })
+vim.keymap.set({'n','i'},";f.",function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,{noremap = true, desc = "Load current dir session" })
 local function callSession(opts)
   local short_name = opts.args
   local session_name = ""
