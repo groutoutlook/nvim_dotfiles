@@ -33,7 +33,15 @@ return {
       },
       {
         name = "work",
-        path = "D:/ProgramDataD/Notes/Obsidian/work",
+        path = function()
+          local out = ""
+          if vim.loop.os_uname().sysname == "Windows_NT" then
+            out = "D:\\ProgramDataD\\Notes\\Obsidian\\work"
+          else
+            out = "/storage/emulated/0/work"
+          end
+        return out
+        end
       },
     },
     

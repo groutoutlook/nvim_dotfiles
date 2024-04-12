@@ -5,6 +5,8 @@
 -- This guarantees that the specs are processed before any user plugins.
 
 ---@type LazySpec
+
+if vim.loop.os_uname().sysname == "Windows_NT" then
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
@@ -14,3 +16,14 @@ return {
   { import = "astrocommunity.code-runner.overseer-nvim" },
   -- import/override with your plugins folder
 }
+else
+return {
+  "AstroNvim/astrocommunity",
+  -- { import = "astrocommunity.pack.lua" },
+  -- { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.utility.noice-nvim" },
+  { import = "astrocommunity.code-runner.overseer-nvim" },
+  -- import/override with your plugins folder
+}
+end
