@@ -56,6 +56,7 @@ vim.keymap.set(
   "<cmd>ToggleTerm<cr>lsd<cr>git cij<cr><cmd>wall<CR>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
 )
+
 vim.keymap.set(
   { "n", "i" },
   ";wt",
