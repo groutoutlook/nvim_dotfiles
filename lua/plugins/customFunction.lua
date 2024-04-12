@@ -24,6 +24,20 @@ end
 
 vim.api.nvim_set_keymap("n", "<leader>ww", ":lua Surround('w')<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>wW", ":lua Surround('W')<CR>", { noremap = true, silent = true })
+
+-- copyPath function.
+local function copyPath()
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    vim.notify('Copied "' .. path .. '" to the clipboard!')
+end
+vim.api.nvim_create_user_command("Cppath", copyPath, {})
+vim.api.nvim_create_user_command("CPAT", copyPath, {})
+vim.api.nvim_create_user_command("Cpat", copyPath, {})
+
+vim.keymap.set({'n','i'},";cpat",function() copyPath() end,{noremap = true, desc = "Comment the line in Insert Mode" })
+vim.keymap.set('c',"cpat",function() copyPath() end,{noremap = true, desc = "Comment the line in Insert Mode" })
+
 return {
     
 }

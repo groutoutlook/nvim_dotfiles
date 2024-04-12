@@ -17,38 +17,7 @@ end
 
 require "lazy_setup"
 require "polish"
--- Neovim env.
--- Vanilla mapping
-if vim.loop.os_uname().sysname == "Windows_NT" then
-  -- print("Windows_NT env config.")
-  -- vim.o.shell = "pwsh.exe"
-  vim.cmd([[set shell=pwsh
-  set shellcmdflag=-command
-  set shellquote=\"
-  set shellxquote=]])
-else
-  -- print("Unix env config.")  
-end
--- vim.cmd([[colorscheme sonokai]])
-vim.cmd([[set guifont=Iosevka\ Nerd\ Font\ Mono:h12]])
 
-vim.api.nvim_create_user_command("Cppath", function()
-    local path = vim.fn.expand("%:p")
-    vim.fn.setreg("+", path)
-    vim.notify('Copied "' .. path .. '" to the clipboard!')
-end, {})
-
--- Move basic vim mapping to here since I break those keymap beneath them frequently.
-vim.cmd([[
-colorscheme torte
-command -bang Q quit<bang>
-command -bang W write<bang>
-command -bang WQ wq<bang>
-command -bang Wq wq<bang>
-command -bang CPPA Cppath
-cnoremap cppa Cppath
-set conceallevel=2
-]])
 --Basic Lua
 vim.api.nvim_set_keymap('i',';u',"<C-o>u", {noremap = true, silent = true , desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap('i',';r',"<C-o><C-r>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
@@ -62,7 +31,7 @@ vim.api.nvim_set_keymap('t','qqq',"<C-\\><C-n>", {noremap = true, silent = true 
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
 vim.keymap.set({'n','i'},';wq',"<cmd>wqall<CR>", {noremap = true, silent = true , desc = "Write and Quit Insert Mode" })
-vim.keymap.set({'n','i'},';wg',"<cmd>ToggleTerm<cr><cmd>startinsert<cr>git cij<cr><cmd>wall<CR>", {noremap = true, silent = true , desc = "Write and git Insert Mode" })
+vim.keymap.set({'n','i'},';wg',"<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>git cij<cr><cmd>wall<CR>", {noremap = true, silent = true , desc = "Write and git Insert Mode" })
 vim.keymap.set({'n','i'},';wt',"<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr><cmd>wall<CR>", {noremap = true, silent = true , desc = "Write and Term Insert Mode" })
 vim.keymap.set({'n','i'},';ww',"<cmd>wall<CR><cmd>lua require('resession').save()<cr>", {noremap = true, silent = true , desc = "Write and Save session" })
 

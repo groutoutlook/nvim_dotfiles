@@ -9,6 +9,7 @@ vim.keymap.set('n',"<Leader>..",function() require("resession").load(vim.fn.getc
 
 vim.keymap.set({'n','i'},";fs",function() require("resession").load() end,{noremap = true, desc = "Load last session" })
 vim.keymap.set({'n','i'},";fl",function() require("resession").load "Last Session" end,{noremap = true, desc = "Load last session" })
+vim.keymap.set({'n','i'},";sl",function() require("resession").load "Last Session" end,{noremap = true, desc = "Load last session" })
 vim.keymap.set({'n','i'},";f.",function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,{noremap = true, desc = "Load last session" })
 local function callSession(opts)
   local short_name = opts.args
@@ -30,6 +31,7 @@ end
 vim.api.nvim_create_user_command("Session", callSession, {nargs = "?"})
 vim.api.nvim_set_keymap('c','ss',"Session<C-l>", {noremap = true, silent = true , desc = "Open Session" })
 vim.api.nvim_set_keymap('c','sp',"Session pwsh<C-l>", {noremap = true, silent = true , desc = "Load pwsh_settings session" })
+
 return {
   "stevearc/resession.nvim",
   lazy = true,
