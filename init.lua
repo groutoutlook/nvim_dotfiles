@@ -53,13 +53,13 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";wg",
-  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>git cij<cr><cmd>wall<CR>",
+  "<cmd>ToggleTerm<cr>lsd<cr>git cij<cr><cmd>wall<CR>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
 )
 vim.keymap.set(
   { "n", "i" },
   ";wt",
-  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr><cmd>wall<CR>",
+  "<cmd>ToggleTerm<cr>lsd<cr><cmd>wall<CR>",
   { noremap = true, silent = true, desc = "Write and Term Insert Mode" }
 )
 vim.keymap.set(
@@ -68,9 +68,9 @@ vim.keymap.set(
   "<cmd>wall<CR><cmd>lua require('resession').save()<cr>",
   { noremap = true, silent = true, desc = "Write and Save session" }
 )
-
 -- TODO: check if there is more todo,
 -- Now it's on the telescope.lua custom files.
+--
 vim.keymap.set(
   { "n", "i" },
   ";/",
@@ -80,18 +80,18 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";cst",
-  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>cst<cr>",
+  "<cmd>ToggleTerm<cr>lsd<cr>cst<cr>",
   { noremap = true, desc = "CodeStat in ToggleTerm" }
 )
 vim.keymap.set(
   { "n", "i" },
   ";tj",
-  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>j<space>",
+  "<cmd>ToggleTerm<cr>lsd<cr>j<space>",
   { noremap = true, desc = "Journal (ready) in ToggleTerm" }
 )
 vim.keymap.set(
   { "n", "i" },
   ";to",
-  "<cmd>ToggleTerm<cr><cmd>startinsert<cr>lsd<cr>obs<space>",
+  "<cmd>ToggleTerm<cr>lsd<cr>obs<space>",
   { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
 )
