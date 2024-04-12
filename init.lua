@@ -50,6 +50,15 @@ vim.api.nvim_set_keymap(
   "<Esc>i",
   { noremap = true, silent = true, desc = "Escape and insert in Terminal mode" }
 )
+<<<<<<< Updated upstream
+=======
+vim.api.nvim_set_keymap(
+  "t",
+  "qqa",
+  "<Esc>i",
+  { noremap = true, silent = true, desc = "Escape and insert in Terminal mode" }
+)
+>>>>>>> Stashed changes
 
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
