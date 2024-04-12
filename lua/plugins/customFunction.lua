@@ -1,4 +1,11 @@
 -- TODO: Add interesting configuration function in here.
+-- Basic keymap here.
+vim.api.nvim_create_user_command("W", function() vim.cmd("write<bang>") end, {})
+vim.api.nvim_create_user_command("WQ", function() vim.cmd("wqall<bang>") end, {})
+vim.api.nvim_create_user_command("Wq", function() vim.cmd("wqall<bang>") end, {})
+vim.api.nvim_create_user_command("Q", function() vim.cmd("qall<bang>") end, {})
+
+-- Surround function.
 function Surround(w_or_W)
     local open_char = vim.fn.input("Surround with: ")
     local closed_char = nil
@@ -36,7 +43,7 @@ vim.api.nvim_create_user_command("CPAT", copyPath, {})
 vim.api.nvim_create_user_command("Cpat", copyPath, {})
 
 vim.keymap.set({'n','i'},";cpat",function() copyPath() end,{noremap = true, desc = "Comment the line in Insert Mode" })
-vim.keymap.set('c',"cpat",function() copyPath() end,{noremap = true, desc = "Comment the line in Insert Mode" })
+-- vim.keymap.set('c',"cpat",function() copyPath() end,{noremap = true, desc = "Comment the line in Insert Mode" })
 
 return {
     

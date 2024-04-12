@@ -18,6 +18,20 @@ end
 require "lazy_setup"
 require "polish"
 
+-- vim settings.
+vim.cmd([[
+set guifont=Iosevka\ Nerd\ Font\ Mono:h12
+set conceallevel=2
+]])
+
+local colorscheme = "torte"
+local ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+vim.o.background = "dark" -- or "light" for light mode
+if not ok then
+  vim.notify("colorscheme " .. colorscheme .. " not found!")
+  return
+end
+
 --Basic Lua
 vim.api.nvim_set_keymap('i',';u',"<C-o>u", {noremap = true, silent = true , desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap('i',';r',"<C-o><C-r>", {noremap = true, silent = true , desc = "Redo Insert Mode" })
