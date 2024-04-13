@@ -23,8 +23,9 @@ command -bang WQ wq<bang>
 command -bang Wq wq<bang>
 set guifont=Iosevka\ Nerd\ Font\ Mono:h10
 set conceallevel=2
-set! scroll=10 
 colorscheme slate
+nnoremap <expr> <C-d> (winheight(0) / 4) . '<C-d>'
+nnoremap <expr> <C-u> (winheight(0) / 4) . '<C-u>'
 ]]
 
 --Basic Lua
@@ -87,7 +88,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   { "n", "i" },
-  ";ww",
+  ";ws",
   "<cmd>wall!<CR><cmd>lua require('resession').save()<cr>",
   { noremap = true, silent = true, desc = "Write and Save session" }
 )
