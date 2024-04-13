@@ -5,6 +5,18 @@
 -- vim.api.nvim_create_user_command("Wq", function() vim.cmd "wqall<bang>" end, {})
 -- vim.api.nvim_create_user_command("Q", function() vim.cmd "qall" end, {})
 
+vim.keymap.set(
+  { "n", "i" },
+  ";mm",
+  function() require("mini.map").toggle() end,
+  { noremap = true, silent = true, desc = "Map toggle" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";mf",
+  function() require("mini.map").toggle_focus() end,
+  { noremap = true, silent = true, desc = "Map focus" }
+)
 -- Surround function.
 function Surround(w_or_W)
   local open_char = vim.fn.input "Surround with: "

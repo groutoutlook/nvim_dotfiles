@@ -17,20 +17,19 @@ end
 require "lazy_setup"
 require "polish"
 vim.cmd [[
-colorscheme torte
 command -bang Q quit<bang>
 command -bang W write<bang>
 command -bang WQ wq<bang>
 command -bang Wq wq<bang>
-]]
--- vim settings.
-vim.cmd [[
 set guifont=Iosevka\ Nerd\ Font\ Mono:h10
 set conceallevel=2
-colorscheme torte
+" set! scroll=10 
+colorscheme darkblue
 ]]
 
 --Basic Lua
+-- vim.api.nvim_set_option_value("scroll", 10, {})
+vim.api.nvim_set_keymap("i", ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap("i", ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap("i", ";r", "<C-o><C-r>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap("i", ";q", "<cmd>quit<CR>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
@@ -38,7 +37,12 @@ vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, des
 vim.api.nvim_set_keymap("i", "yyy", "<Esc>yy", { noremap = true, silent = true, desc = "Escape and yank." })
 vim.api.nvim_set_keymap("i", "ddd", "<Esc>dd", { noremap = true, silent = true, desc = "Escape and delete line." })
 vim.api.nvim_set_keymap("i", "vvv", "<Esc>v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
-vim.api.nvim_set_keymap("t", "qqq", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Normal mode from Terminal mode" })
+vim.api.nvim_set_keymap(
+  "t",
+  "qqq",
+  "<C-\\><C-n>",
+  { noremap = true, silent = true, desc = "Normal mode from Terminal mode" }
+)
 vim.api.nvim_set_keymap(
   "t",
   "qqi",
