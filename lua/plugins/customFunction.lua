@@ -31,23 +31,27 @@ function Surround(w_or_W)
   if open_char == "/" then closed_char = "/" end
   if open_char == "|" then closed_char = "|" end
   local current_mode = vim.fn.mode()
-  if current_mode == "n" then
-    if w_or_W == "w" then
-      vim.cmd("normal! ciw" .. open_char)
-    elseif w_or_W == "W" then
-      vim.cmd([[normal! ciW]] .. open_char)
+  if closed_char ~= nil then
+    if current_mode == "n" then
+      if w_or_W == "w" then
+        vim.cmd("normal! ciw" .. open_char)
+      elseif w_or_W == "W" then
+        vim.cmd([[normal! ciW]] .. open_char)
+      end
+    elseif current_mode == "v" then
+      if w_or_W == "w" then
+        vim.cmd("normal! c" .. open_char)
+      elseif w_or_W == "W" then
+        vim.cmd([[normal! c]] .. open_char)
+      end
     end
-  elseif current_mode == "v" then
-    if w_or_W == "w" then
-      vim.cmd("normal! c" .. open_char)
-    elseif w_or_W == "W" then
-      vim.cmd([[normal! c]] .. open_char)
-    end
-  end
 
-  vim.cmd "normal! p"
-  vim.cmd("normal! a" .. closed_char)
-  vim.cmd "normal! a"
+    vim.cmd "normal! p"
+    vim.cmd("normal! a" .. closed_char)
+    vim.cmd "normal! a"
+  else
+    vim.cmd [[write]]
+  end
 end
 
 vim.keymap.set({ "n", "v" }, "<leader>ww", function() Surround "w" end)

@@ -27,9 +27,7 @@ colorscheme slate
 nnoremap <expr> <C-d> (winheight(0) / 4) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 4) . '<C-u>'
 ]]
-
 --Basic Lua
--- vim.api.nvim_set_option_value("scroll", 10, {})
 vim.api.nvim_set_keymap("i", ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap("i", ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap("i", ";r", "<C-o><C-r>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
@@ -91,6 +89,7 @@ vim.keymap.set(
   { "n", "i" },
   ";ws",
   "<cmd>wall!<CR><cmd>lua require('resession').save()<cr>",
+
   { noremap = true, silent = true, desc = "Write and Save session" }
 )
 -- TODO: check if there is more todo,
