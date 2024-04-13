@@ -28,11 +28,11 @@ else
     "AstroNvim/astrocommunity",
     -- { import = "astrocommunity.pack.lua" },
     -- { import = "astrocommunity.pack.cpp" },
-    -- { import = "astrocommunity.pack.markdown" },
+    { import = "astrocommunity.pack.markdown" },
     { import = "astrocommunity.utility.noice-nvim" },
-    { import = "astrocommunity.code-runner.overseer-nvim" },
+    -- { import = "astrocommunity.code-runner.overseer-nvim" },
     -- Yeah install this on termux or linux with little to no ability to run animation GUI.
-    { import = "astrocommunity.scrolling.mini-animate" },
+    -- { import = "astrocommunity.scrolling.mini-animate" },
     { import = "astrocommunity.split-and-window.mini-map" },
     -- import/override with your plugins folder
   }
