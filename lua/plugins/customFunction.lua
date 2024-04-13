@@ -30,19 +30,30 @@ function Surround(w_or_W)
   if open_char == "`" then closed_char = "`" end
   if open_char == "/" then closed_char = "/" end
   if open_char == "|" then closed_char = "|" end
-
-  if w_or_W == "w" then
-    vim.cmd("normal! ciw" .. open_char)
-  elseif w_or_W == "W" then
-    vim.cmd([[normal! ciW]] .. open_char)
+  local current_mode = vim.fn.mode()
+  if current_mode == "n" then
+    if w_or_W == "w" then
+      vim.cmd("normal! ciw" .. open_char)
+    elseif w_or_W == "W" then
+      vim.cmd([[normal! ciW]] .. open_char)
+    end
+  elseif current_mode == "v" then
+    if w_or_W == "w" then
+      vim.cmd("normal! c" .. open_char)
+    elseif w_or_W == "W" then
+      vim.cmd([[normal! c]] .. open_char)
+    end
   end
+
   vim.cmd "normal! p"
   vim.cmd("normal! a" .. closed_char)
   vim.cmd "normal! a"
 end
 
-vim.api.nvim_set_keymap("n", "<leader>ww", ":lua Surround('w')<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>wW", ":lua Surround('W')<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>ww", function() Surround "w" end)
+-- vim.keymap.set({ "n", "v" }, "<leader>wW", function() Surround "W" end)
+vim.keymap.set({ "n", "v" }, ";ww", function() Surround "w" end)
+-- vim.keymap.set({ "n", "v" }, ";wW", function() Surround "W" end)
 
 -- copyPath function.
 local function copyPath()

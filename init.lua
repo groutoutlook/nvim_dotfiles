@@ -23,8 +23,8 @@ command -bang WQ wq<bang>
 command -bang Wq wq<bang>
 set guifont=Iosevka\ Nerd\ Font\ Mono:h10
 set conceallevel=2
-" set! scroll=10 
-colorscheme darkblue
+set! scroll=10 
+colorscheme slate
 ]]
 
 --Basic Lua
@@ -37,6 +37,8 @@ vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, des
 vim.api.nvim_set_keymap("i", "yyy", "<Esc>yy", { noremap = true, silent = true, desc = "Escape and yank." })
 vim.api.nvim_set_keymap("i", "ddd", "<Esc>dd", { noremap = true, silent = true, desc = "Escape and delete line." })
 vim.api.nvim_set_keymap("i", "vvv", "<Esc>v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
+vim.api.nvim_set_keymap("n", "<leader>v", "v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
+vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 vim.api.nvim_set_keymap(
   "t",
   "qqq",
@@ -67,7 +69,7 @@ vim.api.nvim_set_keymap(
 vim.keymap.set(
   { "n", "i" },
   ";wq",
-  "<cmd>wqall<CR>",
+  "<cmd>wqall!<CR>",
   { noremap = true, silent = true, desc = "Write and Quit Insert Mode" }
 )
 vim.keymap.set(
@@ -86,7 +88,7 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";ww",
-  "<cmd>wall<CR><cmd>lua require('resession').save()<cr>",
+  "<cmd>wall!<CR><cmd>lua require('resession').save()<cr>",
   { noremap = true, silent = true, desc = "Write and Save session" }
 )
 -- TODO: check if there is more todo,
