@@ -12,7 +12,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     { import = "astrocommunity.pack.lua" },
     { import = "astrocommunity.pack.cpp" },
     { import = "astrocommunity.pack.markdown" },
-    { import = "astrocommunity.utility.noice-nvim" },
+    -- { import = "astrocommunity.utility.noice-nvim" },
     { import = "astrocommunity.code-runner.overseer-nvim" },
     -- Minimap for code, only available on desktop. Termux cant run.
     -- { import = "astrocommunity.split-and-window.minimap-vim" },
@@ -29,7 +29,7 @@ else
     -- { import = "astrocommunity.pack.lua" },
     -- { import = "astrocommunity.pack.cpp" },
     { import = "astrocommunity.pack.markdown" },
-    { import = "astrocommunity.utility.noice-nvim" },
+    -- { import = "astrocommunity.utility.noice-nvim" },
     -- { import = "astrocommunity.code-runner.overseer-nvim" },
     -- Yeah install this on termux or linux with little to no ability to run animation GUI.
     -- { import = "astrocommunity.scrolling.mini-animate" },
