@@ -57,14 +57,14 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";wg",
-  "<cmd>wall!<CR><cmd>ToggleTerm<cr>lsd<cr>git cij<cr>",
+  "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>git cij<cr>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
 )
 
 vim.keymap.set(
   { "n", "i" },
   ";wt",
-  "<cmd>ToggleTerm<cr>lsd<cr><cmd>wall<CR>",
+  "<esc><cmd>ToggleTerm<cr>lsd<cr><cmd>wall<CR>",
   { noremap = true, silent = true, desc = "Write and Term Insert Mode" }
 )
 vim.keymap.set(
@@ -77,35 +77,36 @@ vim.keymap.set(
 -- TODO: check if there is more todo,
 -- Now it's on the telescope.lua custom files.
 --
+
 vim.keymap.set(
   { "n", "i" },
   ";/",
   function() require("Comment.api").toggle.linewise.count(vim.v.count1) end,
   { noremap = true, desc = "Comment the line in Insert Mode" }
 )
-vim.keymap.set({ "n", "i" }, ";tt", "<cmd>ToggleTerm<cr>lsd<cr>", { noremap = true, desc = "Simply ToggleTerm" })
+vim.keymap.set({ "n", "i" }, ";tt", "<esc><cmd>ToggleTerm<cr>lsd<cr>", { noremap = true, desc = "Simply ToggleTerm" })
 vim.keymap.set(
   { "n", "i" },
   ";cst",
-  "<cmd>ToggleTerm<cr>lsd<cr>cst<cr>",
+  "<esc><cmd>ToggleTerm<cr>lsd<cr>cst<cr>",
   { noremap = true, desc = "CodeStat in ToggleTerm" }
 )
 vim.keymap.set(
   { "n", "i" },
   ";jj",
-  "<cmd>ToggleTerm<cr>lsd<cr>j<space>",
+  "<esc><cmd>ToggleTerm<cr>lsd<cr>j<space>",
   { noremap = true, desc = "Journal (ready) in ToggleTerm" }
 )
 vim.keymap.set(
   { "n", "i" },
   ";oo",
-  "<cmd>ToggleTerm<cr>lsd<cr>:o<space>",
+  "<esc><cmd>ToggleTerm<cr>lsd<cr>:o<space>",
   { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
 )
 vim.keymap.set(
   { "n", "i" },
   ";gg",
-  "<cmd>ToggleTerm<cr>lsd<cr>gg<space>",
+  "<esc><cmd>ToggleTerm<cr>lsd<cr>gg<space>",
   { noremap = true, desc = "Google (ready) in ToggleTerm " }
 )
 return {}
