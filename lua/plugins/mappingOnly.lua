@@ -97,6 +97,12 @@ end
 -- TODO: check if there is more todo,
 -- Now it's on the telescope.lua custom files.
 --
+vim.keymap.set(
+  { "n", "i" },
+  ";gci",
+  "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>git cij<cr>",
+  { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
+)
 
 vim.keymap.set(
   { "n", "i" },
