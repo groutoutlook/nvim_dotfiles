@@ -21,7 +21,7 @@ command -bang Q quit<bang>
 command -bang W write<bang>
 command -bang WQ wq<bang>
 command -bang Wq wq<bang>
-set guifont=Iosevka\ Nerd\ Font\ Mono:h10
+set guifont=Iosevka\ Nerd\ Font\ Mono:h9
 set conceallevel=2
 if has("gui_running")
   colorscheme slate
