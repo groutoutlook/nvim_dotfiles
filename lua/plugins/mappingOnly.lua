@@ -46,7 +46,7 @@ vim.api.nvim_set_keymap(
 if vim.fn.has "gui_running" then
   vim.keymap.set("c", "<M-p>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
   vim.keymap.set("c", "<C-v>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
-  vim.keymap.set("c", "<S-<Insert>>", "<C-r>+", { noremap = true, silent = true, desc = "Write and Quit Insert Mode" })
+  vim.keymap.set("c", "<S-Insert>", "<C-r>+", { noremap = true, silent = true, desc = "Write and Quit Insert Mode" })
 else
   vim.keymap.set("c", "<M-p>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
 end
