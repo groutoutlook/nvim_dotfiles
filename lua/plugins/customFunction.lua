@@ -56,7 +56,7 @@ end
 
 vim.keymap.set({ "n", "v" }, "<leader>ww", function() Surround "w" end)
 -- vim.keymap.set({ "n", "v" }, "<leader>wW", function() Surround "W" end)
-vim.keymap.set({ "n", "v" }, ";ww", function() Surround "w" end)
+vim.keymap.set({ "n", "v", "i" }, ";ww", function() Surround "w" end)
 -- vim.keymap.set({ "n", "v" }, ";wW", function() Surround "W" end)
 
 -- copyPath function.

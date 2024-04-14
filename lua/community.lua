@@ -21,6 +21,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     -- { import = "astrocommunity.scrolling.mini-animate" },
     -- Neovide extra settings.
     { import = "astrocommunity.recipes.neovide" },
+    { import = "astrocommunity.register.nvim-neoclip-lua" },
     -- import/override with your plugins folder
   }
 else

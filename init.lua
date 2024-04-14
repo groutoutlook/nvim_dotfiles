@@ -18,6 +18,7 @@ require "lazy_setup"
 require "polish"
 vim.cmd [[
 command -bang Q quit<bang>
+command -bang W write<bang>
 command -bang WQ wq<bang>
 command -bang Wq wq<bang>
 set guifont=Iosevka\ Nerd\ Font\ Mono:h10
@@ -31,7 +32,6 @@ nnoremap <expr> <C-d> (winheight(0) / 4) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 4) . '<C-u>'
 ]]
 --Basic Lua
-vim.api.nvim_set_keymap("i", ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap("i", ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
 vim.api.nvim_set_keymap("i", ";r", "<C-o><C-r>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap("i", ";q", "<cmd>quit<CR>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
