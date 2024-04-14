@@ -1,6 +1,4 @@
 --Keymapping and keybinding only files.
-vim.api.nvim_set_keymap("i", ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
-vim.api.nvim_set_keymap("i", ";r", "<C-o><C-r>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap("i", ";q", "<cmd>quit<CR>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, desc = "Escape." })
 vim.api.nvim_set_keymap("i", "yyy", "<Esc>yy", { noremap = true, silent = true, desc = "Escape and yank." })
@@ -45,7 +43,13 @@ vim.api.nvim_set_keymap(
   "<Esc>i",
   { noremap = true, silent = true, desc = "Escape and insert in Terminal mode" }
 )
-
+if vim.fn.has "gui_running" then
+  vim.keymap.set("c", "<M-p>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
+  vim.keymap.set("c", "<C-v>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
+  vim.keymap.set("c", "<S-<Insert>>", "<C-r>+", { noremap = true, silent = true, desc = "Write and Quit Insert Mode" })
+else
+  vim.keymap.set("c", "<M-p>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
+end
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
 vim.keymap.set(
@@ -71,9 +75,25 @@ vim.keymap.set(
   { "n", "i" },
   ";ws",
   "<cmd>wall!<CR><cmd>lua require('resession').save()<cr>",
-
   { noremap = true, silent = true, desc = "Write and Save session" }
 )
+vim.keymap.set({ "n", "i" }, ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
+vim.keymap.set({ "n", "i" }, ";r", "<C-o><C-r>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
+if (vim.fn.has "win32") or (vim.fn.has "macunix") then
+  vim.keymap.set(
+    { "n", "i" },
+    ";lg",
+    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vl g<cr>",
+    { noremap = true, silent = true, desc = "Launch GUI(Neovide)" }
+  )
+else
+  vim.keymap.set(
+    { "n", "i" },
+    ";lg",
+    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>are you sure you have the GUI?<cr>",
+    { noremap = true, silent = true, desc = "Launch GUI(Neovide) but Linux may not have the GUI" }
+  )
+end
 -- TODO: check if there is more todo,
 -- Now it's on the telescope.lua custom files.
 --
