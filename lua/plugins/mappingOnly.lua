@@ -1,5 +1,5 @@
 --Keymapping and keybinding only files.
-vim.api.nvim_set_keymap("i", ";q", "<cmd>quit<CR>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
+vim.api.nvim_set_keymap("i", ";q", "<cmd>quitall!<CR>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, desc = "Escape." })
 vim.api.nvim_set_keymap("i", "yyy", "<Esc>yy", { noremap = true, silent = true, desc = "Escape and yank." })
 vim.api.nvim_set_keymap("i", "ddd", "<Esc>dd", { noremap = true, silent = true, desc = "Escape and delete line." })
@@ -83,7 +83,7 @@ if (vim.fn.has "win32") or (vim.fn.has "macunix") then
   vim.keymap.set(
     { "n", "i" },
     ";lg",
-    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vl g<cr>",
+    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vl g<cr><cmd>ToggleTerm<cr>",
     { noremap = true, silent = true, desc = "Launch GUI(Neovide)" }
   )
 else

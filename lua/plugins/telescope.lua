@@ -17,7 +17,13 @@ vim.keymap.set(
   { "n", "i" },
   ";ff",
   function() require("telescope.builtin").live_grep() end,
-  { noremap = true, desc = "find notifications" }
+  { noremap = true, desc = "find word" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";fF",
+  function() require("telescope.builtin").find_files { hidden = true, layout_config = { prompt_position = "top" } } end,
+  { noremap = true, desc = "find All Files" }
 )
 vim.keymap.set(
   { "n", "i" },
