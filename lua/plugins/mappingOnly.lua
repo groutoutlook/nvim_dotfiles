@@ -1,5 +1,4 @@
 --Keymapping and keybinding only files.
-vim.api.nvim_set_keymap("i", ";q", "<cmd>quitall!<CR>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
 vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, desc = "Escape." })
 vim.api.nvim_set_keymap("i", "yyy", "<Esc>yy", { noremap = true, silent = true, desc = "Escape and yank." })
 vim.api.nvim_set_keymap("i", "ddd", "<Esc>dd", { noremap = true, silent = true, desc = "Escape and delete line." })
@@ -52,6 +51,7 @@ else
 end
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
+vim.keymap.set({ "n", "i" }, ";q", "<cmd>quitall!<CR>", { noremap = true, silent = true, desc = "Quit" })
 vim.keymap.set(
   { "n", "i" },
   ";wq",
