@@ -1,7 +1,6 @@
 -- TODO: Add interesting configuration function in here.
 -- Basic keymap here.
 
-vim.o.scroll = 17
 vim.keymap.set(
   { "n", "i" },
   ";mm",
