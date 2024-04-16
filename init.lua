@@ -16,6 +16,7 @@ if not pcall(require, "lazy") then
 end
 require "lazy_setup"
 require "polish"
+
 vim.cmd [[
 command -bang Q quit<bang>
 command -bang W write<bang>
@@ -23,12 +24,12 @@ command -bang WQ wq<bang>
 command -bang Wq wq<bang>
 set guifont=Iosevka\ Nerd\ Font\ Mono:h9
 set conceallevel=2
-if has("gui_running")
-  colorscheme slate
-else
-  colorscheme torte
-endif
 nnoremap <expr> <C-d> (winheight(0) / 4) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 4) . '<C-u>'
 ]]
+if vim.fn.has "gui_running" == 1 then
+  vim.cmd.colorscheme "murphy"
+else
+  vim.cmd.colorscheme "torte"
+end
 --Basic Lua
