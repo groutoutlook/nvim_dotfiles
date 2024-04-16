@@ -28,7 +28,7 @@ nnoremap <expr> <C-d> (winheight(0) / 4) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 4) . '<C-u>'
 ]]
 if vim.fn.has "gui_running" == 1 then
-  vim.cmd.colorscheme "murphy"
+  vim.cmd.colorscheme "industry"
 else
   vim.cmd.colorscheme "torte"
 end
