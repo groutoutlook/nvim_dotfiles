@@ -38,6 +38,7 @@ else
     -- { import = "astrocommunity.scrolling.mini-animate" },
     -- { import = "astrocommunity.split-and-window.mini-map" },
     { import = "astrocommunity.motion.leap-nvim" },
+    { import = "astrocommunity.motion.grapple-nvim" },
     -- import/override with your plugins folder
   }
 end
