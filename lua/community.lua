@@ -23,6 +23,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     { import = "astrocommunity.recipes.neovide" },
     -- { import = "astrocommunity.register.nvim-neoclip-lua" },
     { import = "astrocommunity.motion.leap-nvim" },
+    { import = "astrocommunity.motion.grapple-nvim" },
     -- import/override with your plugins folder
   }
 else
