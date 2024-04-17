@@ -1,6 +1,6 @@
 -- TODO: Add interesting configuration function in here.
--- Basic keymap here.
 
+-- TODO: Add keymap for grapple tagging in insert mode or something else.
 vim.keymap.set(
   { "n", "i" },
   ";mm",
@@ -18,6 +18,12 @@ function Surround(w_or_W, char)
   char = char or nil
   local link_title = char or vim.fn.input "Surround with: "
   local closed_char = nil
+  --Edge case
+  -- TODO: May need to rewrite this part into something else like a table.
+  --
+  if link_title == "]" then link_title = "[" end
+  if link_title == ")" then link_title = "(" end
+
   if link_title == "(" then closed_char = ")" end
   if link_title == "[" then closed_char = "]" end
   if link_title == "{" then closed_char = "}" end
@@ -27,6 +33,7 @@ function Surround(w_or_W, char)
   if link_title == "`" then closed_char = "`" end
   if link_title == "/" then closed_char = "/" end
   if link_title == "|" then closed_char = "|" end
+
   local current_mode = vim.fn.mode()
   if closed_char ~= nil then
     if current_mode == "n" then
@@ -142,6 +149,8 @@ vim.api.nvim_set_keymap(
 )
 
 -- Get selected text
+-- TODO: In visual mode, ;gg the text would trigger the google. ;oo the text would trigger obsidian search instead.
+-- Other Application of it? Havent thought.
 local function get_visual_selection()
   local s_start = vim.fn.getpos "'<"
   local s_end = vim.fn.getpos "'>"
@@ -155,6 +164,19 @@ local function get_visual_selection()
   end
   return table.concat(lines, "\n")
 end
+-- Instead of yanking them, could use the function above to get the text first.
+vim.keymap.set(
+  { "v" },
+  ";oo",
+  "y<esc><cmd>ToggleTerm<cr>lsd<cr>:o<space><C-v><cr>",
+  { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
+)
+vim.keymap.set(
+  { "v" },
+  ";gg",
+  "y<esc><cmd>ToggleTerm<cr>lsd<cr>gg<space><C-v><cr>",
+  { noremap = true, desc = "Google (ready) in ToggleTerm " }
+)
 
 -- Insert hyperlink function in neovim, markdown to be specific
 function Hyperlink(opts)

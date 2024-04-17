@@ -83,7 +83,7 @@ if (vim.fn.has "win32") or (vim.fn.has "macunix") then
   vim.keymap.set(
     { "n", "i" },
     ";lg",
-    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vl g<cr><cmd>ToggleTerm<cr>",
+    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vl g<cr><cmd>ToggleTerm<cr><cmd>colorscheme default<cr>",
     { noremap = true, silent = true, desc = "Launch GUI(Neovide)" }
   )
 else
