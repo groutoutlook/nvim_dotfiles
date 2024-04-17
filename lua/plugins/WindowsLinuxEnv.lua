@@ -1,8 +1,9 @@
 -- Neovim env.
 -- Vanilla mapping
-vim.cmd [[
-set termguicolors
-]]
+
+-- set termguicolors is hear just because of the notify setup settings.
+vim.cmd["set"] "termguicolors"
+
 if vim.loop.os_uname().sysname == "Windows_NT" then
   -- print("Windows_NT env config.")
   -- vim.o.shell = "pwsh.exe"
