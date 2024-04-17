@@ -72,7 +72,6 @@ vim.keymap.set(
   function() copyPath() end,
   { noremap = true, desc = "Comment the line in Insert Mode" }
 )
-
 -- vim.keymap.set("n", "<CR>", '@="m`o<C-V><Esc>``"<CR>')
 vim.keymap.set("n", "<S-CR>", '@="m`O<C-V><Esc>``"<CR>')
 -- local function addNewLines(before, count)
