@@ -149,8 +149,6 @@ vim.api.nvim_set_keymap(
 )
 
 -- Get selected text
--- TODO: In visual mode, ;gg the text would trigger the google. ;oo the text would trigger obsidian search instead.
--- Other Application of it? Havent thought.
 local function get_visual_selection()
   local s_start = vim.fn.getpos "'<"
   local s_end = vim.fn.getpos "'>"

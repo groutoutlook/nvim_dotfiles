@@ -24,6 +24,11 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     -- { import = "astrocommunity.register.nvim-neoclip-lua" },
     { import = "astrocommunity.motion.leap-nvim" },
     { import = "astrocommunity.motion.grapple-nvim" },
+    { import = "astrocommunity.motion.mini-move" },
+    { import = "astrocommunity.motion.flit-nvim" },
+    -- { import = "astrocommunity.motion.flit-nvim" },
+    { import = "astrocommunity.split-and-window.edgy-nvim" },
+    { import = "astrocommunity.editing-support.yanky-nvim" },
     -- import/override with your plugins folder
   }
 else
@@ -39,6 +44,11 @@ else
     -- { import = "astrocommunity.split-and-window.mini-map" },
     { import = "astrocommunity.motion.leap-nvim" },
     { import = "astrocommunity.motion.grapple-nvim" },
+    { import = "astrocommunity.motion.mini-move" },
+    { import = "astrocommunity.motion.flit-nvim" },
+    -- { import = "astrocommunity.motion.flit-nvim" },
+    -- { import = "astrocommunity.split-and-window.edgy-nvim" },
+    { import = "astrocommunity.editing-support.yanky-nvim" },
     -- import/override with your plugins folder
   }
 end
