@@ -1,5 +1,8 @@
 -- Since it keep complaining about termguicolors.
 
+vim.cmd [[
+set termguicolors
+]]
 return {}
 -- return {
 --   "rcarriga/nvim-notify",
