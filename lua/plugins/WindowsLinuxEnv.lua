@@ -5,12 +5,14 @@
 vim.cmd["set"] "termguicolors"
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
-  -- print("Windows_NT env config.")
-  -- vim.o.shell = "pwsh.exe"
-  vim.cmd [[set shell=pwsh
-  set shellcmdflag=-command
-  set shellquote=\"
-  set shellxquote=]]
+  vim.o.shell = "pwsh.exe"
+  -- let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+  vim.cmd [[
+let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'
+let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+let &shellpipe  = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
+set shellquote= shellxquote=
+]]
   require("notify").setup {
     timeout = 1200,
     -- stages = "static",
@@ -25,16 +27,5 @@ else
       timeout = 150,
       stages = "static",
     },
-    -- {
-    --   "williamboman/mason-lspconfig.nvim",
-    --   -- overrides `require("mason-lspconfig").setup(...)`
-    --   opts = function(_, opts)
-    --     -- add more things to the ensure_installed table protecting against community packs modifying it
-    --     opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
-    --       -- "lua_ls",
-    --       -- add more arguments for adding more language servers
-    --     })
-    --   end,
-    -- },
   }
 end
