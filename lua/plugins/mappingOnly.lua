@@ -156,4 +156,29 @@ vim.keymap.set(
   "<cmd>lua require('nvim-window').pick()<cr>",
   { noremap = true, desc = "nvim-window: Jump to window" }
 )
+
+-- Pane vanilla
+-- WARN: HACKY way to do it, also in old Vim API... Need to rewrite some day,
+-- but not that urgent though.
+local function quitWindow() vim.cmd["quit"]() end
+local function evenWindow()
+  vim.cmd["vsplit"]()
+  vim.cmd["quit"]()
+  vim.cmd["split"]()
+  vim.cmd["quit"]()
+end
+
+vim.keymap.set(
+  { "n", "i" },
+  "<c-w><c-q>",
+  function() quitWindow() end,
+  { noremap = true, desc = "nvim-window: Jump to window" }
+)
+
+vim.keymap.set(
+  { "n", "i" },
+  "<c-w><c-e>",
+  function() evenWindow() end,
+  { noremap = true, desc = "nvim-window: Jump to window" }
+)
 return {}
