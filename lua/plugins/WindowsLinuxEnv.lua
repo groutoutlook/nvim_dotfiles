@@ -11,7 +11,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
   set shellquote=\"
   set shellxquote=]]
   require("notify").setup {
-    timeout = 1500,
+    timeout = 1200,
     -- stages = "static",
   }
   return {}
@@ -21,8 +21,8 @@ else
     -- TODO: So the method for now, If I have any intention using this setup outside of my phones and my Windows Machine, is passing a variable when starting neovim then.
     -- TODO: Or a special fork/file which determine OS, such as the way zsh and neofetch can detect our OS.
     require("notify").setup {
-      timeout = 200,
-      -- stages = "static",
+      timeout = 150,
+      stages = "static",
     },
     -- {
     --   "williamboman/mason-lspconfig.nvim",
