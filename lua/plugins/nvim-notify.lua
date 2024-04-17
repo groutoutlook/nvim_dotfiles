@@ -1,9 +1,5 @@
 -- Since it keep complaining about termguicolors.
 
-require("notify").setup {
-  timeout = 300,
-  -- stages = "static",
-}
 return {}
 -- return {
 --   "rcarriga/nvim-notify",
