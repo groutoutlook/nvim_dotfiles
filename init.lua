@@ -18,6 +18,7 @@ require "lazy_setup"
 require "polish"
 
 vim.cmd [[
+set termguicolors
 command -bang Q quit<bang>
 command -bang W write<bang>
 command -bang WQ wq<bang>
