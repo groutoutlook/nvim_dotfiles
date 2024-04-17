@@ -28,6 +28,8 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     { import = "astrocommunity.motion.flit-nvim" },
     -- { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.split-and-window.edgy-nvim" },
+    { import = "astrocommunity.file-explorer.oil-nvim" },
+    { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
     { import = "astrocommunity.editing-support.yanky-nvim" },
     -- import/override with your plugins folder
   }

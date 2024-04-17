@@ -82,14 +82,14 @@ vim.keymap.set({ "n", "i" }, ";r", "<C-o><C-r>", { noremap = true, silent = true
 if (vim.fn.has "win32") or (vim.fn.has "macunix") then
   vim.keymap.set(
     { "n", "i" },
-    ";lg",
+    ";xg",
     "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vl g<cr><cmd>ToggleTerm<cr><cmd>colorscheme default<cr>",
     { noremap = true, silent = true, desc = "Launch GUI(Neovide)" }
   )
 else
   vim.keymap.set(
     { "n", "i" },
-    ";lg",
+    ";xg",
     "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>are you sure you have the GUI?<cr>",
     { noremap = true, silent = true, desc = "Launch GUI(Neovide) but Linux may not have the GUI" }
   )
@@ -135,5 +135,25 @@ vim.keymap.set(
   ";gg",
   "<esc><cmd>ToggleTerm<cr>lsd<cr>gg<space>",
   { noremap = true, desc = "Google (ready) in ToggleTerm " }
+)
+
+-- Leap motion
+
+vim.keymap.set({ "i" }, ";l", "<C-o><Plug>(leap-forward-to)", { noremap = true, desc = "Leap" })
+vim.keymap.set({ "i" }, ";L", "<C-o><Plug>(leap-backward-to)", { noremap = true, desc = "Leap" })
+vim.keymap.set({ "i" }, ";ls", "<C-o><Plug>(leap-from-window)", { noremap = true, desc = "Leap" })
+vim.keymap.set({ "n" }, ";ls", "<C-o><Plug>(leap-from-window)", { noremap = true, desc = "Leap" })
+-- Jumping window
+vim.keymap.set(
+  { "n" },
+  "<leader>ww",
+  "<cmd>lua require('nvim-window').pick()<cr>",
+  { noremap = true, desc = "nvim-window: Jump to window" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";wj",
+  "<cmd>lua require('nvim-window').pick()<cr>",
+  { noremap = true, desc = "nvim-window: Jump to window" }
 )
 return {}

@@ -22,7 +22,7 @@ command -bang Q quit<bang>
 command -bang W write<bang>
 command -bang WQ wq<bang>
 command -bang Wq wq<bang>
-set guifont=Iosevka\ Nerd\ Font\ Mono:h9
+set guifont=Iosevka\ Nerd\ Font\ Mono:h8
 set conceallevel=2
 nnoremap <expr> <C-d> (winheight(0) / 4) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 4) . '<C-u>'
