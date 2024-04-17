@@ -162,12 +162,15 @@ vim.keymap.set(
 -- but not that urgent though.
 local function quitWindow() vim.cmd["quit"]() end
 local function evenWindow()
+  -- One small behaviour here it I'm not sure if this work globally
+  -- or just work in an area of splitted panes instead.
   vim.cmd["vsplit"]()
   vim.cmd["quit"]()
   vim.cmd["split"]()
   vim.cmd["quit"]()
 end
 
+-- See! Emacs key binding.
 vim.keymap.set(
   { "n", "i" },
   "<c-w><c-q>",
