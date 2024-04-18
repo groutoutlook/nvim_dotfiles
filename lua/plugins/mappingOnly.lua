@@ -137,12 +137,21 @@ vim.keymap.set(
   { noremap = true, desc = "Google (ready) in ToggleTerm " }
 )
 
--- Leap motion
+require("leap.user").set_repeat_keys("<enter>", "<backspace>", {
+  -- False by default. If set to true, the keys will work like the
+  -- native semicolon/comma, i.e., forward/backward is understood in
+  -- relation to the last motion.
+  relative_directions = true,
+  -- By default, all modes are included.
+  modes = { "n", "x", "o" },
+})
 
-vim.keymap.set({ "i" }, ";l", "<C-o><Plug>(leap-forward-to)", { noremap = true, desc = "Leap" })
-vim.keymap.set({ "i" }, ";L", "<C-o><Plug>(leap-backward-to)", { noremap = true, desc = "Leap" })
-vim.keymap.set({ "i" }, ";ls", "<C-o><Plug>(leap-from-window)", { noremap = true, desc = "Leap" })
-vim.keymap.set({ "n" }, ";ls", "<C-o><Plug>(leap-from-window)", { noremap = true, desc = "Leap" })
+vim.keymap.set({ "i" }, ";s", "<C-o><Plug>(leap)", { noremap = true, desc = "Leap" })
+vim.keymap.set({ "n" }, "s", "<Plug>(leap)", { noremap = true, desc = "Leap" })
+vim.keymap.set({ "i" }, ";S", "<C-o><Plug>(leap-backward-to)", { noremap = true, desc = "Leap" })
+vim.keymap.set({ "i" }, ";gs", "<C-o><Plug>(leap-from-window)", { noremap = true, desc = "Leap" })
+vim.keymap.set({ "n" }, "s", "<Plug>(leap)", { noremap = true, desc = "Leap" })
+vim.keymap.set({ "n" }, ";gs", "<Plug>(leap-from-window)", { noremap = true, desc = "Leap" })
 -- Jumping window
 vim.keymap.set(
   { "n" },
