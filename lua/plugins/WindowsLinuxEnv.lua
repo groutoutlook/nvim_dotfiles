@@ -14,7 +14,7 @@ let &shellpipe  = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
 set shellquote= shellxquote=
 ]]
   require("notify").setup {
-    timeout = 1200,
+    timeout = 1000,
     -- stages = "static",
   }
   return {}

@@ -184,4 +184,16 @@ vim.keymap.set(
   function() evenWindow() end,
   { noremap = true, desc = "nvim-window: Jump to window" }
 )
+
+-- NOTE: try note tag...
+-- Undo history. It will take quite some time though, lagging.
+vim.keymap.set({ "n", "i" }, ";fu", "<cmd>Telescope undo<cr>", { noremap = true, desc = "Telescope Undo " })
+
+vim.keymap.set(
+  { "n", "i" },
+  ";fy",
+  "<cmd>Telescope yank_history<cr>",
+  { noremap = true, desc = "Telescope Yanky.nvim" }
+)
+
 return {}
