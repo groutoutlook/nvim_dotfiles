@@ -9,9 +9,12 @@
 if vim.loop.os_uname().sysname == "Windows_NT" then
   return {
     "AstroNvim/astrocommunity",
+
+    -- Desktop.
     { import = "astrocommunity.pack.lua" },
     { import = "astrocommunity.pack.cpp" },
     { import = "astrocommunity.pack.markdown" },
+
     -- { import = "astrocommunity.utility.noice-nvim" },
     { import = "astrocommunity.code-runner.overseer-nvim" },
     -- Minimap for code, only available on desktop. Termux cant run.
@@ -22,6 +25,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     -- Neovide extra settings.
     { import = "astrocommunity.recipes.neovide" },
     -- { import = "astrocommunity.register.nvim-neoclip-lua" },
+
     { import = "astrocommunity.motion.leap-nvim" },
     { import = "astrocommunity.motion.grapple-nvim" },
     { import = "astrocommunity.motion.mini-move" },

@@ -169,7 +169,6 @@ local function evenWindow()
   vim.cmd["split"]()
   vim.cmd["quit"]()
 end
-
 -- See! Emacs key binding.
 vim.keymap.set(
   { "n", "i" },
@@ -177,7 +176,6 @@ vim.keymap.set(
   function() quitWindow() end,
   { noremap = true, desc = "nvim-window: Jump to window" }
 )
-
 vim.keymap.set(
   { "n", "i" },
   "<c-w><c-e>",
@@ -185,10 +183,11 @@ vim.keymap.set(
   { noremap = true, desc = "nvim-window: Jump to window" }
 )
 
+vim.keymap.set({ "n", "i" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "nvim-window: Jump to window" })
+
 -- NOTE: try note tag...
 -- Undo history. It will take quite some time though, lagging.
 vim.keymap.set({ "n", "i" }, ";fu", "<cmd>Telescope undo<cr>", { noremap = true, desc = "Telescope Undo " })
-
 vim.keymap.set(
   { "n", "i" },
   ";fy",

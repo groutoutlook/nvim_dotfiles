@@ -47,6 +47,13 @@ All notable changes to this project will be documented in this file.
 - ;fF find all files and ;q now quitall
 - Add workflows so github can run
 - Insert hyperlink by <C-k>
+- Fix the gui_running, add leap.nvim
+- Add leap.nvim and grapple.nvim
+- Visual mode google search and obsidian search
+- More plugins to try
+- Figured out we should use more panes from the start
+- Even up the split.
+- Yanky.nvim and undo history have ni mapping
 
 ### 🐛 Bug Fixes
 
@@ -56,6 +63,11 @@ All notable changes to this project will be documented in this file.
 - Insert mode dont toggleterm correctly
 - Typo on the s-insert
 - Add ;q to normal mode as well
+- Add grapple to phone
+- Unstable lua plugin on mobile.
+- Notify now appear shortly as I want
+- Small warning from the notify
+- The wrong position of the command
 
 ### 🚜 Refactor
 
@@ -64,10 +76,16 @@ All notable changes to this project will be documented in this file.
 - Kkk now is qqq
 - Get rid of most vim configs, moving to lua
 - Delete some unwanted config.
+- Separate the startup time between Windows and Termux
+- Leaner call of set termgui
+- Shell switch to powershell cleaner
+- Delete colorscheme change when ;xg
 
 ### 📚 Documentation
 
 - Add explaination so I can add future map in better place
+- Add changelog (auto-generated)
+- Add more comments to clarify myself
 
 ### 🎨 Styling
 
@@ -75,6 +93,9 @@ All notable changes to this project will be documented in this file.
 - Change the remap ses to sss
 - Font size
 - Better font
+- Change colortheme
+- Coloetheme change to lunaperche
+- Change the speed of notification again.
 
 ### ⚙️ Miscellaneous Tasks
 
