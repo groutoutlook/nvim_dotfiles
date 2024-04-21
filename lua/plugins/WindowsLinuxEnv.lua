@@ -21,8 +21,8 @@ set shellquote= shellxquote=
 else
   return {
     -- TODO: I dont think of any proper way to make neovim detect termux host and separate them between Desktop host which is more capable, and the termux host which is fragile.
-    -- TODO: So the method for now, If I have any intention using this setup outside of my phones and my Windows Machine, is passing a variable when starting neovim then.
-    -- TODO: Or a special fork/file which determine OS, such as the way zsh and neofetch can detect our OS.
+    -- So the method for now, If I have any intention using this setup outside of my phones and my Windows Machine, is passing a variable when starting neovim then.
+    -- Or a special fork/file which determine OS, such as the way zsh and neofetch can detect our OS.
     require("notify").setup {
       timeout = 150,
       stages = "static",
