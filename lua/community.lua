@@ -36,6 +36,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
     { import = "astrocommunity.editing-support.yanky-nvim" },
     { import = "astrocommunity.editing-support.telescope-undo-nvim" },
+    { import = "astrocommunity.editing-support.multicursors-nvim" },
     -- import/override with your plugins folder
   }
 else

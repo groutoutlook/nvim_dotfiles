@@ -8,12 +8,6 @@ vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = 
 vim.api.nvim_set_keymap("v", "jk", "<Esc>", { noremap = true, silent = true, desc = "Escape Visual mode." })
 vim.api.nvim_set_keymap(
   "c",
-  "qqq",
-  "<cr><cmd>redraw!<cr>",
-  { noremap = true, silent = true, desc = "Escape Command mode." }
-)
-vim.api.nvim_set_keymap(
-  "c",
   "jk",
   "<cr><cmd>redraw!<cr>",
   { noremap = true, silent = true, desc = "Escape Command mode." }
