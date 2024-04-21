@@ -76,14 +76,20 @@ vim.keymap.set({ "n", "i" }, ";r", "<C-o><C-r>", { noremap = true, silent = true
 if (vim.fn.has "win32") or (vim.fn.has "macunix") then
   vim.keymap.set(
     { "n", "i" },
-    ";xg",
+    ";ls",
+    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vs g<cr><cmd>ToggleTerm<cr>", -- <cmd>colorscheme default<cr>",
+    { noremap = true, silent = true, desc = "Launch GUI(Neovide)" }
+  )
+  vim.keymap.set(
+    { "n", "i" },
+    ";lg",
     "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vl g<cr><cmd>ToggleTerm<cr>", -- <cmd>colorscheme default<cr>",
     { noremap = true, silent = true, desc = "Launch GUI(Neovide)" }
   )
 else
   vim.keymap.set(
     { "n", "i" },
-    ";xg",
+    ";lg",
     "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>are you sure you have the GUI?<cr>",
     { noremap = true, silent = true, desc = "Launch GUI(Neovide) but Linux may not have the GUI" }
   )
