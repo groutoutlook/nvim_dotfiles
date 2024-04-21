@@ -180,14 +180,13 @@ vim.keymap.set(
 -- Add newline, tab, "brief" or "tldr" string there. Maybe separate it in a new function as a way of providing summary.
 function addBriefText(opts)
   local BriefHead = "\n\09- Brief:"
-  local BriefContent = " ?"
+  local BriefContent = " "
   vim.api.nvim_feedkeys(BriefHead .. BriefContent, "t", false)
 end
 
 -- INFO: Insert hyperlink function in neovim, markdown to be specific
 function Hyperlink(opts)
   local extra_args = opts.args
-  local link_title = vim.fn.input "Link Brief?: "
   local link_content = vim.fn.getreg "+"
   local link_pattern = "^http"
 
@@ -202,24 +201,24 @@ function Hyperlink(opts)
 
   local current_mode = vim.fn.mode()
   if (current_mode == "i") or (current_mode == "n") then
+    local link_title = vim.fn.input "Link Brief?: "
     vim.cmd "startinsert"
     if link_title == nil then
-      vim.api.nvim_feedkeys("[](" .. link_content .. ")", "t", false)
+      vim.api.nvim_feedkeys(" [](" .. link_content .. ")", "t", false)
     else
-      vim.api.nvim_feedkeys("[" .. link_title .. "](" .. link_content .. ")", "t", false)
+      vim.api.nvim_feedkeys(" [" .. link_title .. "](" .. link_content .. ")", "t", false)
     end
+    addBriefText()
   else
     -- local selected_string = get_visual_selection()
     Surround("w", "[")
     -- vim.api.nvim_feedkeys("lll", "i", false)
     vim.cmd [[
-    normal l 
     startinsert
+    normal l
     ]]
     vim.api.nvim_feedkeys("(" .. link_content .. ")", "t", false)
   end
-
-  addBriefText()
 end
 
 vim.keymap.set({ "n", "v", "i" }, "<C-k>", function()
