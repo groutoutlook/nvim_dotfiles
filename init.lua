@@ -24,8 +24,8 @@ command -bang WQ wq<bang>
 command -bang Wq wq<bang>
 set guifont=Iosevka\ Nerd\ Font\ Mono:h8
 set conceallevel=2
-nnoremap <expr> <C-d> (winheight(0) / 4) . '<C-d>'
-nnoremap <expr> <C-u> (winheight(0) / 4) . '<C-u>'
+nnoremap <expr> <C-d> (winheight(0) / 3) . '<C-d>'
+nnoremap <expr> <C-u> (winheight(0) / 3) . '<C-u>'
 ]]
 if vim.fn.has "gui_running" == 1 then
   vim.cmd.colorscheme "slate"
