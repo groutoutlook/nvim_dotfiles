@@ -5,13 +5,7 @@ vim.api.nvim_set_keymap("i", "ddd", "<Esc>dd", { noremap = true, silent = true, 
 vim.api.nvim_set_keymap("i", "vvv", "<Esc>v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 vim.api.nvim_set_keymap("n", "<leader>v", "v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = "Escape and Visual line." })
-vim.api.nvim_set_keymap("v", "jk", "<Esc>", { noremap = true, silent = true, desc = "Escape Visual mode." })
-vim.api.nvim_set_keymap(
-  "c",
-  "jk",
-  "<cr><cmd>redraw!<cr>",
-  { noremap = true, silent = true, desc = "Escape Command mode." }
-)
+
 vim.api.nvim_set_keymap(
   "t",
   "qqq",
@@ -36,6 +30,7 @@ vim.api.nvim_set_keymap(
   "<Esc>i",
   { noremap = true, silent = true, desc = "Escape and insert in Terminal mode" }
 )
+
 if vim.fn.has "gui_running" then
   vim.keymap.set("c", "<M-p>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
   vim.keymap.set("c", "<C-v>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
