@@ -221,10 +221,7 @@ function Hyperlink(opts)
   end
 end
 
-vim.keymap.set({ "n", "v", "i" }, "<C-k>", function()
-  Hyperlink "reservedArgument"
-  -- addBriefText "reservedArgument"
-end)
+vim.keymap.set({ "n", "v", "i" }, "<C-k>", function() Hyperlink "reservedArgument" end)
 
 function addEspansoString(opts)
   -- - trigger: "swtich"

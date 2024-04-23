@@ -94,8 +94,14 @@ end
 --
 vim.keymap.set(
   { "n", "i" },
-  ";gci",
+  ";gc",
   "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>git cij<cr>",
+  { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";gt",
+  "<cmd>Telescope git_status<cr>",
   { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
 )
 
