@@ -108,34 +108,29 @@ vim.keymap.set(
 )
 
 vim.keymap.set({ "n", "i" }, ";tt", "<esc><cmd>ToggleTerm<cr>lsd<cr>", { noremap = true, desc = "Simply ToggleTerm" })
-vim.keymap.set(
-  { "n", "i" },
-  ";cst",
-  "<esc><cmd>ToggleTerm<cr>lsd<cr>cst<cr>",
-  { noremap = true, desc = "CodeStat in ToggleTerm" }
-)
+
 vim.keymap.set(
   { "n", "i" },
   ";jj",
-  "<esc><cmd>ToggleTerm<cr>lsd<cr>j<space>",
+  "<esc><cmd>ToggleTerm<cr>j<space>",
   { noremap = true, desc = "Journal (ready) in ToggleTerm" }
 )
 vim.keymap.set(
   { "n", "i" },
   ";oo",
-  "<esc><cmd>ToggleTerm<cr>lsd<cr>:o<space>",
+  "<esc><cmd>ToggleTerm<cr>:o<space>",
   { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
 )
 vim.keymap.set(
   { "n", "i" },
   ";gg",
-  "<esc><cmd>ToggleTerm<cr>lsd<cr>gg<space>",
+  "<esc><cmd>ToggleTerm<cr>gg<space>",
   { noremap = true, desc = "Google (ready) in ToggleTerm " }
 )
 vim.keymap.set(
   { "n", "i" },
   ";ee",
-  "<esc><cmd>ToggleTerm<cr>lsd<cr>:e e<cr>",
+  "<esc><cmd>ToggleTerm<cr>:e e<cr>",
   { noremap = true, desc = "Google (ready) in ToggleTerm " }
 )
 
