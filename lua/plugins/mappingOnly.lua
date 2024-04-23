@@ -106,6 +106,7 @@ vim.keymap.set(
   function() require("Comment.api").toggle.linewise.count(vim.v.count1) end,
   { noremap = true, desc = "Comment the line in Insert Mode" }
 )
+
 vim.keymap.set({ "n", "i" }, ";tt", "<esc><cmd>ToggleTerm<cr>lsd<cr>", { noremap = true, desc = "Simply ToggleTerm" })
 vim.keymap.set(
   { "n", "i" },
@@ -129,6 +130,12 @@ vim.keymap.set(
   { "n", "i" },
   ";gg",
   "<esc><cmd>ToggleTerm<cr>lsd<cr>gg<space>",
+  { noremap = true, desc = "Google (ready) in ToggleTerm " }
+)
+vim.keymap.set(
+  { "n", "i" },
+  ";ee",
+  "<esc><cmd>ToggleTerm<cr>lsd<cr>:e e<cr>",
   { noremap = true, desc = "Google (ready) in ToggleTerm " }
 )
 
