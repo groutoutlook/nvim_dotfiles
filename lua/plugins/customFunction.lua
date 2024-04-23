@@ -226,4 +226,26 @@ vim.keymap.set({ "n", "v", "i" }, "<C-k>", function()
   -- addBriefText "reservedArgument"
 end)
 
+function addEspansoString(opts)
+  -- - trigger: "swtich"
+  --replace: "switch"
+  local wordCase = opts or "strictMatch"
+  local triggerString = vim.fn.input "Trigger with: " or ""
+  local replaceString = vim.fn.input "Replace with: " or ""
+  vim.api.nvim_put({ '  - trigger: "' .. triggerString .. '" ' }, "l", true, false)
+  vim.api.nvim_put({ '    replace: "' .. replaceString .. '" ' }, "l", true, false)
+  if wordCase == "strictMatch" then
+    vim.api.nvim_put({ "    propagate_case: false" }, "l", true, false)
+    vim.api.nvim_put({ "    word: true" }, "l", true, false)
+  end
+end
+
+vim.keymap.set({ "n", "i" }, ";ep", function() addEspansoString "allMatch" end, { desc = "paste Wild match snippets" })
+vim.keymap.set(
+  { "n", "i" },
+  ";es",
+  function() addEspansoString "strictMatch" end,
+  { desc = "paste strict match snippets(extra newline to trigger match)" }
+)
+
 return {}
