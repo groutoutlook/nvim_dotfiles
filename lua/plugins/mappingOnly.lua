@@ -1,4 +1,4 @@
---Keymapping and keybinding only files.
+-- INFO: Keymapping and keybinding only files.
 vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, desc = "Escape." })
 vim.api.nvim_set_keymap("i", "yyy", "<Esc>yy", { noremap = true, silent = true, desc = "Escape and yank." })
 vim.api.nvim_set_keymap("i", "ddd", "<Esc>dd", { noremap = true, silent = true, desc = "Escape and delete line." })
@@ -6,6 +6,10 @@ vim.api.nvim_set_keymap("i", "vvv", "<Esc>v$", { noremap = true, silent = true, 
 vim.api.nvim_set_keymap("n", "<leader>v", "v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 
+-- Navigation easy
+vim.api.nvim_set_keymap("n", "GG", "Gzz", { noremap = true, silent = true, desc = "Center Final line." })
+
+-- INFO: Terminal navigation keymode.
 vim.api.nvim_set_keymap(
   "t",
   "qqq",
