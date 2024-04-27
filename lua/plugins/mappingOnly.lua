@@ -112,7 +112,7 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";gx",
-  "<End><cmd>normal bgx<cr>",
+  "<cmd>normal ]%wgx<cr>",
   { noremap = true, silent = true, desc = "Open Scheme Link at the end of line." }
 )
 vim.keymap.set(
