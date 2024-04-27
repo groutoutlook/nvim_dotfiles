@@ -231,8 +231,9 @@ function addEspansoString(opts)
   local replaceString = vim.fn.input "Replace with: " or ""
   vim.api.nvim_put({ '  - trigger: "' .. triggerString .. '" ' }, "l", true, false)
   vim.api.nvim_put({ '    replace: "' .. replaceString .. '" ' }, "l", true, false)
+  -- For some files which already defined some default config though.
   if wordCase == "strictMatch" then
-    vim.api.nvim_put({ "    propagate_case: false" }, "l", true, false)
+    -- vim.api.nvim_put({ "    propagate_case: false" }, "l", true, false)
     vim.api.nvim_put({ "    word: true" }, "l", true, false)
   end
 end
