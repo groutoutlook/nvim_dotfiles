@@ -67,6 +67,12 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
+        signature = {
+          enabled = false,
+        },
+        hover = {
+          enabled = false,
+        },
       },
       presets = {
         bottom_search = false, -- use a classic bottom cmdline for search
