@@ -230,11 +230,10 @@ function addEspansoString(opts)
   local replaceString = vim.fn.input "Replace with: " or ""
   vim.api.nvim_put({ '  - trigger: "' .. triggerString .. '" ' }, "l", true, false)
   vim.api.nvim_put({ '    replace: "' .. replaceString .. '" ' }, "l", true, false)
+  -- always true since I type some capitalized text as well.
+  vim.api.nvim_put({ "    propagate_case: true" }, "l", true, false)
   -- For some files which already defined some default config though.
-  if wordCase == "strictMatch" then
-    vim.api.nvim_put({ "    propagate_case: true" }, "l", true, false)
-    vim.api.nvim_put({ "    word: true" }, "l", true, false)
-  end
+  if wordCase == "strictMatch" then vim.api.nvim_put({ "    word: true" }, "l", true, false) end
 end
 
 vim.keymap.set({ "n", "i" }, ";ep", function() addEspansoString "allMatch" end, { desc = "paste Wild match snippets" })
