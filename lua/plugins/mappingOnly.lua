@@ -75,12 +75,6 @@ vim.keymap.set({ "n", "i" }, ";r", "<C-o><C-r>", { noremap = true, silent = true
 if (vim.fn.has "win32") or (vim.fn.has "macunix") then
   vim.keymap.set(
     { "n", "i" },
-    ";ls",
-    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vs g<cr><cmd>ToggleTerm<cr>", -- <cmd>colorscheme default<cr>",
-    { noremap = true, silent = true, desc = "Launch GUI(Neovide)" }
-  )
-  vim.keymap.set(
-    { "n", "i" },
     ";lg",
     "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vl g<cr><cmd>ToggleTerm<cr>", -- <cmd>colorscheme default<cr>",
     { noremap = true, silent = true, desc = "Launch GUI(Neovide)" }
@@ -100,12 +94,6 @@ vim.keymap.set(
   { "n", "i" },
   ";gc",
   "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>git cij<cr>",
-  { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
-)
-vim.keymap.set(
-  { "n", "i" },
-  ";gt",
-  "<cmd>Telescope git_status<cr>",
   { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
 )
 
@@ -208,12 +196,5 @@ vim.keymap.set({ "n", "i" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc
 
 -- NOTE: try note tag...
 -- Undo history. It will take quite some time though, lagging.
-vim.keymap.set({ "n", "i" }, ";fu", "<cmd>Telescope undo<cr>", { noremap = true, desc = "Telescope Undo " })
-vim.keymap.set(
-  { "n", "i" },
-  ";fy",
-  "<cmd>Telescope yank_history<cr>",
-  { noremap = true, desc = "Telescope Yanky.nvim" }
-)
 
 return {}

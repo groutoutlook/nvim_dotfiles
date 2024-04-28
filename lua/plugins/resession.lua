@@ -80,7 +80,7 @@ local function callSession(opts)
 end
 local function saveSession(opts)
   local session_name = opts.args
-  require("resession").save(session_name) 
+  require("resession").save(session_name)
 end
 vim.api.nvim_create_user_command("Session", callSession, { nargs = "?" })
 vim.api.nvim_create_user_command("Savess", saveSession, { nargs = "?" })

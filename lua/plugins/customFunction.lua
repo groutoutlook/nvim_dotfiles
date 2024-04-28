@@ -1,6 +1,5 @@
 -- TODO: Add interesting configuration function in here.
 
--- TODO: Add keymap for grapple tagging in insert mode or something else.
 vim.keymap.set(
   { "n", "i" },
   ";mm",
@@ -19,7 +18,7 @@ function Surround(w_or_W, char)
   local link_title = char or vim.fn.input "Surround with: "
   local closed_char = nil
   --Edge case
-  -- TODO: May need to rewrite this part into something else like a table.
+  -- FIXME: May need to rewrite this part into something else like a table.
   --
   if link_title == "]" then link_title = "[" end
   if link_title == ")" then link_title = "(" end
