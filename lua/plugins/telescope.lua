@@ -5,9 +5,9 @@ vim.keymap.set(
   { "n", "i" },
   ";fn",
   function() require("telescope").extensions.notify.notify() end,
-
   { noremap = true, desc = "find notifications" }
 )
+
 vim.keymap.set(
   { "n", "i" },
   ";fw",
@@ -55,6 +55,13 @@ vim.keymap.set(
   { "n", "i" },
   ";gt",
   "<cmd>Telescope git_status<cr>",
+  { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
+)
+
+vim.keymap.set(
+  { "n", "i" },
+  ";gb",
+  "<cmd>Telescope git_branches<cr>",
   { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
 )
 
