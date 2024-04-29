@@ -50,9 +50,42 @@ return {
     },
   },
   {
-    "catppuccin/nvim",
-    optional = true,
-    ---@type CatppuccinOptions
-    opts = { integrations = { mini = true } },
+    "mikavilpas/yazi.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    event = "VeryLazy",
+    keys = {
+      -- 👇 in this section, choose your own keymappings!
+      -- NOTE: First time I realized that We could assign mode in here as well.
+      -- Pretty much like vim.keymap.set opts. Maybe that's it under the hood.
+      {
+        ";-",
+        function() require("yazi").yazi() end,
+        mode = { "n", "i" },
+        desc = "Open the file manager",
+      },
+      {
+        "<leader>-",
+        function() require("yazi").yazi() end,
+        desc = "Open the file manager",
+      },
+      {
+        ";cw",
+        function() require("yazi").yazi() end,
+        mode = { "n", "i" },
+        desc = "Open the file manager",
+      },
+      {
+        -- Open in the current working directory
+        "<leader>cw",
+        function() require("yazi").yazi(nil, vim.fn.getcwd()) end,
+        desc = "Open the file manager in nvim's working directory",
+      },
+    },
+    ---@type YaziConfig
+    opts = {
+      open_for_directories = false,
+    },
   },
 }

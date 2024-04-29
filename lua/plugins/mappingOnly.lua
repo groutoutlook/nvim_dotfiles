@@ -194,7 +194,7 @@ vim.keymap.set(
 
 vim.keymap.set({ "n", "i" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "nvim-window: Jump to window" })
 
--- NOTE: try note tag...
--- Undo history. It will take quite some time though, lagging.
+-- NOTE:file expler
+--
 
 return {}
