@@ -56,7 +56,6 @@ return {
     },
     event = "VeryLazy",
     keys = {
-      -- 👇 in this section, choose your own keymappings!
       -- NOTE: First time I realized that We could assign mode in here as well.
       -- Pretty much like vim.keymap.set opts. Maybe that's it under the hood.
       {
@@ -85,7 +84,10 @@ return {
     },
     ---@type YaziConfig
     opts = {
-      open_for_directories = false,
+      open_for_directories = true,
+
+      chosen_file_path = "$HOME/tmp/yazi_filechosen",
+      events_file_path = "$HOME/tmp/yazi.nvim.events.txt",
     },
   },
 }
