@@ -86,7 +86,7 @@ return {
     opts = {
       open_for_directories = true,
 
-      chosen_file_path = "$HOME/tmp/yazi_filechosen",
+      -- chosen_file_path = "$HOME/tmp/yazi_filechosen",
       events_file_path = "$HOME/tmp/yazi.nvim.events.txt",
     },
   },
