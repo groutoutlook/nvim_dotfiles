@@ -48,7 +48,7 @@ vim.keymap.set({ "n", "i" }, ";q", "<cmd>quitall!<CR>", { noremap = true, silent
 vim.keymap.set(
   { "n", "i" },
   ";wq",
-  "<cmd>wqall!<CR>",
+  "<cmd>wq!<CR>",
   { noremap = true, silent = true, desc = "Write and Quit Insert Mode" }
 )
 vim.keymap.set(

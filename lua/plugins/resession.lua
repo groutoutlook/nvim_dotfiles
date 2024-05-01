@@ -5,12 +5,7 @@ vim.keymap.set(
   "<cmd>wall<CR><cmd>lua require('resession').load()<cr>",
   { noremap = true, silent = true, desc = "Write and Save session" }
 )
-vim.keymap.set(
-  { "n", "i" },
-  ";wf",
-  "<cmd>wall<CR><cmd>lua require('resession').load()<cr>",
-  { noremap = true, silent = true, desc = "Write and Load session" }
-)
+
 vim.keymap.set(
   { "n", "i" },
   ";wl",
@@ -24,65 +19,46 @@ vim.keymap.set(
   function() require("resession").load() end,
   { noremap = true, desc = "Select session" }
 )
-vim.keymap.set(
-  "n",
-  "<Leader>fl",
-  function() require("resession").load() end,
-  { noremap = true, desc = "Load last session" }
-)
+
 vim.keymap.set(
   "n",
   "<Leader>..",
   function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,
-  { noremap = true, desc = "Load last session" }
+  { noremap = true, desc = "Load dirsession" }
 )
 
 vim.keymap.set(
   { "n", "i" },
   ";fs",
   function() require("resession").load() end,
-  { noremap = true, desc = "Load last session" }
+  { noremap = true, desc = "Select session" }
 )
-vim.keymap.set(
-  { "n", "i" },
-  ";fl",
-  function() require("resession").load "Last Session" end,
-  { noremap = true, desc = "Load last session" }
-)
+
 vim.keymap.set(
   { "n", "i" },
   ";sl",
   function() require("resession").load "Last Session" end,
   { noremap = true, desc = "Load last session" }
 )
+
 vim.keymap.set(
   { "n", "i" },
-  ";f.",
+  ";..",
   function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,
   { noremap = true, desc = "Load current dir session" }
 )
-local function callSession(opts)
-  local short_name = opts.args
-  local session_name = ""
-  if short_name == "pwsh" then
-    session_name = "pwsh_settings"
-  elseif short_name == "nvim" then
-    session_name = "nvim_dotfiles"
-  elseif short_name == "hw" then
-    session_name = "Highway"
-  elseif short_name == "linux" then
-    session_name = "linux_env"
-  elseif short_name == "obs" then
-    session_name = "obsidian"
-  end
-  -- print(session_name)
-  require("resession").load(session_name)
-end
+
+vim.keymap.set(
+  { "n", "i" },
+  ";s.",
+  function() require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end,
+  { noremap = true, desc = "Load current dir session" }
+)
+
 local function saveSession(opts)
   local session_name = opts.args
   require("resession").save(session_name)
 end
-vim.api.nvim_create_user_command("Session", callSession, { nargs = "?" })
 vim.api.nvim_create_user_command("Savess", saveSession, { nargs = "?" })
 
 return {
