@@ -170,11 +170,11 @@ vim.keymap.set(
 )
 -- HACK: kludge to escape terminal mode and paste text in register * in(which we just copied)
 -- It might sound bad on termux, which has a really slow clipboard though.
-vim.keymap.set("t", "<M-R>", "<C-\\><C-N>pi", { noremap = true, silent = true })
+vim.keymap.set("t", "<M-r>", "<C-\\><C-N>pi", { noremap = true, silent = true })
 vim.keymap.set(
   { "v" },
   ";gg",
-  "y<esc><cmd>ToggleTerm<cr>lsd<cr>gg<space><C-\\><C-N>pi<cr>",
+  "y<esc><cmd>ToggleTerm<cr>gg<space><C-\\><C-N>pi<cr>",
   { noremap = true, desc = "Google (ready) in ToggleTerm " }
 )
 
