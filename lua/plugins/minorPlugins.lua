@@ -9,9 +9,10 @@ require("better_escape").setup {
   keys = function() return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>" end,
 }
 
-local kopts = { noremap = true, silent = true }
+local kopts = { noremap = true, silent = true, desc = "escape search mode for hlslens" }
 -- nvim-hlslens to stop search.
 -- The original issue here is `<leader>l` is already assigned.
+
 vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
