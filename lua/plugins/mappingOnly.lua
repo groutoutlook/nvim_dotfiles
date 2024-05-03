@@ -134,7 +134,7 @@ vim.keymap.set(
   { "n", "i" },
   ";ee",
   "<esc><cmd>ToggleTerm<cr>:e e<cr>",
-  { noremap = true, desc = "Google (ready) in ToggleTerm " }
+  { noremap = true, desc = "Espanso in ToggleTerm " }
 )
 
 require("leap.user").set_repeat_keys("<enter>", "<backspace>", {
@@ -145,26 +145,6 @@ require("leap.user").set_repeat_keys("<enter>", "<backspace>", {
   -- By default, all modes are included.
   modes = { "n", "x", "o" },
 })
-
-vim.keymap.set({ "i" }, ";s", "<C-o><Plug>(leap)", { noremap = true, desc = "Leap" })
-vim.keymap.set({ "n" }, "s", "<Plug>(leap)", { noremap = true, desc = "Leap" })
-vim.keymap.set({ "i" }, ";S", "<C-o><Plug>(leap-backward-to)", { noremap = true, desc = "Leap" })
-vim.keymap.set({ "i" }, ";gs", "<C-o><Plug>(leap-from-window)", { noremap = true, desc = "Leap" })
-vim.keymap.set({ "n" }, "s", "<Plug>(leap)", { noremap = true, desc = "Leap" })
-vim.keymap.set({ "n" }, ";gs", "<Plug>(leap-from-window)", { noremap = true, desc = "Leap" })
--- Jumping window
-vim.keymap.set(
-  { "n" },
-  "<leader>ww",
-  "<cmd>lua require('nvim-window').pick()<cr>",
-  { noremap = true, desc = "nvim-window: Jump to window" }
-)
-vim.keymap.set(
-  { "n", "i" },
-  ";wj",
-  "<cmd>lua require('nvim-window').pick()<cr>",
-  { noremap = true, desc = "nvim-window: Jump to window" }
-)
 
 -- Pane vanilla
 -- WARN: HACKY way to do it, also in old Vim API... Need to rewrite some day,
@@ -191,10 +171,6 @@ vim.keymap.set(
   function() evenWindow() end,
   { noremap = true, desc = "nvim-window: Jump to window" }
 )
-
-vim.keymap.set({ "n", "i" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "nvim-window: Jump to window" })
-
--- NOTE:file expler
---
+vim.keymap.set({ "n", "i" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "Even panes." })
 
 return {}

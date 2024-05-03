@@ -17,13 +17,7 @@ vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
 return {
-  {
-    "yorickpeterse/nvim-window",
-    keys = {
-      { "<leader>wj", "<cmd>lua require('nvim-window').pick()<cr>", desc = "nvim-window: Jump to window" },
-    },
-    config = true,
-  },
+
   {
     "echasnovski/mini.move",
     keys = function(_, keys)
