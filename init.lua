@@ -17,13 +17,12 @@ end
 require "lazy_setup"
 require "polish"
 
--- vim.g.autoformat = false
 vim.cmd [[
 command -bang Q quit<bang>
 command -bang W write<bang>
 command -bang WQ wq<bang>
 command -bang Wq wq<bang>
-set guifont=Iosevka\ Nerd\ Font\ Mono:h11
+set guifont=Iosevka\ Nerd\ Font\ Mono:h13
 set conceallevel=2
 nnoremap <expr> <C-d> (winheight(0) / 3) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 3) . '<C-u>'
