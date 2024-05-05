@@ -231,7 +231,7 @@ function addEspansoString(opts)
   local wordCase = opts or "strictMatch"
   local triggerString = vim.fn.input "Trigger with: " or ""
   local replaceString = vim.fn.input "Replace with: " or ""
-  vim.api.nvim_put({ '  - trigger: "' .. triggerString .. '" ' }, "l", true, false)
+  vim.api.nvim_put({ '  - triggers: ["' .. triggerString .. '"] ' }, "l", true, false)
   vim.api.nvim_put({ '    replace: "' .. replaceString .. '" ' }, "l", true, false)
   -- always true since I type some capitalized text as well.
   vim.api.nvim_put({ "    propagate_case: true" }, "l", true, false)

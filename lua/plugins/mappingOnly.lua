@@ -171,6 +171,6 @@ vim.keymap.set(
   function() evenWindow() end,
   { noremap = true, desc = "nvim-window: Jump to window" }
 )
-vim.keymap.set({ "n", "i" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "Even panes." })
+vim.keymap.set({ "n", "v" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "Even panes." })
 
 return {}

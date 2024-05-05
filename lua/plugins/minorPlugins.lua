@@ -17,7 +17,12 @@ vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
 return {
-
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      autoformat = false,
+    },
+  },
   {
     "echasnovski/mini.move",
     keys = function(_, keys)

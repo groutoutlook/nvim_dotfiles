@@ -17,6 +17,7 @@ end
 require "lazy_setup"
 require "polish"
 
+-- vim.g.autoformat = false
 vim.cmd [[
 command -bang Q quit<bang>
 command -bang W write<bang>
