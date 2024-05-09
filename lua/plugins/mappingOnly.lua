@@ -126,6 +126,12 @@ vim.keymap.set(
 )
 vim.keymap.set(
   { "n", "i" },
+  ";oi",
+  "<esc><cmd>ToggleTerm<cr>obs <cr>",
+  { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
+)
+vim.keymap.set(
+  { "n", "i" },
   ";gg",
   "<esc><cmd>ToggleTerm<cr>gg<space>",
   { noremap = true, desc = "Google (ready) in ToggleTerm " }

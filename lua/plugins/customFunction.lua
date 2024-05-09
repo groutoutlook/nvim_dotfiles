@@ -185,25 +185,26 @@ function addBriefText(opts)
   local BriefContent = " "
   vim.api.nvim_feedkeys(BriefHead .. BriefContent, "t", false)
 end
-
 -- INFO: Insert hyperlink function in neovim, markdown to be specific
 function Hyperlink(opts)
   local extra_args = opts.args
   local link_content = vim.fn.getreg "+"
-  local link_pattern = "^http"
-
-  if string.match(link_content, link_pattern) then
-    link_content = link_content
-  else
-    local crop_register = string.sub(link_content, -10)
-    local warningMessage = "'" .. crop_register .. "'" .. "is not a link"
-    vim.notify(warningMessage, vim.log.levels.ERROR)
-    link_content = ""
-  end
 
   local current_mode = vim.fn.mode()
   if (current_mode == "i") or (current_mode == "n") then
     local link_title = vim.fn.input "Link Brief?: "
+
+    local link_pattern = "^http"
+
+    if string.match(link_content, link_pattern) then
+      link_content = link_content
+    else
+      local crop_register = string.sub(link_content, -10)
+      local warningMessage = "'" .. crop_register .. "'" .. "is not a link"
+      vim.notify(warningMessage, vim.log.levels.ERROR)
+      link_content = vim.fn.input "Link content: " or ""
+    end
+
     vim.cmd "startinsert"
     if link_title == nil then
       vim.api.nvim_feedkeys(" [](" .. link_content .. ")", "t", false)
@@ -225,18 +226,34 @@ end
 
 vim.keymap.set({ "n", "v", "i" }, "<C-k>", function() Hyperlink "reservedArgument" end)
 
+-- TODO: add a function which append triggers
+-- Improve this function to add more words at the trigger at the initial state
 function addEspansoString(opts)
   -- - trigger: "swtich"
   --replace: "switch"
   local wordCase = opts or "strictMatch"
   local triggerString = vim.fn.input "Trigger with: " or ""
   local replaceString = vim.fn.input "Replace with: " or ""
-  vim.api.nvim_put({ '  - triggers: ["' .. triggerString .. '"]' }, "l", true, false)
+  vim.api.nvim_put({ '  - triggers: ["' .. triggerString .. '",' }, "l", true, false)
+  vim.api.nvim_put({ "    ]" }, "l", true, false)
   vim.api.nvim_put({ '    replace: "' .. replaceString .. '" ' }, "l", true, false)
   -- always true since I type some capitalized text as well.
   vim.api.nvim_put({ "    propagate_case: true" }, "l", true, false)
   -- For some files which already defined some default config though.
-  if wordCase == "strictMatch" then vim.api.nvim_put({ "    word: true" }, "l", true, false) end
+  -- HACK: Hard-coding the linevalue. Either passing line value into the vim.cmd, or make it find the trigger: line
+  -- Or render all the text backward. Put it all, cursor stay at the same location.
+  if wordCase == "strictMatch" then
+    vim.api.nvim_put({ "    word: true" }, "l", true, false)
+    vim.cmd [[
+    normal 4k
+    startinsert!
+    ]]
+  else
+    vim.cmd [[
+    normal 3k
+    startinsert!
+    ]]
+  end
 end
 
 vim.keymap.set({ "n", "i" }, ";ep", function() addEspansoString "allMatch" end, { desc = "paste Wild match snippets" })
