@@ -18,9 +18,11 @@ vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
 return {
   {
-    "neovim/nvim-lspconfig",
+    "nvim-neo-tree/neo-tree.nvim",
     opts = {
-      autoformat = false,
+      window = {
+        position = "right",
+      },
     },
   },
   {
