@@ -3,7 +3,7 @@ vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, des
 -- vim.api.nvim_set_keymap("i", "yyy", "<Esc>yy", { noremap = true, silent = true, desc = "Escape and yank." })
 -- vim.api.nvim_set_keymap("i", "ddd", "<Esc>dd", { noremap = true, silent = true, desc = "Escape and delete line." })
 -- vim.api.nvim_set_keymap("i", "vvv", "<Esc>v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
-vim.api.nvim_set_keymap("n", "<leader>v", "v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
+-- vim.api.nvim_set_keymap("n", "<leader>v", "v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 
 -- Navigation easy
@@ -196,5 +196,16 @@ vim.keymap.set(
   function() require("astrocore.toggles").statusline() end,
   { desc = "Toggle statusline" }
 )
+
+local kopts = { noremap = true, silent = true, desc = "escape search mode for hlslens" }
+-- nvim-hlslens to stop search.
+-- The original issue here is `<leader>l` is already assigned.
+vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
+vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
+-- Bind Lua function directly
+vim.keymap.set("n", "<leader>," ,function()
+  require("telescope").extensions.frecency.frecency {}
+end)
+
 
 return {}

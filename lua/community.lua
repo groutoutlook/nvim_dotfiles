@@ -14,7 +14,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     { import = "astrocommunity.pack.cpp" },
     { import = "astrocommunity.pack.markdown" },
     -- { import = "astrocommunity.utility.noice-nvim" },
-    { import = "astrocommunity.code-runner.overseer-nvim" },
+    -- { import = "astrocommunity.code-runner.overseer-nvim" },
     -- Neovide extra settings.
     { import = "astrocommunity.recipes.neovide" },
     { import = "astrocommunity.motion.leap-nvim" },
@@ -22,8 +22,6 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     { import = "astrocommunity.motion.mini-move" },
     -- { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
     { import = "astrocommunity.editing-support.yanky-nvim" },
-    { import = "astrocommunity.editing-support.multicursors-nvim" },
-    -- import/override with your plugins folder
     { import = "astrocommunity.search.nvim-hlslens" },
   }
 else
@@ -38,8 +36,6 @@ else
     { import = "astrocommunity.snippet.nvim-snippets" },
     -- { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
     { import = "astrocommunity.editing-support.yanky-nvim" },
-    -- { import = "astrocommunity.editing-support.telescope-undo-nvim" },
-    { import = "astrocommunity.editing-support.multicursors-nvim" },
     { import = "astrocommunity.search.nvim-hlslens" },
   }
 end
