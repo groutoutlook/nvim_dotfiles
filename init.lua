@@ -17,11 +17,11 @@ end
 require "lazy_setup"
 require "polish"
 require("astrocore.toggles").tabline()
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "c", "*.cpp", "*.h", "*.hpp" },
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+  pattern = { "*.c", "*.cpp", "*.h", "*.hpp" },
   callback = function()
-    vim.notify "cpp files entering..."
+    require("astrocore.toggles").statusline()
+    -- vim.notify "cpp files entering..."
     require("astrocore").config.features.diagnostics_mode = 1
     require("astrolsp").config.formatting = {
       format_on_save = {
