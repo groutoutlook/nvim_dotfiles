@@ -21,7 +21,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     { import = "astrocommunity.motion.grapple-nvim" },
     { import = "astrocommunity.motion.mini-move" },
     -- { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
-    { import = "astrocommunity.editing-support.yanky-nvim" },
+    -- { import = "astrocommunity.editing-support.yanky-nvim" },
     { import = "astrocommunity.search.nvim-hlslens" },
   }
 else
@@ -35,7 +35,7 @@ else
     { import = "astrocommunity.motion.mini-move" },
     { import = "astrocommunity.snippet.nvim-snippets" },
     -- { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
-    { import = "astrocommunity.editing-support.yanky-nvim" },
+    -- { import = "astrocommunity.editing-support.yanky-nvim" },
     { import = "astrocommunity.search.nvim-hlslens" },
   }
 end

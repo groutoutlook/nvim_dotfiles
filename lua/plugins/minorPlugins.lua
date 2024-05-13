@@ -11,12 +11,12 @@ require("better_escape").setup {
 
 
 return {
-  {
-  "nvim-telescope/telescope-frecency.nvim",
-  config = function()
-    require("telescope").load_extension "frecency"
-  end,
-},
+--   {
+--   "nvim-telescope/telescope-frecency.nvim",
+--   config = function()
+--     require("telescope").load_extension "frecency"
+--   end,
+-- },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {

@@ -203,9 +203,9 @@ local kopts = { noremap = true, silent = true, desc = "escape search mode for hl
 vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 -- Bind Lua function directly
-vim.keymap.set("n", "<leader>," ,function()
-  require("telescope").extensions.frecency.frecency {}
-end)
+-- vim.keymap.set("n", "<leader>," ,function()
+--   require("telescope").extensions.frecency.frecency {}
+-- end)
 
 
 return {}
