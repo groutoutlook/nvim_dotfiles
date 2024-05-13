@@ -18,6 +18,11 @@ vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
 return {
   {
+    "glacambre/firenvim",
+    lazy = not vim.g.started_by_firenvim,
+    build = function() vim.fn["firenvim#install"](0) end,
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       window = {

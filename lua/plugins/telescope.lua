@@ -41,6 +41,10 @@ vim.keymap.set(
   { noremap = true, desc = "Telescope Yanky.nvim" }
 )
 
+vim.keymap.set({ "n", "i" }, ";fr", "<cmd>Telescope registers<cr>", { noremap = true, desc = "Telescope Yanky.nvim" })
+
+vim.keymap.set({ "n", "i" }, ";fk", "<cmd>Telescope keymaps<cr>", { noremap = true, desc = "Telescope Yanky.nvim" })
+
 vim.keymap.set(
   { "n", "i" },
   ";f'",

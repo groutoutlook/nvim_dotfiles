@@ -70,7 +70,7 @@ vim.keymap.set(
   "<cmd>wall!<CR><cmd>lua require('resession').save()<cr>",
   { noremap = true, silent = true, desc = "Write and Save session" }
 )
-vim.keymap.set({ "n", "i" }, ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
+-- vim.keymap.set({ "n", "i" }, ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
 vim.keymap.set({ "n", "i" }, ";r", "<C-o><C-r>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
 if (vim.fn.has "win32") or (vim.fn.has "macunix") then
   vim.keymap.set(
@@ -178,5 +178,23 @@ vim.keymap.set(
   { noremap = true, desc = "nvim-window: Jump to window" }
 )
 vim.keymap.set({ "n", "v" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "Even panes." })
+
+vim.keymap.set({ "n", "i" }, ";bb", function()
+  require("astroui.status.heirline").buffer_picker(function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end)
+end, { noremap = true, desc = "Telescope Yanky.nvim" })
+vim.keymap.set(
+  { "n", "i" },
+  ";ud",
+  function() require("astrocore.toggles").diagnostics() end,
+  { desc = "Toggle diagnostics" }
+)
+vim.keymap.set({ "n", "i" }, ";us", function() require("astrocore.toggles").spell() end, { desc = "Toggle spellcheck" })
+vim.keymap.set({ "n", "i" }, ";ut", function() require("astrocore.toggles").tabline() end, { desc = "Toggle tabline" })
+vim.keymap.set(
+  { "n", "i" },
+  ";ul",
+  function() require("astrocore.toggles").statusline() end,
+  { desc = "Toggle statusline" }
+)
 
 return {}

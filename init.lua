@@ -16,6 +16,24 @@ if not pcall(require, "lazy") then
 end
 require "lazy_setup"
 require "polish"
+require("astrocore.toggles").tabline()
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "c", "*.cpp", "*.h", "*.hpp" },
+  callback = function()
+    vim.notify "cpp files entering..."
+    require("astrocore").config.features.diagnostics_mode = 1
+    require("astrolsp").config.formatting = {
+      format_on_save = {
+        enabled = false,
+        -- ignore_filetypes = { "cpp", "c" },
+      },
+      disabled = {
+        "clangd",
+      },
+    }
+  end,
+})
 
 vim.cmd [[
 command! -bang Q quit<bang>
