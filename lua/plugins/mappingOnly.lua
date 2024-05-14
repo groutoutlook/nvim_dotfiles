@@ -38,7 +38,12 @@ vim.api.nvim_set_keymap(
 if vim.fn.has "gui_running" then
   vim.keymap.set("c", "<M-p>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
   vim.keymap.set("c", "<C-v>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
-  vim.keymap.set("c", "<S-Insert>", "<C-r>+", { noremap = true, silent = true, desc = "Write and Quit Insert Mode" })
+  vim.keymap.set(
+    { "c", "n", "i" },
+    "<S-Insert>",
+    "<C-r>+",
+    { noremap = true, silent = true, desc = "Write and Quit Insert Mode" }
+  )
 else
   vim.keymap.set("c", "<M-p>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
 end
@@ -166,13 +171,13 @@ local function evenWindow()
 end
 -- See! Emacs key binding.
 vim.keymap.set(
-  { "n", "i" },
+  { "n" },
   "<c-w><c-q>",
   function() quitWindow() end,
   { noremap = true, desc = "nvim-window: Jump to window" }
 )
 vim.keymap.set(
-  { "n", "i" },
+  { "n" },
   "<c-w><c-e>",
   function() evenWindow() end,
   { noremap = true, desc = "nvim-window: Jump to window" }
@@ -197,15 +202,15 @@ vim.keymap.set(
   { desc = "Toggle statusline" }
 )
 
+-- INFO: Mimic my `powershell` windows terminal behaviour.
+vim.keymap.set({ "i" }, "<C-BS>", "<C-W>", { desc = "delete backward" })
+vim.keymap.set({ "n" }, "<C-BS>", "i<C-W>jk", { desc = "delete backward" })
+vim.keymap.set({ "n" }, "<M-d>", "i<C-W>jk", { desc = "delete backward" })
+
 local kopts = { noremap = true, silent = true, desc = "escape search mode for hlslens" }
 -- nvim-hlslens to stop search.
 -- The original issue here is `<leader>l` is already assigned.
 vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
--- Bind Lua function directly
--- vim.keymap.set("n", "<leader>," ,function()
---   require("telescope").extensions.frecency.frecency {}
--- end)
-
 
 return {}
