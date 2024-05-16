@@ -26,6 +26,7 @@ vim.keymap.set(
   function() require("telescope.builtin").find_files { hidden = true, layout_config = { prompt_position = "top" } } end,
   { noremap = true, desc = "find All Files" }
 )
+
 vim.keymap.set(
   { "n", "i" },
   ";fb",
@@ -50,6 +51,13 @@ vim.keymap.set(
   ";f'",
   "<cmd>Telescope marks<cr>",
   { noremap = true, silent = true, desc = "diagnostics Telescope" }
+)
+
+vim.keymap.set(
+  { "n", "i" },
+  ";fo",
+  function() require("telescope.builtin").oldfiles() end,
+  { noremap = true, silent = true, desc = "Open oldfiles." }
 )
 
 -- INFO: LSP toggle.

@@ -18,6 +18,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     -- Neovide extra settings.
     { import = "astrocommunity.recipes.neovide" },
     { import = "astrocommunity.motion.leap-nvim" },
+    { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.motion.grapple-nvim" },
     { import = "astrocommunity.motion.mini-move" },
     -- { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
@@ -31,6 +32,7 @@ else
     -- { import = "astrocommunity.pack.cpp" },
     { import = "astrocommunity.pack.markdown" },
     { import = "astrocommunity.motion.leap-nvim" },
+    { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.motion.grapple-nvim" },
     { import = "astrocommunity.motion.mini-move" },
     { import = "astrocommunity.snippet.nvim-snippets" },
