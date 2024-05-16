@@ -1,9 +1,5 @@
 -- INFO: Keymapping and keybinding only files.
 vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, desc = "Escape." })
--- vim.api.nvim_set_keymap("i", "yyy", "<Esc>yy", { noremap = true, silent = true, desc = "Escape and yank." })
--- vim.api.nvim_set_keymap("i", "ddd", "<Esc>dd", { noremap = true, silent = true, desc = "Escape and delete line." })
--- vim.api.nvim_set_keymap("i", "vvv", "<Esc>v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
--- vim.api.nvim_set_keymap("n", "<leader>v", "v$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 
 -- Navigation easy
@@ -50,16 +46,18 @@ end
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
 vim.keymap.set({ "n", "i" }, ";q", "<cmd>quitall!<CR>", { noremap = true, silent = true, desc = "Quit" })
+
 vim.keymap.set(
   { "n", "i" },
   ";wq",
   "<cmd>wq!<CR>",
   { noremap = true, silent = true, desc = "Write and Quit Insert Mode" }
 )
+
 vim.keymap.set(
   { "n", "i" },
   ";wg",
-  "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>git cij<cr>",
+  "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>git cij<cr>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
 )
 
@@ -81,14 +79,14 @@ if (vim.fn.has "win32") or (vim.fn.has "macunix") then
   vim.keymap.set(
     { "n", "i" },
     ";lg",
-    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>:vl g<cr><cmd>ToggleTerm<cr>", -- <cmd>colorscheme default<cr>",
+    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>:vl g<cr><cmd>ToggleTerm<cr>", -- <cmd>colorscheme default<cr>",
     { noremap = true, silent = true, desc = "Launch GUI(Neovide)" }
   )
 else
   vim.keymap.set(
     { "n", "i" },
     ";lg",
-    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>are you sure you have the GUI?<cr>",
+    "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>are you sure you have the GUI?<cr>",
     { noremap = true, silent = true, desc = "Launch GUI(Neovide) but Linux may not have the GUI" }
   )
 end
@@ -98,7 +96,7 @@ end
 vim.keymap.set(
   { "n", "i" },
   ";gc",
-  "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>lsd<cr>git cij<cr>",
+  "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>git cij<cr>",
   { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
 )
 
@@ -147,16 +145,6 @@ vim.keymap.set(
   "<esc><cmd>ToggleTerm<cr>:e e<cr>",
   { noremap = true, desc = "Espanso in ToggleTerm " }
 )
-
-require("leap.user").set_repeat_keys("<enter>", "<backspace>", {
-  -- False by default. If set to true, the keys will work like the
-  -- native semicolon/comma, i.e., forward/backward is understood in
-  -- relation to the last motion.
-  relative_directions = true,
-  -- By default, all modes are included.
-  modes = { "n", "x", "o" },
-})
-
 -- Pane vanilla
 -- WARN: HACKY way to do it, also in old Vim API... Need to rewrite some day,
 -- but not that urgent though.
@@ -204,13 +192,22 @@ vim.keymap.set(
 
 -- INFO: Mimic my `powershell` windows terminal behaviour.
 vim.keymap.set({ "i" }, "<C-BS>", "<C-W>", { desc = "delete backward" })
-vim.keymap.set({ "n" }, "<C-BS>", "i<C-W>jk", { desc = "delete backward" })
-vim.keymap.set({ "n" }, "<M-d>", "i<C-W>jk", { desc = "delete backward" })
+vim.keymap.set({ "n" }, "<C-BS>", "i<C-W><Esc>", { desc = "delete backward" })
+vim.keymap.set({ "n" }, "<M-d>", "i<C-W><Esc>", { desc = "delete backward" })
 
 local kopts = { noremap = true, silent = true, desc = "escape search mode for hlslens" }
 -- nvim-hlslens to stop search.
 -- The original issue here is `<leader>l` is already assigned.
 vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
+
+require("leap.user").set_repeat_keys("<enter>", "<backspace>", {
+  -- False by default. If set to true, the keys will work like the
+  -- native semicolon/comma, i.e., forward/backward is understood in
+  -- relation to the last motion.
+  relative_directions = true,
+  -- By default, all modes are included.
+  modes = { "n", "x", "o" },
+})
 
 return {}
