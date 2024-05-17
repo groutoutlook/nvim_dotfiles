@@ -16,7 +16,7 @@ if not pcall(require, "lazy") then
 end
 require "lazy_setup"
 require "polish"
--- require("astrocore.toggles").tabline()
+-- turn off tabline.
 vim.opt.showtabline = 0
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
   pattern = { "*.c", "*.cpp", "*.h", "*.hpp" },
@@ -46,9 +46,5 @@ set conceallevel=2
 nnoremap <expr> <C-d> (winheight(0) / 3) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 3) . '<C-u>'
 ]]
-if vim.fn.has "gui_running" == 1 then
-  vim.cmd.colorscheme "slate"
-else
-  vim.cmd.colorscheme "torte"
-end
+if vim.fn.has "gui_running" == 1 then vim.cmd.colorscheme "slate" end
 --Basic Lua
