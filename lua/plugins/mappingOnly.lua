@@ -170,6 +170,8 @@ vim.keymap.set({ "n", "v" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc
 vim.keymap.set({ "n", "i" }, ";bb", function()
   require("astroui.status.heirline").buffer_picker(function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end)
 end, { noremap = true, desc = "Telescope Yanky.nvim" })
+
+-- INFO: Toggling UI/UX functions.
 vim.keymap.set(
   { "n", "i" },
   ";ud",
@@ -183,6 +185,13 @@ vim.keymap.set(
   ";ul",
   function() require("astrocore.toggles").statusline() end,
   { desc = "Toggle statusline" }
+)
+
+vim.keymap.set(
+  { "n", "i" },
+  ";un",
+  function() require("astrocore.toggles").notifications() end,
+  { desc = "Toggle notifications" }
 )
 
 -- INFO: Mimic my `powershell` windows terminal behaviour.
