@@ -12,7 +12,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     -- Desktop.
     { import = "astrocommunity.pack.lua" },
     { import = "astrocommunity.pack.cpp" },
-    { import = "astrocommunity.pack.markdown" },
+    -- { import = "astrocommunity.pack.markdown" },
     -- { import = "astrocommunity.utility.noice-nvim" },
     -- { import = "astrocommunity.code-runner.overseer-nvim" },
     -- Neovide extra settings.
@@ -30,7 +30,7 @@ else
     "AstroNvim/astrocommunity",
     -- { import = "astrocommunity.pack.lua" },
     -- { import = "astrocommunity.pack.cpp" },
-    { import = "astrocommunity.pack.markdown" },
+    -- { import = "astrocommunity.pack.markdown" },
     { import = "astrocommunity.motion.leap-nvim" },
     { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.motion.grapple-nvim" },
