@@ -100,7 +100,7 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
 )
 
-vim.keymap.set({ "n", "i" }, ";gx", "<Esc>f(wgx", { desc = "Open Scheme Link at the end of line." })
+vim.keymap.set({ "n", "i" }, ";gx", "<Esc>f(wgx", { desc = "Open Scheme Link at the end of line.", noremap = true })
 vim.keymap.set(
   { "n", "i" },
   ";/",

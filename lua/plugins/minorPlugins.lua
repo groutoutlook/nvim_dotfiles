@@ -7,6 +7,33 @@ require("better_escape").setup {
   keys = function() return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>" end,
 }
 
+-- INFO: overseer.nvim
+vim.api.nvim_create_user_command("OverseerRestartLast", function()
+  local overseer = require "overseer"
+  local tasks = overseer.list_tasks { recent_first = true }
+  if vim.tbl_isempty(tasks) then
+    vim.notify("No tasks found", vim.log.levels.WARN)
+  else
+    overseer.run_action(tasks[1], "restart")
+  end
+end, {})
+
+vim.keymap.set(
+  { "n", "i" },
+  ";tr",
+  "<Esc><cmd>OverseerQuickAction restart<cr>",
+  { noremap = true, desc = "rerun Task." }
+)
+
+vim.keymap.set({ "n", "i" }, ";tl", "<Esc><cmd>OverseerRun<cr>", { noremap = true, desc = "List tasks" })
+vim.keymap.set(
+  { "n", "i" },
+  ";tb",
+  "<Esc><cmd>OverseerRun just\\ build<cr>",
+  { noremap = true, desc = "Run build/default tasks" }
+)
+vim.keymap.set({ "n", "i" }, ";tq", "<Esc><cmd>OverseerQuickAction<cr>", { noremap = true, desc = "QuickAction Menu" })
+
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
