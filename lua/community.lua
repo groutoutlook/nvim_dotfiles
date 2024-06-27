@@ -13,6 +13,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     { import = "astrocommunity.pack.lua" },
     { import = "astrocommunity.pack.cpp" },
     { import = "astrocommunity.pack.typst" },
+    { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
     -- { import = "astrocommunity.pack.markdown" },
     -- { import = "astrocommunity.utility.noice-nvim" },
     -- { import = "astrocommunity.code-runner.overseer-nvim" },
