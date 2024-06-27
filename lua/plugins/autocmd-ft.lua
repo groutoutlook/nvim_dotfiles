@@ -5,6 +5,7 @@ vim.filetype.add {
     ini = "markdown",
     jrnl = "markdown",
     zshrc = "zsh",
+    hlsl = "cpp",
   },
 }
 
