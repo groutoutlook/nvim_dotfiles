@@ -119,7 +119,25 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
 )
 
-vim.keymap.set({ "n", "i" }, ";gx", "<Esc>f(wgx", { desc = "Open Scheme Link at the end of line.", noremap = true })
+vim.keymap.set(
+  { "n", "i" },
+  ";gx",
+  '<Esc>f(w<cmd>lua vim.ui.open(vim.fn.expand("<cfile>"))<cr>',
+  { desc = "Open Scheme Link at the end of line.", noremap = false }
+)
+vim.keymap.set(
+  { "i" },
+  "gxx",
+  '<Esc>f(w<cmd>lua vim.ui.open(vim.fn.expand("<cfile>"))<cr>',
+  { desc = "Open Scheme Link at the end of line.", noremap = false }
+)
+vim.keymap.set(
+  { "n", "i" },
+  "<C-cr>",
+  '<Esc>f(w<cmd>lua vim.ui.open(vim.fn.expand("<cfile>"))<cr>',
+  { desc = "Open Scheme Link at the end of line.", noremap = false }
+)
+
 vim.keymap.set(
   { "n", "i" },
   ";/",
