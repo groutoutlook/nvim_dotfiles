@@ -5,6 +5,25 @@ vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = 
 -- Navigation easy
 vim.api.nvim_set_keymap("n", "GG", "Gzz", { noremap = true, silent = true, desc = "Center Final line." })
 
+-- INFO: Editting abilities, mostly alias the `ci*` bracket things.
+
+vim.keymap.set(
+  { "n", "i" },
+  "ci9",
+  "<Esc>ci(",
+  { noremap = true, silent = true, desc = "Edit: change in parentheses." }
+)
+vim.keymap.set({ "n", "i" }, "yi9", "<Esc>yi(", { noremap = true, silent = true, desc = "Edit: yank in parentheses." })
+
+vim.keymap.set(
+  { "n", "i" },
+  "ci;",
+  '<Esc>ci"',
+  { noremap = true, silent = true, desc = "Edit: change in parentheses." }
+)
+
+vim.keymap.set({ "n", "i" }, "yi;", '<Esc>yi"', { noremap = true, silent = true, desc = "Edit: yank in parentheses." })
+
 -- INFO: Terminal navigation keymode.
 vim.api.nvim_set_keymap(
   "t",
