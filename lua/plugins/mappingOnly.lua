@@ -86,12 +86,21 @@ vim.keymap.set(
   "<esc><cmd>ToggleTerm<cr>lsd<cr><cmd>wall<CR>",
   { noremap = true, silent = true, desc = "Write and Term Insert Mode" }
 )
+
 vim.keymap.set(
   { "n", "i" },
   ";ws",
   "<cmd>wall!<CR><cmd>lua require('resession').save()<cr>",
   { noremap = true, silent = true, desc = "Write and Save session" }
 )
+
+vim.keymap.set(
+  { "n", "i" },
+  ";wS",
+  "<cmd>wall!<CR>:Savess",
+  { noremap = true, silent = true, desc = "Prompt to Save." }
+)
+
 -- vim.keymap.set({ "n", "i" }, ";u", "<C-o>u", { noremap = true, silent = true, desc = "Undo Insert Mode" })
 vim.keymap.set({ "n", "i" }, ";r", "<C-o><C-r>", { noremap = true, silent = true, desc = "Redo Insert Mode" })
 if (vim.fn.has "win32") or (vim.fn.has "macunix") then

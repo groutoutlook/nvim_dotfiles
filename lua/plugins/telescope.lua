@@ -29,6 +29,12 @@ vim.keymap.set(
 
 vim.keymap.set(
   { "n", "i" },
+  ";FF",
+  function() require("telescope.builtin").find_files { hidden = true, layout_config = { prompt_position = "top" } } end,
+  { noremap = true, desc = "find All Files" }
+)
+vim.keymap.set(
+  { "n", "i" },
   ";fb",
   function() require("telescope.builtin").buffers() end,
   { noremap = true, silent = true, desc = "Redo Insert Mode" }
