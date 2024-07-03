@@ -5,7 +5,21 @@ vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = 
 -- Navigation easy
 vim.api.nvim_set_keymap("n", "GG", "Gzz", { noremap = true, silent = true, desc = "Center Final line." })
 
--- INFO: Editting abilities, mostly alias the `ci*` bracket things.
+-- INFO: Editing abilities, mostly alias the `ci*` bracket things.
+-- And `yi*`, `vi*` as well?
+
+vim.keymap.set(
+  { "n", "i" },
+  "ci,",
+  "<Esc>ci<",
+  { noremap = true, silent = true, desc = "Edit: change in angle bracket." }
+)
+vim.keymap.set(
+  { "n", "i" },
+  "yi,",
+  "<Esc>yi<",
+  { noremap = true, silent = true, desc = "Edit: yank in angle bracket." }
+)
 
 vim.keymap.set(
   { "n", "i" },
@@ -213,9 +227,14 @@ vim.keymap.set(
 )
 vim.keymap.set({ "n", "v" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "Even panes." })
 
+-- INFO: Wuick buffer action
 vim.keymap.set({ "n", "i" }, ";bb", function()
   require("astroui.status.heirline").buffer_picker(function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end)
-end, { noremap = true, desc = "Telescope Yanky.nvim" })
+end, { noremap = true, desc = "Show buffer picker." })
+vim.keymap.set({ "n", "i" }, ";bc", function()
+  require("astrocore.buffer").close_all(true)
+  vim.notify("Closed all but this.", vim.log.levels.INFO)
+end, { noremap = true, desc = "close all but this buffer." })
 
 -- INFO: Toggling UI/UX functions.
 vim.keymap.set(
