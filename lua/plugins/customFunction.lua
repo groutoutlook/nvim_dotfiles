@@ -171,6 +171,7 @@ vim.keymap.set(
 -- HACK: kludge to escape terminal mode and paste text in register * in(which we just copied)
 -- It might sound bad on termux, which has a really slow clipboard though.
 vim.keymap.set("t", "<M-r>", "<C-\\><C-N>pi", { noremap = true, silent = true })
+vim.keymap.set("t", "<M-p>", "<C-\\><C-N>pi", { noremap = true, silent = true })
 vim.keymap.set(
   { "v" },
   ";gg",
@@ -178,12 +179,36 @@ vim.keymap.set(
   { noremap = true, desc = "Google (ready) in ToggleTerm " }
 )
 
+-- INFO: capture word to find just like `#` in normal mode
+-- But this is for custom search engine. For example, looking at Google..
+-- Or docs, either offline or online. Even append it in some kind of URI builder.
+function expandSearchWord(opts)
+  local currentWord = opts or vim.fn.expand "<cWORD>"
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.cmd "ToggleTerm"
+  -- HACK: or you could call lua directly, not through excommand...
+  -- Also nvim_replace_termcodes() could also help to reduce feedkey with present mapping.
+  vim.api.nvim_feedkeys("gg " .. currentWord .. " \x0D", "t", false)
+  vim.notify(currentWord .. "," .. row .. "," .. col)
+end
+vim.keymap.set(
+  { "n", "i" },
+  ";gg",
+  function() expandSearchWord() end,
+  { noremap = true, desc = "Google word under cursors" }
+)
+
 -- INFO: Additional step after adding hyperlink?
 -- Add newline, tab, "brief" or "tldr" string there. Maybe separate it in a new function as a way of providing summary.
 function addBriefText(opts)
   local BriefHead = "\n\09- Brief:"
-  local BriefContent = " "
+  local BriefContent = " \n"
   vim.api.nvim_feedkeys(BriefHead .. BriefContent, "t", false)
+  -- HACK: Add origin text as well. Since I found information more useful when going with a source of truth.
+  -- Easy to verify if future me have any doubt.
+  local OriginHead = "\n\09- Origin:"
+  local OriginContent = " \n"
+  vim.api.nvim_feedkeys(OriginHead .. OriginContent, "t", false)
 end
 -- INFO: Insert hyperlink function in neovim, markdown to be specific
 function Hyperlink(opts)
