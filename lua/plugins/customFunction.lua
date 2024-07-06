@@ -202,13 +202,17 @@ vim.keymap.set(
 -- Add newline, tab, "brief" or "tldr" string there. Maybe separate it in a new function as a way of providing summary.
 function addBriefText(opts)
   local BriefHead = "\n\09- Brief:"
-  local BriefContent = " \n"
+  local BriefContent = ""
   vim.api.nvim_feedkeys(BriefHead .. BriefContent, "t", false)
   -- HACK: Add origin text as well. Since I found information more useful when going with a source of truth.
   -- Easy to verify if future me have any doubt.
-  local OriginHead = "\n\09- Origin:"
-  local OriginContent = " \n"
+  local OriginHead = "\n- Origin:"
+  local OriginContent = ""
   vim.api.nvim_feedkeys(OriginHead .. OriginContent, "t", false)
+  vim.cmd [[
+  -2
+  startinsert!
+  ]]
 end
 -- INFO: Insert hyperlink function in neovim, markdown to be specific
 function Hyperlink(opts)
