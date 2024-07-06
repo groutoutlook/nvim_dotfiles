@@ -222,22 +222,25 @@ function Hyperlink(opts)
   local current_mode = vim.fn.mode()
 
   if (current_mode == "i") or (current_mode == "n") then
-    local link_title = vim.fn.input "Link Brief?: "
-    local link_pattern = "^http"
-
-    if string.match(registerString, link_pattern) then
-      link_content = registerString
-    else
-      local crop_register = string.sub(link_content, -10)
-      local warningMessage = "'" .. crop_register .. "'" .. "is not a link"
-      vim.notify(warningMessage, vim.log.levels.ERROR)
-      link_content = vim.fn.input "Link content: " or nil
-    end
-
-    -- INFO: looping through bullet points.
     local bulletPoint = { "Brief", "Origin", "Resolution", "Related" }
 
-    if string.len(link_title) > 3 then
+    if registerString:sub(1, 1) ~= "[" then
+      -- INFO: Check if it's an URI.
+      -- Although in the future we may need to expand this behaviour.
+      local link_pattern = "^http"
+      local link_title = vim.fn.input "Link Brief?: "
+
+      if string.match(registerString, link_pattern) then
+        link_content = registerString
+      else
+        local crop_register = string.sub(link_content, -10)
+        local warningMessage = "'" .. crop_register .. "'" .. "is not a link"
+        vim.notify(warningMessage, vim.log.levels.ERROR)
+        link_content = vim.fn.input "Link content: " or nil
+      end
+
+      -- INFO: looping through bullet points.
+
       vim.cmd "startinsert"
       if link_title:sub(1, 1) == "[" then
         vim.api.nvim_feedkeys("- " .. link_title .. " ", "t", false)
