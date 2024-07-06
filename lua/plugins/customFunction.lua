@@ -201,46 +201,64 @@ vim.keymap.set(
 -- INFO: Additional step after adding hyperlink?
 -- Add newline, tab, "brief" or "tldr" string there. Maybe separate it in a new function as a way of providing summary.
 function addBriefText(opts)
-  local BriefHead = "\n\09- Brief:"
-  local BriefContent = ""
-  vim.api.nvim_feedkeys(BriefHead .. BriefContent, "t", false)
-  -- HACK: Add origin text as well. Since I found information more useful when going with a source of truth.
-  -- Easy to verify if future me have any doubt.
-  local OriginHead = "\n- Origin:"
-  local OriginContent = ""
-  vim.api.nvim_feedkeys(OriginHead .. OriginContent, "t", false)
-  vim.cmd [[
-  -2
-  startinsert!
-  ]]
+  -- INFO: Guard input here.
+  local inputWord = opts or nil
+  if inputWord == nil then
+    vim.notify("No proper input..", vim.log.levels.ERROR)
+    return
+  end
+
+  -- INFO: Process output.
+  local outputHead = "- " .. inputWord .. ": "
+  local outputContent = "\n"
+  vim.api.nvim_feedkeys(outputHead .. outputContent, "t", false)
 end
+
 -- INFO: Insert hyperlink function in neovim, markdown to be specific
 function Hyperlink(opts)
-  local extra_args = opts.args
-  local link_content = vim.fn.getreg "+"
-
+  -- local extra_args = opts.args
+  local registerString = vim.fn.getreg "+"
+  local link_content = registerString
   local current_mode = vim.fn.mode()
+
   if (current_mode == "i") or (current_mode == "n") then
     local link_title = vim.fn.input "Link Brief?: "
-
     local link_pattern = "^http"
 
-    if string.match(link_content, link_pattern) then
-      link_content = link_content
+    if string.match(registerString, link_pattern) then
+      link_content = registerString
     else
       local crop_register = string.sub(link_content, -10)
       local warningMessage = "'" .. crop_register .. "'" .. "is not a link"
       vim.notify(warningMessage, vim.log.levels.ERROR)
-      link_content = vim.fn.input "Link content: " or ""
+      link_content = vim.fn.input "Link content: " or nil
     end
 
-    vim.cmd "startinsert"
-    if link_title == nil then
-      vim.api.nvim_feedkeys(" [](" .. link_content .. ")", "t", false)
+    -- INFO: looping through bullet points.
+    local bulletPoint = { "Brief", "Origin", "Resolution", "Related" }
+
+    if string.len(link_title) > 3 then
+      vim.cmd "startinsert"
+      if link_title:sub(1, 1) == "[" then
+        vim.api.nvim_feedkeys("- " .. link_title .. " ", "t", false)
+      else
+        vim.api.nvim_feedkeys("- [" .. link_title .. "](" .. link_content .. ")", "t", false)
+      end
     else
-      vim.api.nvim_feedkeys(" [" .. link_title .. "](" .. link_content .. ")", "t", false)
+      vim.cmd "startinsert"
+      vim.api.nvim_feedkeys("- " .. registerString, "t", false)
+      vim.notify("Just the original contents.", vim.log.levels.WARN)
     end
-    addBriefText()
+
+    -- HACK: Append bullet points.
+    vim.api.nvim_feedkeys("\n\09", "t", false)
+    for i = 1, #bulletPoint do
+      addBriefText(bulletPoint[i])
+    end
+
+    vim.cmd [[
+    startinsert!
+    ]]
   else
     -- local selected_string = get_visual_selection()
     Surround("w", "[")
