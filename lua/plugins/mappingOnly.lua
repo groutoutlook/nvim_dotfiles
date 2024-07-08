@@ -90,7 +90,7 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";wg",
-  "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>git cij<cr>",
+  "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm<cr>git cij<cr>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
 )
 
@@ -104,7 +104,7 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";ws",
-  "<cmd>wall!<CR><cmd>lua require('resession').save()<cr>",
+  "<cmd>wall!<CR><cmd>Savess<cr>",
   { noremap = true, silent = true, desc = "Write and Save session" }
 )
 

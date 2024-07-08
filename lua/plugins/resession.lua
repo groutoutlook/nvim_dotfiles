@@ -57,6 +57,7 @@ vim.keymap.set(
 
 local function saveSession(opts)
   local session_name = opts.args
+  if session_name == "" then session_name = require("resession").get_current() end
   require("resession").save(session_name)
 end
 vim.api.nvim_create_user_command("Savess", saveSession, { nargs = "?" })
