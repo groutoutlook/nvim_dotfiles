@@ -7,6 +7,7 @@ vim.api.nvim_set_keymap("n", "GG", "Gzz", { noremap = true, silent = true, desc 
 
 -- INFO: Editing abilities, mostly alias the `ci*` bracket things.
 -- And `yi*`, `vi*` as well?
+vim.keymap.set({ "i" }, "<C-Space>", "<C-n>", { silent = true, desc = "Edit: change in angle bracket." })
 
 vim.keymap.set(
   { "n", "i" },
@@ -83,7 +84,7 @@ vim.keymap.set({ "n", "i" }, ";q", "<cmd>quitall!<CR>", { noremap = true, silent
 vim.keymap.set(
   { "n", "i" },
   ";wq",
-  "<cmd>wq!<CR>",
+  function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<cmd>wq!<CR>", true, true, true), "in", true) end,
   { noremap = true, silent = true, desc = "Write and Quit Insert Mode" }
 )
 

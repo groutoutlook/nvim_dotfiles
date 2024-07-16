@@ -19,7 +19,7 @@ require "polish"
 -- turn off tabline.
 vim.opt.showtabline = 0
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-  pattern = { "*.c", "*.cpp", "*.h", "*.hpp" },
+  pattern = { "*.c", "*.cpp", "*.h", "*.hpp", "*.hlsl", "*.glsl" },
   callback = function()
     vim.opt.laststatus = 0 -- require("astrocore.toggles").statusline()
     -- vim.notify "cpp files entering..."
@@ -33,6 +33,22 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
         "clangd",
       },
     }
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPre" }, {
+  -- group = vim.api.nvim_create_augroup("PrivateJrnl", {}),
+  pattern = { "*.jrnl" },
+  callback = function()
+    vim.o.shada = ""
+    vim.o.swapfile = false
+    vim.o.undofile = false
+    vim.o.backup = false
+    vim.o.writebackup = false
+    vim.o.shelltemp = false
+    vim.o.history = 0
+    vim.o.modeline = false
+    vim.o.secure = true
   end,
 })
 

@@ -6,6 +6,7 @@ vim.filetype.add {
     jrnl = "markdown",
     zshrc = "zsh",
     hlsl = "cpp",
+    glsl = "cpp",
   },
 }
 

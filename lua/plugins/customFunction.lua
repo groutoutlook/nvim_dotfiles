@@ -185,11 +185,12 @@ vim.keymap.set(
 function expandSearchWord(opts)
   local currentWord = opts or vim.fn.expand "<cWORD>"
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-  vim.cmd "ToggleTerm"
+  -- vim.cmd "ToggleTerm"
   -- HACK: or you could call lua directly, not through excommand...
   -- Also nvim_replace_termcodes() could also help to reduce feedkey with present mapping.
-  vim.api.nvim_feedkeys("gg " .. currentWord .. " \x0D", "t", false)
-  vim.notify(currentWord .. "," .. row .. "," .. col)
+  -- vim.api.nvim_feedkeys("gg " .. currentWord .. " \x0D", "t", false)
+  -- vim.notify(currentWord .. "," .. row .. "," .. col)
+  vim.ui.open("https://google.com/search?q=" .. currentWord)
 end
 vim.keymap.set(
   { "n", "i" },
