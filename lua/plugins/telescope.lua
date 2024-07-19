@@ -78,6 +78,20 @@ vim.keymap.set(
 
 vim.keymap.set(
   { "n", "i" },
+  ";gr",
+  function() require("gitsigns").reset_hunk() end,
+  { noremap = true, silent = true, desc = "restore git hunk" }
+)
+
+vim.keymap.set(
+  { "n", "i" },
+  ";gp",
+  function() require("gitsigns").preview_hunk_inline() end,
+  { noremap = true, silent = true, desc = "Preview git hunk." }
+)
+
+vim.keymap.set(
+  { "n", "i" },
   ";gb",
   "<cmd>Telescope git_branches<cr>",
   { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
