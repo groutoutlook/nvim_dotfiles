@@ -58,7 +58,7 @@ command! -bang W write<bang>
 command! -bang WQ wq<bang>
 command! -bang Wq wq<bang>
 set conceallevel=2
-set guifont=Iosevka\ Nerd\ Font\ Mono:h13
+set guifont=Iosevka\ Nerd\ Font\ Propo:h13
 nnoremap <expr> <C-d> (winheight(0) / 3) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 3) . '<C-u>'
 ]]

@@ -133,32 +133,31 @@ else
     { noremap = true, silent = true, desc = "Launch GUI(Neovide) but Linux may not have the GUI" }
   )
 end
--- TODO: check if there is more todo,
--- Now it's on the telescope.lua custom files.
---
-vim.keymap.set(
-  { "n", "i" },
-  ";gc",
-  "<cmd>wall!<CR><esc><cmd>ToggleTerm<cr>git cij<cr>",
-  { noremap = true, silent = true, desc = "Write and Git Insert Mode" }
-)
 
+-- INFO:: for some very vanilla operator function.
+local function moveAndOpen()
+  -- INFO: open the next markdown links.
+  vim.cmd [[
+    normal f(w
+    ]]
+  vim.ui.open(vim.fn.expand "<cfile>")
+end
 vim.keymap.set(
   { "n", "i" },
   ";gx",
-  '<Esc>f(w<cmd>lua vim.ui.open(vim.fn.expand("<cfile>"))<cr>',
+  function() moveAndOpen() end,
   { desc = "Open Scheme Link at the end of line.", noremap = false }
 )
 vim.keymap.set(
   { "i" },
   "gxx",
-  '<Esc>f(w<cmd>lua vim.ui.open(vim.fn.expand("<cfile>"))<cr>',
+  function() moveAndOpen() end,
   { desc = "Open Scheme Link at the end of line.", noremap = false }
 )
 vim.keymap.set(
   { "n", "i" },
   "<C-cr>",
-  '<Esc>f(w<cmd>lua vim.ui.open(vim.fn.expand("<cfile>"))<cr>',
+  function() moveAndOpen() end,
   { desc = "Open Scheme Link at the end of line.", noremap = false }
 )
 

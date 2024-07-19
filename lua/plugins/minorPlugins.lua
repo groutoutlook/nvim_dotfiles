@@ -1,29 +1,62 @@
 -- nvim-window for hinting windows
 -- lua, default settings
+-- lua, default settings
 require("better_escape").setup {
-  mapping = { "kj", "jk", "jj", "kl" }, -- a table with mappings to use
-  timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
-  clear_empty_lines = false, -- clear line after escaping if there is only whitespace
-  keys = function() return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>" end,
+  timeout = vim.o.timeoutlen,
+  default_mappings = true,
+  mappings = {
+    i = {
+      j = {
+        -- These can all also be functions
+        k = "<Esc>",
+        j = "<Esc>",
+      },
+    },
+    c = {
+      j = {
+        k = "<Esc>",
+        j = "<Esc>",
+      },
+    },
+    t = {
+      j = {
+        k = "<Esc>",
+        j = "<Esc>",
+      },
+    },
+    v = {
+      j = {
+        k = "<Esc>",
+      },
+    },
+    s = {
+      j = {
+        k = "<Esc>",
+      },
+    },
+  },
 }
+-- require("better_escape").setup {
+--   mapping = { "kj", "jk", "jj", "kl" }, -- a table with mappings to use
+--   timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+--   clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+--   keys = function() return vim.api.nvim_win_get_cursor(0)[2] > 1 and "<esc>l" or "<esc>" end,
+-- }
 
 -- INFO: overseer.nvim
+-- [overseer.nvim/doc/reference.md at master · stevearc/overseer.nvim](https://github.com/stevearc/overseer.nvim/blob/master/doc/reference.md#run_templateopts-callback)
 vim.api.nvim_create_user_command("OverseerRestartLast", function()
   local overseer = require "overseer"
   local tasks = overseer.list_tasks { recent_first = true }
   if vim.tbl_isempty(tasks) then
     vim.notify("No tasks found", vim.log.levels.WARN)
+    overseer.run_template { name = "just build" }
   else
     overseer.run_action(tasks[1], "restart")
   end
 end, {})
 
-vim.keymap.set(
-  { "n", "i" },
-  ";tr",
-  "<Esc><cmd>OverseerQuickAction restart<cr>",
-  { noremap = true, desc = "rerun Task." }
-)
+vim.keymap.set({ "n", "i" }, ";tr", "<Esc><cmd>OverseerRestartLast<cr>", { noremap = true, desc = "rerun Task." })
 
 vim.keymap.set({ "n", "i" }, ";tl", "<Esc><cmd>OverseerRun<cr>", { noremap = true, desc = "List tasks" })
 vim.keymap.set(
@@ -76,44 +109,23 @@ return {
     },
   },
   {
-    "mikavilpas/yazi.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    event = "VeryLazy",
+    "desdic/macrothis.nvim",
+    opts = {},
     keys = {
-      -- NOTE: First time I realized that We could assign mode in here as well.
-      -- Pretty much like vim.keymap.set opts. Maybe that's it under the hood.
+      { "<Leader>kkd", function() require("macrothis").delete() end, desc = "delete" },
+      { "<Leader>kke", function() require("macrothis").edit() end, desc = "edit" },
+      { "<Leader>kkl", function() require("macrothis").load() end, desc = "load" },
+      { "<Leader>kkn", function() require("macrothis").rename() end, desc = "rename" },
+      { "<Leader>kkq", function() require("macrothis").quickfix() end, desc = "run macro on all files in quickfix" },
+      { "<Leader>kkr", function() require("macrothis").run() end, desc = "run macro" },
+      { "<Leader>kks", function() require("macrothis").save() end, desc = "save" },
+      { "<Leader>kkx", function() require("macrothis").register() end, desc = "edit register" },
       {
-        ";-",
-        function() require("yazi").yazi() end,
-        mode = { "n", "i" },
-        desc = "Open the file manager",
+        "<Leader>kkp",
+        function() require("macrothis").copy_register_printable() end,
+        desc = "Copy register as printable",
       },
-      {
-        "<leader>-",
-        function() require("yazi").yazi() end,
-        desc = "Open the file manager",
-      },
-      {
-        ";cw",
-        function() require("yazi").yazi() end,
-        mode = { "n", "i" },
-        desc = "Open the file manager",
-      },
-      {
-        -- Open in the current working directory
-        "<leader>cw",
-        function() require("yazi").yazi(nil, vim.fn.getcwd()) end,
-        desc = "Open the file manager in nvim's working directory",
-      },
-    },
-    ---@type YaziConfig
-    opts = {
-      open_for_directories = true,
-
-      -- chosen_file_path = "$HOME/tmp/yazi_filechosen",
-      events_file_path = "$HOME/tmp/yazi.nvim.events.txt",
+      { "<Leader>kkm", function() require("macrothis").copy_macro_printable() end, desc = "Copy macro as printable" },
     },
   },
 }
