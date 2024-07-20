@@ -57,7 +57,6 @@ vim.api.nvim_create_user_command("OverseerRestartLast", function()
 end, {})
 
 vim.keymap.set({ "n", "i" }, ";tr", "<Esc><cmd>OverseerRestartLast<cr>", { noremap = true, desc = "rerun Task." })
-
 vim.keymap.set({ "n", "i" }, ";tl", "<Esc><cmd>OverseerRun<cr>", { noremap = true, desc = "List tasks" })
 vim.keymap.set(
   { "n", "i" },
