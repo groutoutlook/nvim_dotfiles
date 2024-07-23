@@ -81,12 +81,14 @@ end
 --Heavily related to plugins and astronvim core.
 vim.keymap.set({ "n", "i" }, ";q", "<cmd>quitall!<CR>", { noremap = true, silent = true, desc = "Quit" })
 
-vim.keymap.set(
-  { "n", "i" },
-  ";wq",
-  function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<cmd>wq!<CR>", true, true, true), "in", true) end,
-  { noremap = true, silent = true, desc = "Write and Quit Insert Mode" }
-)
+-- LuaFormatter off
+vim.keymap.set({ "n", "i" }, ";wq", function()
+  vim.cmd [[
+    Savess
+    ]]
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<cmd>wq!<CR>", true, true, true), "in", true)
+end, { noremap = true, silent = true, desc = "Write and Quit Insert Mode" })
+-- LuaFormatter on
 
 vim.keymap.set(
   { "n", "i" },
