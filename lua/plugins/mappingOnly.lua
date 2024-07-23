@@ -83,9 +83,11 @@ vim.keymap.set({ "n", "i" }, ";q", "<cmd>quitall!<CR>", { noremap = true, silent
 
 -- LuaFormatter off
 vim.keymap.set({ "n", "i" }, ";wq", function()
-  vim.cmd [[
-    Savess
-    ]]
+  local session_name = require("resession").get_current()
+  if session_name ~= nil then
+    -- vim.notify(session_name, vim.log.levels.INFO)
+    require("resession").save(session_name)
+  end
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<cmd>wq!<CR>", true, true, true), "in", true)
 end, { noremap = true, silent = true, desc = "Write and Quit Insert Mode" })
 -- LuaFormatter on
