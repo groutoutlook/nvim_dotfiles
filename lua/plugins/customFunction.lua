@@ -223,7 +223,7 @@ function Hyperlink(opts)
   local current_mode = vim.fn.mode()
 
   if (current_mode == "i") or (current_mode == "n") then
-    local bulletPoint = { "Brief", "Origin", "Resolution", "Related" }
+    local bulletPoint = { "Recap", "Root", "Resolution", "Reason", "Related" }
 
     if registerString:sub(1, 1) ~= "[" then
       -- INFO: Check if it's an URI.
