@@ -94,6 +94,13 @@ end, { noremap = true, silent = true, desc = "Write and Quit Insert Mode" })
 
 vim.keymap.set(
   { "n", "i" },
+  ";gw",
+  "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm<cr>git wipp<cr>",
+  { noremap = true, silent = true, desc = "Write and git Insert Mode" }
+)
+
+vim.keymap.set(
+  { "n", "i" },
   ";wg",
   "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm<cr>git cij<cr>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
