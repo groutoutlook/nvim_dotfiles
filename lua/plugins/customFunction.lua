@@ -221,6 +221,8 @@ function Hyperlink(opts)
   local registerString = vim.fn.getreg "+"
   local link_content = registerString
   local current_mode = vim.fn.mode()
+  -- INFO: get cursor here.
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 
   if (current_mode == "i") or (current_mode == "n") then
     local bulletPoint = { "Recap", "Root", "Resolution", "Reason", "Related" }
@@ -260,9 +262,12 @@ function Hyperlink(opts)
       addBriefText(bulletPoint[i])
     end
 
-    vim.cmd [[
-    startinsert!
-    ]]
+    -- INFO: moving here, I dont know why it just cant move
+    --
+    vim.api.nvim_win_set_cursor(0, { row, col })
+    vim.notify(row .. " - " .. col)
+    -- vim.cmd("normal " .. #bulletPoint .. "k")
+    -- vim.cmd "startinsert"
   else
     -- local selected_string = get_visual_selection()
     Surround("w", "[")

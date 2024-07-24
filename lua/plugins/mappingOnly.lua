@@ -139,13 +139,43 @@ else
 end
 
 -- INFO:: for some very vanilla operator function.
-local function moveAndOpen()
+local function moveAndOpen(opts)
   -- INFO: open the next markdown links.
-  vim.cmd [[
-    normal f(w
-    ]]
+  if opts == "Back" then
+    vim.cmd [[ normal F]w ]]
+  else
+    vim.cmd [[ normal f]w ]]
+  end
   vim.ui.open(vim.fn.expand "<cfile>")
 end
+vim.api.nvim_create_user_command("GX", function() moveAndOpen "Back" end, { desc = "backward open liks." })
+vim.api.nvim_create_user_command("Gx", function() moveAndOpen "Back" end, { desc = "backward open liks." })
+
+vim.keymap.set(
+  { "n", "i" },
+  ";gX",
+  function() moveAndOpen "Back" end,
+  { desc = "Open Scheme Link at the end of line.", noremap = false }
+)
+
+vim.keymap.set(
+  { "n", "i" },
+  "♂",
+  function() moveAndOpen "Back" end,
+  { desc = "Open Scheme Link at the end of line.", noremap = false }
+)
+vim.keymap.set(
+  { "n", "i" },
+  "<A-CR>",
+  function() moveAndOpen "Back" end,
+  { desc = "Open Scheme Link at the end of line.", noremap = false }
+)
+vim.keymap.set(
+  { "n", "i" },
+  "<cs-CR>",
+  function() moveAndOpen "Back" end,
+  { desc = "Open Scheme Link at the end of line.", noremap = false }
+)
 vim.keymap.set(
   { "n", "i" },
   ";gx",

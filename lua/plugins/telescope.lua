@@ -104,11 +104,11 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "diagnostics Telescope" }
 )
 
-vim.keymap.set(
-  { "n", "i" },
-  ";ls",
-  function() require("aerial").toggle() end,
-  { noremap = true, silent = true, desc = "diagnostics Telescope" }
-)
+vim.keymap.set({ "n", "i" }, ";ls", function()
+  -- require("aerial").toggle()
+  -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("/", true, true, true), "in", true)
+  -- require("telescope").load_extension "aerial"
+  vim.cmd "Telescope aerial"
+end, { noremap = true, silent = true, desc = "diagnostics Telescope" })
 
 return {}
