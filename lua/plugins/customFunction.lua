@@ -238,7 +238,7 @@ function Hyperlink(opts)
       else
         local crop_register = string.sub(link_content, -10)
         local warningMessage = "'" .. crop_register .. "'" .. "is not a link"
-        vim.notify(warningMessage, vim.log.levels.ERROR)
+        -- vim.notify(warningMessage, vim.log.levels.ERROR)
         link_content = vim.fn.input "Link content: " or nil
       end
 
@@ -253,7 +253,7 @@ function Hyperlink(opts)
     else
       vim.cmd "startinsert"
       vim.api.nvim_feedkeys("- " .. registerString, "t", false)
-      vim.notify("Just the original contents.", vim.log.levels.WARN)
+      -- vim.notify("Just the original contents.", vim.log.levels.WARN)
     end
 
     -- HACK: Append bullet points.
@@ -265,7 +265,7 @@ function Hyperlink(opts)
     -- INFO: moving here, I dont know why it just cant move
     --
     vim.api.nvim_win_set_cursor(0, { row, col })
-    vim.notify(row .. " - " .. col)
+    -- vim.notify(row .. " - " .. col)
     -- vim.cmd("normal " .. #bulletPoint .. "k")
     -- vim.cmd "startinsert"
   else
