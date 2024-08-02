@@ -148,7 +148,7 @@ vim.api.nvim_set_keymap(
 )
 
 -- Get selected text
-local function get_visual_selection()
+function get_visual_selection()
   local s_start = vim.fn.getpos "'<"
   local s_end = vim.fn.getpos "'>"
   local n_lines = math.abs(s_end[2] - s_start[2]) + 1
@@ -172,13 +172,6 @@ vim.keymap.set(
 -- It might sound bad on termux, which has a really slow clipboard though.
 vim.keymap.set("t", "<M-r>", "<C-\\><C-N>pi", { noremap = true, silent = true })
 vim.keymap.set("t", "<M-p>", "<C-\\><C-N>pi", { noremap = true, silent = true })
-vim.keymap.set(
-  { "v" },
-  ";gg",
-  "y<esc><cmd>ToggleTerm<cr>gg<space><C-\\><C-N>pi<cr>",
-  { noremap = true, desc = "Google (ready) in ToggleTerm " }
-)
-
 -- INFO: capture word to find just like `#` in normal mode
 -- But this is for custom search engine. For example, looking at Google..
 -- Or docs, either offline or online. Even append it in some kind of URI builder.
@@ -192,12 +185,27 @@ function expandSearchWord(opts)
   -- vim.notify(currentWord .. "," .. row .. "," .. col)
   vim.ui.open("https://google.com/search?q=" .. currentWord)
 end
+
 vim.keymap.set(
   { "n", "i" },
   ";gg",
   function() expandSearchWord() end,
   { noremap = true, desc = "Google word under cursors" }
 )
+local function copy_visual()
+  -- vim.wait(500, function()
+  --   vim.api.nvim_feedkeys("y", "n", false)
+  --   -- return false
+  -- end, 100)
+  vim.api.nvim_feedkeys("y", "in", true)
+  local copied = vim.fn.getreg "+"
+  return copied
+end
+vim.keymap.set({ "v" }, ";gg", function()
+  -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-u>", true, false, true), "n", false)
+  local GetString = copy_visual()
+  expandSearchWord(GetString)
+end, { noremap = true, desc = "Google (ready) in ToggleTerm " })
 
 -- INFO: Additional step after adding hyperlink?
 -- Add newline, tab, "brief" or "tldr" string there. Maybe separate it in a new function as a way of providing summary.

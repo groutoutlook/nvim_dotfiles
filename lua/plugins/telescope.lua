@@ -1,45 +1,50 @@
 -- Mapping for telescope, since I tweaking with it quite a lot.
+local tl = require "telescope"
+local tl_b = require "telescope.builtin"
 vim.keymap.set({ "n", "i" }, ";ft", "<cmd>TodoTelescope<cr>", { noremap = true, desc = "find TODO FIXME BUG etc.." })
 
 vim.keymap.set(
   { "n", "i" },
   ";fn",
-  function() require("telescope").extensions.notify.notify() end,
+  function() tl.extensions.notify.notify() end,
   { noremap = true, desc = "find notifications" }
 )
 
+local function live_grep_or_grep_string(opts)
+  local currentWord = opts
+  if currentWord == nil then
+    tl_b.live_grep()
+  else
+    tl_b.grep_string()
+  end
+end
+vim.keymap.set({ "n", "i" }, ";ff", function() live_grep_or_grep_string() end, { noremap = true, desc = "find word" })
 vim.keymap.set(
   { "n", "i" },
   ";fw",
-  function() require("telescope.builtin").live_grep() end,
+  function() live_grep_or_grep_string "grep" end,
   { noremap = true, desc = "find notifications" }
-)
-vim.keymap.set(
-  { "n", "i" },
-  ";ff",
-  function() require("telescope.builtin").live_grep() end,
-  { noremap = true, desc = "find word" }
 )
 vim.keymap.set(
   { "n", "i" },
   ";fF",
-  function() require("telescope.builtin").find_files { hidden = true, layout_config = { prompt_position = "top" } } end,
+  function() tl_b.find_files { hidden = true, layout_config = { prompt_position = "top" } } end,
   { noremap = true, desc = "find All Files" }
 )
 
 vim.keymap.set(
   { "n", "i" },
   ";FF",
-  function() require("telescope.builtin").find_files { hidden = true, layout_config = { prompt_position = "top" } } end,
+  function() tl_b.find_files { hidden = true, layout_config = { prompt_position = "top" } } end,
   { noremap = true, desc = "find All Files" }
 )
-vim.keymap.set(
-  { "n", "i" },
-  ";fb",
-  function() require("telescope.builtin").buffers() end,
-  { noremap = true, silent = true, desc = "Redo Insert Mode" }
-)
-
+-- vim.keymap.set(
+--   { "n", "i" },
+--   ";fb",
+--   function() tl_b.buffers() end,
+--   { noremap = true, silent = true, desc = "Redo Insert Mode" }
+-- )
+--
 vim.keymap.set({ "n", "i" }, ";fu", "<cmd>Telescope undo<cr>", { noremap = true, desc = "Telescope Undo " })
 vim.keymap.set(
   { "n", "i" },
@@ -62,7 +67,7 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";fo",
-  function() require("telescope.builtin").oldfiles() end,
+  function() tl_b.oldfiles() end,
   { noremap = true, silent = true, desc = "Open oldfiles." }
 )
 
@@ -100,14 +105,14 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";ld",
-  function() require("telescope.builtin").diagnostics() end,
+  function() tl_b.diagnostics() end,
   { noremap = true, silent = true, desc = "diagnostics Telescope" }
 )
 
 vim.keymap.set({ "n", "i" }, ";ls", function()
   -- require("aerial").toggle()
   -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("/", true, true, true), "in", true)
-  -- require("telescope").load_extension "aerial"
+  -- tl.load_extension "aerial"
   vim.cmd "Telescope aerial"
 end, { noremap = true, silent = true, desc = "diagnostics Telescope" })
 

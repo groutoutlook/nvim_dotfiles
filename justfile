@@ -7,6 +7,11 @@ set shell := ["pwsh", "-c"]
 # Set shell for Windows OSs:
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
+# control whether or not to load dotenv. 
+set dotenv-load := true
+# set dotenv-filename	:= ".env"
+# set dotenv-required := true
+
 # If you have PowerShell Core installed and want to use it,
 # use `pwsh.exe` instead of `powershell.exe`
 
@@ -22,8 +27,17 @@ shebang:
     } else {
     	$psver += " Desktop"
     }
-    echo "PowerShell $psver"
+     echo "PowerShell $psver"
+
 placeholder:
-     #!{{ shebang }}
-     Write-Host "Havent written proper build tasks" -ForegroundColor Red
+    #!{{ shebang }}
+    Write-Host "Havent written build task for this repo." -ForegroundColor Red
+    if($env:pwsh_env) {Write-Host "$env:pwsh_env"}
+    else {Write-Host "Apparently no .env as well" -ForegroundColor Yellow}
+
+alias j := editjust
+editjust:
+    nvim ./justfile
+
+
 build: placeholder

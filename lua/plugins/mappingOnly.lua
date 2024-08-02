@@ -276,15 +276,6 @@ vim.keymap.set(
 )
 vim.keymap.set({ "n", "v" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "Even panes." })
 
--- INFO: Wuick buffer action
-vim.keymap.set({ "n", "i" }, ";bb", function()
-  require("astroui.status.heirline").buffer_picker(function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end)
-end, { noremap = true, desc = "Show buffer picker." })
-vim.keymap.set({ "n", "i" }, ";bc", function()
-  require("astrocore.buffer").close_all(true)
-  vim.notify("Closed all but this.", vim.log.levels.INFO)
-end, { noremap = true, desc = "close all but this buffer." })
-
 -- INFO: Toggling UI/UX functions.
 vim.keymap.set(
   { "n", "i" },

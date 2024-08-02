@@ -127,4 +127,63 @@ return {
       { "<Leader>km", function() require("macrothis").copy_macro_printable() end, desc = "Copy macro as printable" },
     },
   },
+  {
+    "leath-dub/snipe.nvim",
+    config = function()
+      local snipe = require "snipe"
+      snipe.setup()
+      vim.keymap.set("n", "gb", snipe.create_buffer_menu_toggler())
+      -- INFO: quick buffer action
+      local function file_menu_toggler()
+        local function file_producer()
+          local uv = (vim.loop or vim.uv)
+          local items = {}
+
+          for name, type in vim.fs.dir(uv.cwd()) do
+            table.insert(items, { type, name })
+          end
+
+          local items_display = vim.tbl_map(
+            function(ent) return string.format("%s %s", (ent[1] == "file" and "F" or "D"), ent[2]) end,
+            items
+          )
+
+          return items, items_display
+        end
+
+        return snipe.create_menu_toggler(file_producer, function(meta, _) vim.cmd.edit(meta[2]) end)
+      end
+
+      vim.keymap.set({ "n", "i" }, ";fb", file_menu_toggler())
+      vim.keymap.set(
+        { "n", "i" },
+        ";b",
+        snipe.create_buffer_menu_toggler(),
+        { noremap = true, desc = "Show buffer picker." }
+      )
+      vim.keymap.set({ "n", "i" }, ";cb", function()
+        require("astrocore.buffer").close_all(true)
+        vim.notify("Closed all but this.", vim.log.levels.INFO)
+      end, { noremap = true, desc = "close all but this buffer." })
+    end,
+  },
+  {
+    "javiorfo/nvim-soil",
+    -- Optional for puml syntax highlighting:
+    dependencies = { "javiorfo/nvim-nyctophilia" },
+    lazy = true,
+    ft = "plantuml",
+    opts = {
+      image = {
+        darkmode = false, -- Enable or disable darkmode
+        format = "png", -- Choose between png or svg
+        -- This is a default implementation of using nsxiv to open the resultant image
+        -- Edit the string to use your preferred app to open the image (as if it were a command line)
+        -- Some examples:
+        -- return "feh " .. img
+        -- return "xdg-open " .. img
+        execute_to_open = function(img) return "qimgv " .. img end,
+      },
+    },
+  },
 }
