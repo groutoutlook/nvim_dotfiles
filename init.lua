@@ -64,5 +64,12 @@ nnoremap <expr> <C-u> (winheight(0) / 3) . '<C-u>'
 if vim.fn.has "gui_running" == 1 then
   vim.cmd.colorscheme "slate"
   vim.o.guifont = "Iosevka Nerd Font Propo:h13" -- text below applies for VimScript
+
+  local alpha = function() return string.format("%x", math.floor(255 * vim.g.transparency or 0.8)) end
+
+  vim.g.neovide_transparency = 0.5
+  vim.g.transparency = 0.7
+  vim.g.neovide_background_color = "#0f1117" .. alpha()
+  vim.g.neovide_cursor_vfx_mode = "railgun"
 end
 --Basic Lua
