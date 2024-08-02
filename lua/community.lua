@@ -41,7 +41,7 @@ else
     -- { import = "astrocommunity.pack.markdown" },
     { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
     { import = "astrocommunity.code-runner.overseer-nvim" },
-    { import = "astrocommunity.code-runner.conjure" },
+    -- { import = "astrocommunity.code-runner.conjure" },
     { import = "astrocommunity.motion.leap-nvim" },
     { import = "astrocommunity.motion.flit-nvim" },
     -- { import = "astrocommunity.motion.grapple-nvim" },

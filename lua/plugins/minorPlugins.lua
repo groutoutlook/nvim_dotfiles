@@ -176,5 +176,5 @@ return {
         execute_to_open = function(img) return "qimgv " .. img end,
       },
     },
-  },
+  },{ "rose-pine/neovim", name = "rose-pine" },
 }
