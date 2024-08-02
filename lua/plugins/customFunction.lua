@@ -162,12 +162,7 @@ function get_visual_selection()
   return table.concat(lines, "\n")
 end
 -- Instead of yanking them, could use the function above to get the text first.
-vim.keymap.set(
-  { "v" },
-  ";oo",
-  "y<esc><cmd>ToggleTerm<cr>lsd<cr>:o<space><C-v><cr>",
-  { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
-)
+
 -- HACK: kludge to escape terminal mode and paste text in register * in(which we just copied)
 -- It might sound bad on termux, which has a really slow clipboard though.
 vim.keymap.set("t", "<M-r>", "<C-\\><C-N>pi", { noremap = true, silent = true })
@@ -175,7 +170,7 @@ vim.keymap.set("t", "<M-p>", "<C-\\><C-N>pi", { noremap = true, silent = true })
 -- INFO: capture word to find just like `#` in normal mode
 -- But this is for custom search engine. For example, looking at Google..
 -- Or docs, either offline or online. Even append it in some kind of URI builder.
-function expandSearchWord(opts)
+function expandSearchWord(opts, engine)
   local currentWord = opts or vim.fn.expand "<cWORD>"
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   -- vim.cmd "ToggleTerm"
@@ -192,6 +187,13 @@ vim.keymap.set(
   function() expandSearchWord() end,
   { noremap = true, desc = "Google word under cursors" }
 )
+vim.keymap.set(
+  { "n", "i" },
+  ";oo",
+  function() expandSearchWord() end,
+  { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
+)
+
 local function copy_visual()
   -- vim.wait(500, function()
   --   vim.api.nvim_feedkeys("y", "n", false)

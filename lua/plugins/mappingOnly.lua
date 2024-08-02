@@ -230,18 +230,6 @@ vim.keymap.set(
   "<esc><cmd>ToggleTerm<cr>j<space>",
   { noremap = true, desc = "Journal (ready) in ToggleTerm" }
 )
-vim.keymap.set(
-  { "n", "i" },
-  ";oo",
-  "<esc><cmd>ToggleTerm<cr>:o<space>",
-  { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
-)
-vim.keymap.set(
-  { "n", "i" },
-  ";oi",
-  "<esc><cmd>ToggleTerm<cr>obs <cr>",
-  { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
-)
 
 vim.keymap.set(
   { "n", "i" },
