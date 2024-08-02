@@ -58,9 +58,11 @@ command! -bang W write<bang>
 command! -bang WQ wq<bang>
 command! -bang Wq wq<bang>
 set conceallevel=2
-set guifont=Iosevka\ Nerd\ Font\ Propo:h13
 nnoremap <expr> <C-d> (winheight(0) / 3) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 3) . '<C-u>'
 ]]
-if vim.fn.has "gui_running" == 1 then vim.cmd.colorscheme "slate" end
+if vim.fn.has "gui_running" == 1 then
+  vim.cmd.colorscheme "slate"
+  vim.o.guifont = "Iosevka Nerd Font Propo:h13" -- text below applies for VimScript
+end
 --Basic Lua
