@@ -66,12 +66,13 @@ if vim.fn.has "gui_running" == 1 then
   vim.o.guifont = "Iosevka Nerd Font Propo:h13" -- text below applies for VimScript
 
   local alpha = function() return string.format("%x", math.floor(255 * vim.g.transparency or 0.8)) end
-
   vim.g.neovide_transparency = 0.5
   vim.g.transparency = 0.7
   vim.g.neovide_background_color = "#0f1117" .. alpha()
   vim.g.neovide_cursor_vfx_mode = "railgun"
+  vim.g.neovide_floating_shadow = false
+  vim.g.neovide_profiler = false
 else
-vim.cmd.colorscheme "cyberdream"
+  vim.cmd.colorscheme "cyberdream"
 end
 --Basic Lua

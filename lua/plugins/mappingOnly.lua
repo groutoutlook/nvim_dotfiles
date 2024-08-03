@@ -1,3 +1,5 @@
+-- INFO: mapping disable for some unwanted effects
+
 -- INFO: Keymapping and keybinding only files.
 vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, desc = "Escape." })
 vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = "Escape and Visual line." })
@@ -108,21 +110,21 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";gw",
-  "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm<cr>git wipp<cr>",
+  "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm direction=float<cr>git wipp<cr>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
 )
 
 vim.keymap.set(
   { "n", "i" },
   ";wg",
-  "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm<cr>git cij<cr>",
+  "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm direction=float<cr>git cij<cr>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
 )
 
 vim.keymap.set(
   { "n", "i" },
   ";wt",
-  "<esc><cmd>ToggleTerm<cr>lsd<cr><cmd>wall<CR>",
+  "<esc><cmd>ToggleTerm direction=float<cr>lsd<cr><cmd>wall<CR>",
   { noremap = true, silent = true, desc = "Write and Term Insert Mode" }
 )
 
