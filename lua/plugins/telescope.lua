@@ -38,12 +38,12 @@ vim.keymap.set(
   function() tl_b.find_files { hidden = true, layout_config = { prompt_position = "top" } } end,
   { noremap = true, desc = "find All Files" }
 )
--- vim.keymap.set(
---   { "n", "i" },
---   ";fb",
---   function() tl_b.buffers() end,
---   { noremap = true, silent = true, desc = "Redo Insert Mode" }
--- )
+vim.keymap.set(
+  { "n", "i" },
+  ";fb",
+  function() tl_b.buffers() end,
+  { noremap = true, silent = true, desc = "check buffers." }
+)
 --
 vim.keymap.set({ "n", "i" }, ";fu", "<cmd>Telescope undo<cr>", { noremap = true, desc = "Telescope Undo " })
 vim.keymap.set(

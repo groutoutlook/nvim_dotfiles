@@ -30,8 +30,10 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     -- { import = "astrocommunity.editing-support.yanky-nvim" },
     { import = "astrocommunity.editing-support.dial-nvim" },
     { import = "astrocommunity.editing-support.ultimate-autopair-nvim" },
+    { import = "astrocommunity.editing-support.nvim-treesitter-context" },
     { import = "astrocommunity.search.nvim-hlslens" },
     { import = "astrocommunity.search.nvim-spectre" },
+    { import = "astrocommunity.quickfix.quicker-nvim" },
   }
 else
   return {
