@@ -290,9 +290,9 @@ vim.keymap.set(
 )
 
 -- INFO: Mimic my `powershell` windows terminal behaviour.
-vim.keymap.set({ "i" }, "<C-BS>", "<C-W>", { desc = "delete backward" })
-vim.keymap.set({ "n" }, "<C-BS>", "i<C-W><Esc>", { desc = "delete backward" })
-vim.keymap.set({ "n" }, "<M-d>", "i<C-W><Esc>", { desc = "delete backward" })
+-- vim.keymap.set({ "i" }, "<C-BS>", "<C-W>", { desc = "delete backward" })
+-- vim.keymap.set({ "n" }, "<C-BS>", "i<C-W><Esc>", { desc = "delete backward" })
+-- vim.keymap.set({ "n" }, "<M-d>", "i<C-W><Esc>", { desc = "delete backward" })
 
 local kopts = { noremap = true, silent = true, desc = "escape search mode for hlslens" }
 -- nvim-hlslens to stop search.
@@ -308,5 +308,4 @@ require("leap.user").set_repeat_keys("<enter>", "<backspace>", {
   -- By default, all modes are included.
   modes = { "n", "x", "o" },
 })
-
 return {}

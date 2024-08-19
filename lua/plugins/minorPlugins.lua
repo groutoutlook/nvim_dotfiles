@@ -98,6 +98,10 @@ return {
       },
     },
   },
+  {
+    "hiberabyss/readline.nvim",
+    lazy = false,
+  },
   -- {
   --   "desdic/macrothis.nvim",
   --   opts = {},
