@@ -3,14 +3,17 @@
 local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
   -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
+    lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- validate that lazy is available
 if not pcall(require, "lazy") then
   -- stylua: ignore
-  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+  vim.api.nvim_echo(
+  { { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } },
+    true, {})
   vim.fn.getchar()
   vim.cmd.quit()
 end
@@ -19,7 +22,7 @@ require "polish"
 -- turn off tabline.
 vim.opt.showtabline = 0
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-  pattern = { "*.c", "*.cpp", "*.h", "*.hpp", "*.hlsl", "*.glsl" },
+  pattern = { "*.c", "*.cpp", "*.h", "*.hpp" },
   callback = function()
     vim.opt.laststatus = 0 -- require("astrocore.toggles").statusline()
     -- vim.notify "cpp files entering..."
@@ -76,3 +79,6 @@ else
   vim.cmd.colorscheme "cyberdream"
 end
 --Basic Lua
+--
+-- HACK: some other plugins here?
+require("lspconfig").glsl_analyzer.setup {}
