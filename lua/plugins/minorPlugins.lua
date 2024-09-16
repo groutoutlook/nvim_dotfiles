@@ -100,7 +100,7 @@ return {
     },
   },
   {
-    "hiberabyss/readline.nvim",
+    "groutoutlook/emacsinsert.nvim",
     lazy = false,
   },
   -- {

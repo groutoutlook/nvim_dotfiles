@@ -1,34 +1,23 @@
--- HACK: Emacs navigation., based on `readline.nvim`
-local readline = require "readline"
--- vim.keymap.set("!", "<C-k>", readline.kill_line)
-vim.keymap.set("!", "<C-u>", readline.backward_kill_line)
-vim.keymap.set("!", "<M-d>", readline.kill_word)
-vim.keymap.set("!", "<M-w>", readline.kill_word)
-vim.keymap.set("!", "<M-BS>", readline.backward_kill_word)
--- vim.keymap.set("!", "<C-w>", readline.unix_word_rubout)
+-- HACK: Emacs navigation., based on `emacsinsert.nvim`
+local emacsinsert = require "emacsinsert"
+-- vim.keymap.set("!", "<C-k>", emacsinsert.kill_line)
+vim.keymap.set("!", "<C-u>", emacsinsert.backward_kill_line)
+vim.keymap.set("!", "<M-d>", emacsinsert.kill_word)
+vim.keymap.set("!", "<M-w>", emacsinsert.kill_word)
+vim.keymap.set("!", "<M-BS>", emacsinsert.backward_kill_word)
+-- vim.keymap.set("!", "<C-w>", emacsinsert.unix_word_rubout)
 vim.keymap.set("!", "<C-d>", "<Delete>") -- delete-char
 vim.keymap.set("!", "<C-h>", "<BS>") -- backward-delete-char
-vim.keymap.set("!", "<C-a>", readline.beginning_of_line)
-vim.keymap.set("!", "<C-e>", readline.end_of_line)
-vim.keymap.set("!", "<M-f>", readline.forward_word)
-vim.keymap.set("!", "<M-b>", readline.backward_word)
+vim.keymap.set("!", "<C-a>", emacsinsert.beginning_of_line)
+vim.keymap.set("!", "<C-e>", emacsinsert.end_of_line)
+vim.keymap.set("!", "<M-f>", emacsinsert.forward_word)
+vim.keymap.set("!", "<M-b>", emacsinsert.backward_word)
 vim.keymap.set("!", "<C-f>", "<Right>") -- forward-char
 vim.keymap.set("!", "<C-b>", "<Left>") -- backward-char
 -- vim.keymap.set("!", "<C-n>", "<Down>") -- next-line
 -- vim.keymap.set("!", "<C-p>", "<Up>") -- previous-line
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
--- You can also add or configure plugins by creating files in this `plugins/` folder
--- Here are some examples:
-
----@type LazySpec
 return {
-
-  -- == Examples of Adding Plugins ==
-
-  -- == Examples of Overriding Plugins ==
-
-  -- customize alpha options
   {
     "goolord/alpha-nvim",
     opts = function(_, opts)
