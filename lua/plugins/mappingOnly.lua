@@ -289,21 +289,12 @@ vim.keymap.set(
   { desc = "Toggle notifications" }
 )
 
--- INFO: Mimic my `powershell` windows terminal behaviour.
--- vim.keymap.set({ "i" }, "<C-BS>", "<C-W>", { desc = "delete backward" })
--- vim.keymap.set({ "n" }, "<C-BS>", "i<C-W><Esc>", { desc = "delete backward" })
--- vim.keymap.set({ "n" }, "<M-d>", "i<C-W><Esc>", { desc = "delete backward" })
-
 local kopts = { noremap = true, silent = true, desc = "escape search mode for hlslens" }
 -- nvim-hlslens to stop search.
--- The original issue here is `<leader>l` is already assigned.
 vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
 require("leap.user").set_repeat_keys("<enter>", "<backspace>", {
-  -- False by default. If set to true, the keys will work like the
-  -- native semicolon/comma, i.e., forward/backward is understood in
-  -- relation to the last motion.
   relative_directions = true,
   -- By default, all modes are included.
   modes = { "n", "x", "o" },
