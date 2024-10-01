@@ -124,7 +124,7 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";wt",
-  "<esc><cmd>ToggleTerm direction=float<cr>lsd<cr><cmd>wall<CR>",
+  "<esc><cmd>ToggleTerm direction=float<cr><cmd>wall<CR>",
   { noremap = true, silent = true, desc = "Write and Term Insert Mode" }
 )
 
@@ -175,7 +175,7 @@ vim.api.nvim_create_user_command("Gx", function() moveAndOpen "Back" end, { desc
 
 vim.keymap.set(
   { "n", "i" },
-  ";gX",
+  ";X",
   function() moveAndOpen "Back" end,
   { desc = "Open Scheme Link at the end of line.", noremap = false }
 )
@@ -200,7 +200,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   { "n", "i" },
-  ";gx",
+  ";x",
   function() moveAndOpen() end,
   { desc = "Open Scheme Link at the end of line.", noremap = false }
 )
