@@ -178,7 +178,7 @@ function expandSearchWord(opts, engine)
   -- Also nvim_replace_termcodes() could also help to reduce feedkey with present mapping.
   -- vim.api.nvim_feedkeys("gg " .. currentWord .. " \x0D", "t", false)
   -- vim.notify(currentWord .. "," .. row .. "," .. col)
-  vim.ui.open("https://google.com/search?q=" .. currentWord)
+  vim.ui.open("https://duckduckgo.com/?q=" .. currentWord)
 end
 
 vim.keymap.set(
