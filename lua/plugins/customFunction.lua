@@ -1,17 +1,5 @@
 -- TODO: Add interesting configuration function in here.
 
-vim.keymap.set(
-  { "n", "i" },
-  ";mm",
-  function() require("mini.map").toggle() end,
-  { noremap = true, silent = true, desc = "Map toggle" }
-)
-vim.keymap.set(
-  { "n", "i" },
-  ";mf",
-  function() require("mini.map").toggle_focus() end,
-  { noremap = true, silent = true, desc = "Map focus" }
-)
 -- Surround function.
 function Surround(w_or_W, char)
   char = char or nil
@@ -78,26 +66,8 @@ vim.keymap.set(
   function() copyPath() end,
   { noremap = true, desc = "Comment the line in Insert Mode" }
 )
--- vim.keymap.set("n", "<CR>", '@="m`o<C-V><Esc>``"<CR>')
--- vim.keymap.set("n", "<S-CR>", '@="m`O<C-V><Esc>``"<CR>')
--- local function addNewLines(before, count)
---   local line = vim.fn.line "."
---   local start = line + (before and -1 or 0)
---   local lines = {}
---   table.insert(lines, "")
---   for _ = 1, count - 1 do
---     table.insert(lines, "")
---   end
---   local buf = vim.api.nvim_get_current_buf()
---   vim.api.nvim_buf_set_lines(buf, start, start, false, lines)
--- end
---
--- vim.keymap.set("n", "[<cr>", function() addNewLines(true, vim.v.count) end, {})
--- vim.keymap.set("n", "]<cr>", function() addNewLines(false, vim.v.count) end, {})
 vim.cmd [[
   "" From https://stackoverflow.com/a/6171215/340947
-  " Escape special characters in a string for exact matching.
-  " This is useful to copying strings from the file to the search tool
   " Based on this - http://peterodding.com/code/vim/profile/autoload/xolox/escape.vim
   function! EscapeString (string)
     let string=a:string
@@ -108,27 +78,20 @@ vim.cmd [[
     return string
   endfunction
 
-  " Get the current visual block for search and replaces
-  " This function passed the visual block through a string escape function
-  " Based on this - https://stackoverflow.com/questions/676600/vim-replace-selected-text/677918#677918
   function! GetVisual() range
     " Save the current register and clipboard
     let reg_save = getreg('"')
     let regtype_save = getregtype('"')
     let cb_save = &clipboard
     set clipboard&
-
     " Put the current visual selection in the " register
     normal! ""gvy
     let selection = getreg('"')
-
     " Put the saved registers and clipboards back
     call setreg('"', reg_save, regtype_save)
     let &clipboard = cb_save
-
     "Escape any special characters in the selection
     let escaped_selection = EscapeString(selection)
-
     return escaped_selection
   endfunction
   " vnoremap <c-r> <Esc>:%s/<c-r>=GetVisual()<cr>//g<left><left>
@@ -148,20 +111,19 @@ vim.api.nvim_set_keymap(
 )
 
 -- Get selected text
-function get_visual_selection()
-  local s_start = vim.fn.getpos "'<"
-  local s_end = vim.fn.getpos "'>"
-  local n_lines = math.abs(s_end[2] - s_start[2]) + 1
-  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
-  lines[1] = string.sub(lines[1], s_start[3], -1)
-  if n_lines == 1 then
-    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
-  else
-    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
-  end
-  return table.concat(lines, "\n")
-end
--- Instead of yanking them, could use the function above to get the text first.
+-- function get_visual_selection()
+--   local s_start = vim.fn.getpos "'<"
+--   local s_end = vim.fn.getpos "'>"
+--   local n_lines = math.abs(s_end[2] - s_start[2]) + 1
+--   local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+--   lines[1] = string.sub(lines[1], s_start[3], -1)
+--   if n_lines == 1 then
+--     lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
+--   else
+--     lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
+--   end
+--   return table.concat(lines, "\n")
+-- end
 
 -- HACK: kludge to escape terminal mode and paste text in register * in(which we just copied)
 -- It might sound bad on termux, which has a really slow clipboard though.
