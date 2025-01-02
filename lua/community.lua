@@ -12,7 +12,6 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     -- Desktop.
     { import = "astrocommunity.pack.lua" },
     { import = "astrocommunity.pack.cpp" },
-    -- { import = "astrocommunity.pack.typst" },
     -- { import = "astrocommunity.pack.markdown" },
     { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
     -- { import = "astrocommunity.utility.noice-nvim" },
