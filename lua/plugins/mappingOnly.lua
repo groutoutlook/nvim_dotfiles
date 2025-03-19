@@ -294,6 +294,21 @@ local kopts = { noremap = true, silent = true, desc = "escape search mode for hl
 vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
+-- INFO: just open vscode instead.
+local function open_in_vscode()
+  vim.cmd "w" -- Save the file
+  local file_path = vim.fn.expand "%:p" -- Get the full file path
+  if file_path ~= "" then
+    vim.fn.system("code " .. file_path) -- Open in VS Code
+  else
+    print "No file to open in VS Code!"
+  end
+end
+
+-- Example keybinding (optional)
+vim.keymap.set({ "n" }, ";vs", open_in_vscode, { desc = "Open in VS Code" })
+
+
 require("leap.user").set_repeat_keys("<enter>", "<backspace>", {
   relative_directions = true,
   -- By default, all modes are included.
