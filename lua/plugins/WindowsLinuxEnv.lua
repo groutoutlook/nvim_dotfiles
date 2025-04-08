@@ -14,10 +14,11 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
   vim.o.shellpipe = "2>&1 | %%{ '$_' } | tee %s; exit $LastExitCode"
   vim.o.shellquote = ""
   vim.o.shellxquote = ""
-  require("notify").setup {
-    timeout = 1000,
-    -- stages = "static",
-  }
+
+  -- require("notify").setup {
+  --   timeout = 1000,
+  --   -- stages = "static",
+  -- }
   return {}
 else
   return {

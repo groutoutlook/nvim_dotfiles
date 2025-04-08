@@ -35,7 +35,6 @@ nnoremap <expr> <C-u> (winheight(0) / 3) . '<C-u>'
 if vim.fn.has "gui_running" == 1 then
   -- vim.cmd.colorscheme "cyberdream"
   vim.o.guifont = "Iosevka Nerd Font Propo:h13" -- text below applies for VimScript
-
   vim.g.transparency = 0.7
   local alpha = function() return string.format("%x", math.floor(255 * vim.g.transparency or 0.8)) end
   vim.g.neovide_transparency = 0.5

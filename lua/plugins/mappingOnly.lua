@@ -1,7 +1,7 @@
 -- INFO: mapping disable for some unwanted effects
 
 -- INFO: Keymapping and keybinding only files.
-vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, desc = "Escape." })
+-- vim.api.nvim_set_keymap("i", "qq", "<Esc>", { noremap = true, silent = true, desc = "Escape." })
 vim.api.nvim_set_keymap("v", "vv", "$", { noremap = true, silent = true, desc = "Escape and Visual line." })
 
 -- Navigation easy
