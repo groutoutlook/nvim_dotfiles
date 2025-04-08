@@ -19,41 +19,9 @@ if not pcall(require, "lazy") then
 end
 require "lazy_setup"
 require "polish"
+
 -- turn off tabline.
 vim.opt.showtabline = 0
-vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-  pattern = { "*.c", "*.cpp", "*.h", "*.hpp" },
-  callback = function()
-    vim.opt.laststatus = 0 -- require("astrocore.toggles").statusline()
-    -- vim.notify "cpp files entering..."
-    require("astrocore").config.features.diagnostics_mode = 1
-    require("astrolsp").config.formatting = {
-      format_on_save = {
-        enabled = false,
-        -- ignore_filetypes = { "cpp", "c" },
-      },
-      disabled = {
-        "clangd",
-      },
-    }
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPre" }, {
-  -- group = vim.api.nvim_create_augroup("PrivateJrnl", {}),
-  pattern = { "*.jrnl" },
-  callback = function()
-    vim.o.shada = ""
-    vim.o.swapfile = false
-    vim.o.undofile = false
-    vim.o.backup = false
-    vim.o.writebackup = false
-    vim.o.shelltemp = false
-    vim.o.history = 0
-    vim.o.modeline = false
-    vim.o.secure = true
-  end,
-})
 
 vim.cmd [[
 command! -bang Q quit<bang>
@@ -65,7 +33,7 @@ nnoremap <expr> <C-d> (winheight(0) / 3) . '<C-d>'
 nnoremap <expr> <C-u> (winheight(0) / 3) . '<C-u>'
 ]]
 if vim.fn.has "gui_running" == 1 then
-  vim.cmd.colorscheme "cyberdream"
+  -- vim.cmd.colorscheme "cyberdream"
   vim.o.guifont = "Iosevka Nerd Font Propo:h13" -- text below applies for VimScript
 
   vim.g.transparency = 0.7
@@ -76,9 +44,7 @@ if vim.fn.has "gui_running" == 1 then
   vim.g.neovide_floating_shadow = false
   vim.g.neovide_profiler = false
 else
-  vim.cmd.colorscheme "cyberdream"
+  -- vim.cmd.colorscheme "cyberdream"
 end
 --Basic Lua
 --
--- HACK: some other plugins here?
-require("lspconfig").glsl_analyzer.setup {}
