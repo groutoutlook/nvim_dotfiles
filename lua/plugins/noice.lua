@@ -1,16 +1,6 @@
 vim.keymap.set("n", "<leader>nl", function() require("noice").cmd "last" end)
 vim.keymap.set("n", "<leader>nh", function() require("noice").cmd "history" end)
 
--- local noice = require "noice"
--- noice.setup {
---   routes = {
---     {
---       view = "notify",
---       filter = { event = "msg_showmode" },
---     },
---  },
--- }
---
 -- Comment out the astrocommunity.lua since I think I already setting things up here.
 return {
   "folke/noice.nvim",

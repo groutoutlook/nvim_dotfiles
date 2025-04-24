@@ -179,7 +179,6 @@ vim.keymap.set(
   function() moveAndOpen "Back" end,
   { desc = "Open Scheme Link at the end of line.", noremap = false }
 )
-
 vim.keymap.set(
   { "n", "i" },
   "♂",
@@ -296,22 +295,23 @@ vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
 -- INFO: just open vscode instead.
 local function open_in_vscode()
-  vim.cmd "w" -- Save the file
-  local file_path = vim.fn.expand "%:p" -- Get the full file path
+  local file_path = vim.api.nvim_buf_get_name(0)
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   if file_path ~= "" then
-    vim.fn.system("code " .. file_path) -- Open in VS Code
+    vim.fn.system("code --goto " .. file_path .. ":" .. line .. ":" .. col) -- Open in VS Code
   else
     print "No file to open in VS Code!"
   end
 end
 
--- Example keybinding (optional)
-vim.keymap.set({ "n" }, ";vs", open_in_vscode, { desc = "Open in VS Code" })
 
-
-require("leap.user").set_repeat_keys("<enter>", "<backspace>", {
-  relative_directions = true,
-  -- By default, all modes are included.
-  modes = { "n", "x", "o" },
+vim.keymap.set({ "n","i" }, ";vs", open_in_vscode, { desc = "Open in VS Code" })
+-- Configure leap.nvim
+require('leap').setup({
+  -- Optional: Add any specific configurations if needed
 })
+
+-- INFO: Map <Enter> to leap. This is same behaviour as helix. 
+vim.keymap.set({ 'n', 'x', 'o' }, '<CR>', '<Plug>(leap)', { desc = 'Leap forward with Enter' })
+vim.keymap.set({ 'i'}, ';<CR>', '<Esc><Plug>(leap)', { desc = 'Leap forward with Enter' })
 return {}

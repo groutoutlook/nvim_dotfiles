@@ -1,15 +1,5 @@
--- INFO: scooter things
 local Terminal = require("toggleterm.terminal").Terminal
 
-local scooter = Terminal:new { cmd = "scooter", hidden = true }
-
-function _scooter_toggle() scooter:toggle() end
-
-vim.keymap.set("n", "<leader>s", "<cmd>lua _scooter_toggle()<CR>", {
-  noremap = true,
-  silent = true,
-  desc = "Toggle Scooter",
-})
 -- INFO: better escape
 require("better_escape").setup {
   timeout = vim.o.timeoutlen,
@@ -46,29 +36,6 @@ require("better_escape").setup {
     },
   },
 }
-
--- INFO: overseer.nvim
--- [overseer.nvim/doc/reference.md at master · stevearc/overseer.nvim](https://github.com/stevearc/overseer.nvim/blob/master/doc/reference.md#run_templateopts-callback)
-vim.api.nvim_create_user_command("OverseerRestartLast", function()
-  local overseer = require "overseer"
-  local tasks = overseer.list_tasks { recent_first = true }
-  if vim.tbl_isempty(tasks) then
-    vim.notify("No tasks found", vim.log.levels.WARN)
-    overseer.run_template { name = "just build" }
-  else
-    overseer.run_action(tasks[1], "restart")
-  end
-end, {})
-
-vim.keymap.set({ "n", "i" }, ";tr", "<Esc><cmd>OverseerRestartLast<cr>", { noremap = true, desc = "rerun Task." })
-vim.keymap.set({ "n", "i" }, ";tl", "<Esc><cmd>OverseerRun<cr>", { noremap = true, desc = "List tasks" })
-vim.keymap.set(
-  { "n", "i" },
-  ";tb",
-  "<Esc><cmd>OverseerRun just\\ build<cr>",
-  { noremap = true, desc = "Run build/default tasks" }
-)
-vim.keymap.set({ "n", "i" }, ";tq", "<Esc><cmd>OverseerQuickAction<cr>", { noremap = true, desc = "QuickAction Menu" })
 
 return {
   {
@@ -115,30 +82,9 @@ return {
     "groutoutlook/emacsinsert.nvim",
     lazy = false,
   },
-  -- {
-  --   "desdic/macrothis.nvim",
-  --   opts = {},
-  --   keys = {
-  --     { "<Leader>kd", function() require("macrothis").delete() end, desc = "delete" },
-  --     { "<Leader>ke", function() require("macrothis").edit() end, desc = "edit" },
-  --     { "<Leader>kl", function() require("macrothis").load() end, desc = "load" },
-  --     { "<Leader>kn", function() require("macrothis").rename() end, desc = "rename" },
-  --     { "<Leader>kq", function() require("macrothis").quickfix() end, desc = "run macro on all files in quickfix" },
-  --     { "<Leader>kr", function() require("macrothis").run() end, desc = "run macro" },
-  --     { "<Leader>ks", function() require("macrothis").save() end, desc = "save" },
-  --     { "<Leader>kx", function() require("macrothis").register() end, desc = "edit register" },
-  --     {
-  --       "<Leader>kp",
-  --       function() require("macrothis").copy_register_printable() end,
-  --       desc = "Copy register as printable",
-  --     },
-  --     { "<Leader>km", function() require("macrothis").copy_macro_printable() end, desc = "Copy macro as printable" },
-  --   },
-  -- },
   {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
   },
-  { "rose-pine/neovim", name = "rose-pine" },
 }

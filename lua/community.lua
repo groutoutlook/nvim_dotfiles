@@ -11,7 +11,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     "AstroNvim/astrocommunity",
     -- Desktop.
     { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
-    { import = "astrocommunity.code-runner.overseer-nvim" },
+    -- { import = "astrocommunity.code-runner.overseer-nvim" },
     -- { import = "astrocommunity.code-runner.conjure" },
     -- Neovide extra settings.
     { import = "astrocommunity.motion.leap-nvim" },
@@ -26,7 +26,7 @@ else
   return {
     "AstroNvim/astrocommunity",
     { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
-    { import = "astrocommunity.code-runner.overseer-nvim" },
+    -- { import = "astrocommunity.code-runner.overseer-nvim" },
     { import = "astrocommunity.motion.leap-nvim" },
     -- { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.motion.mini-move" },
