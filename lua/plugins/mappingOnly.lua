@@ -117,7 +117,7 @@ vim.keymap.set(
 vim.keymap.set(
   { "n", "i" },
   ";wg",
-  "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm direction=float<cr>git cij<cr>",
+  "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm direction=float<cr>git cif<cr>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
 )
 
@@ -314,4 +314,5 @@ require('leap').setup({
 -- INFO: Map <Enter> to leap. This is same behaviour as helix. 
 vim.keymap.set({ 'n', 'x', 'o' }, '<CR>', '<Plug>(leap)', { desc = 'Leap forward with Enter' })
 vim.keymap.set({ 'i'}, ';<CR>', '<Esc><Plug>(leap)', { desc = 'Leap forward with Enter' })
+
 return {}
