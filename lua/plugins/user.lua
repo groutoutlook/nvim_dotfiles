@@ -20,5 +20,4 @@ vim.keymap.set("!", "<C-Down>", emacsinsert.forward_paragraph)
 -- vim.keymap.set("!", "<C-p>", "<Up>") -- previous-line
 
 return {
-
 }

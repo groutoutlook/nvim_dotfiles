@@ -81,10 +81,5 @@ return {
   {
     "groutoutlook/emacsinsert.nvim",
     lazy = false,
-  },
-  {
-    "scottmckendry/cyberdream.nvim",
-    lazy = false,
-    priority = 1000,
-  },
+  }
 }
