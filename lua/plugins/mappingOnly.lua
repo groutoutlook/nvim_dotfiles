@@ -100,12 +100,7 @@ vim.keymap.set(
 )
 -- LuaFormatter on
 
-vim.keymap.set(
-  { "n", "i" },
-  "lwq",
-  function() saveOnlySession() end,
-  { noremap = false, silent = true, desc = "Alias to ;wq" }
-)
+vim.keymap.set( { "n", "i" }, "lwq", function() saveOnlySession() end, { noremap = false, silent = true, desc = "Alias to ;wq" })
 
 vim.keymap.set(
   { "n", "i" },
@@ -119,6 +114,13 @@ vim.keymap.set(
   ";wg",
   "<cmd>Savess<cr><cmd>wall!<CR><esc><cmd>ToggleTerm direction=float<cr>git cif<cr>",
   { noremap = true, silent = true, desc = "Write and git Insert Mode" }
+)
+
+vim.keymap.set(
+  { "n", "i" },
+  ";wr",
+  "<cmd>wall!<CR><esc><cmd>ToggleTerm direction=float<cr>git rap<cr>",
+  { noremap = true, silent = true, desc = "Write and git rap." }
 )
 
 vim.keymap.set(
