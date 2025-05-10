@@ -23,9 +23,6 @@ command! -bang Q quit<bang>
 command! -bang W write<bang>
 command! -bang WQ wq<bang>
 command! -bang Wq wq<bang>
-"set conceallevel=2
-nnoremap <expr> <C-d> (winheight(0) / 3) . '<C-d>'
-nnoremap <expr> <C-u> (winheight(0) / 3) . '<C-u>'
 ]]
 if vim.fn.has "gui_running" == 1 then
   -- vim.cmd.colorscheme "cyberdream"

@@ -227,6 +227,9 @@ vim.keymap.set(
 
 vim.keymap.set({ "n", "i" }, ";tt", "<esc><cmd>ToggleTerm<cr>lsd<cr>", { noremap = true, desc = "Simply ToggleTerm" })
 
+vim.keymap.set({ "n", "i" }, ";bc", "<esc><cmd>bd<cr>", { noremap = true, desc = "buffer deleted" })
+vim.keymap.set({ "n", "i" }, ";bd", "<esc><cmd>bd<cr>", { noremap = true, desc = "buffer deleted" })
+
 vim.keymap.set(
   { "n", "i" },
   ";jj",
