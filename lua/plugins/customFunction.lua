@@ -83,37 +83,8 @@ end
 
 vim.keymap.set(
   { "n", "i" },
-  ";gg",
-  function() expandSearchWord() end,
-  { noremap = true, desc = "Google word under cursors" }
-)
-vim.keymap.set(
-  { "n", "i" },
   ";oo",
   function() expandSearchObsidian() end,
   { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
 )
-
-local function copy_visual()
-  local vstart = vim.fn.getpos "'<"
-
-  local vend = vim.fn.getpos "'>"
-
-  local line_start = vstart[2]
-
-  local line_end = vend[2]
-  local lines = vim.fn.getline(line_start, line_end)
-
-  if type(lines) == "table" then
-    return table.concat(lines, "\n")
-  else
-    return lines -- In case lines is not a table, return it directly
-  end
-end
-vim.keymap.set({ "v" }, ";gg", function()
-  -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-u>", true, false, true), "n", false)
-  local GetString = copy_visual()
-  expandSearchWord(GetString)
-end, { noremap = true, desc = "Google in Visual Mode" })
-
 return {}
