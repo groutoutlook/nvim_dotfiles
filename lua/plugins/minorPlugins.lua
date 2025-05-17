@@ -79,10 +79,6 @@ return {
     },
   },
   {
-    "groutoutlook/emacsinsert.nvim",
-    lazy = false,
-  },
-  {
   'liljaylj/codestats.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
   event = { 'TextChanged', 'InsertEnter' },
@@ -98,5 +94,12 @@ return {
       curl_timeout = 5,  -- curl request timeout in seconds
     }
     end,
-  }
+  }, 
+  {
+    "groutoutlook/emacsinsert.nvim",
+    lazy = false,
+  },
+  -- {
+  -- "yochem/jq-playground.nvim",
+  -- }
 }

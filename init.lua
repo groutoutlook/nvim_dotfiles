@@ -35,5 +35,5 @@ if vim.fn.has "gui_running" == 1 then
   vim.g.neovide_floating_shadow = false
   vim.g.neovide_profiler = false
 else
-  vim.cmd.colorscheme "cyberdream"
+  -- vim.cmd.colorscheme "cyberdream"
 end

@@ -24,5 +24,8 @@ vim.o.shell = 'nu'
 vim.o.shellcmdflag = '-c'
 vim.o.shellquote = ""
 vim.o.shellxquote = ""
-
+-- start the playground
+-- vim.keymap.set("n", "<leader>jq", vim.cmd.JqPlayground)
+-- -- when in the query window, run the jq query
+-- vim.keymap.set("n", "R", "<Plug>(JqPlaygroundRunQuery)")
 return { }
