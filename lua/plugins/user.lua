@@ -28,4 +28,42 @@ vim.o.shellxquote = ""
 -- vim.keymap.set("n", "<leader>jq", vim.cmd.JqPlayground)
 -- -- when in the query window, run the jq query
 -- vim.keymap.set("n", "R", "<Plug>(JqPlaygroundRunQuery)")
+
+local group = vim.api.nvim_create_augroup("CsvViewEvents", {})
+vim.api.nvim_create_autocmd("User", {
+  pattern = "CsvViewAttach",
+  group = group,
+  callback = function(args)
+    local bufnr = tonumber(args.data)
+    print("CsvView is attached", bufnr)
+  end,
+})
+
+-- Define keymaps for csvview functions
+local opts = {
+  keymaps = {
+    -- Toggle CSV view
+    {
+      mode = "n",
+      key = "<c-w><c-e>", -- <leader>ct for "CSV toggle"
+      action = "<cmd>lua require('csvview').toggle()<CR>",
+      desc = "Toggle CSV view",
+    },
+  },
+}
+
+-- Register keymaps
+for _, keymap in ipairs(opts.keymaps) do
+  vim.keymap.set(keymap.mode, keymap.key, keymap.action, { desc = keymap.desc, noremap = true, silent = true })
+end
+
+-- Configure leap.nvim
+require('leap').setup({
+  -- Optional: Add any specific configurations if needed
+})
+
+-- INFO: Map <Enter> to leap. This is same behaviour as helix. 
+vim.keymap.set({ 'n', 'x', 'o' }, '<CR>', '<Plug>(leap)', { desc = 'Leap forward with Enter' })
+vim.keymap.set({ 'i'}, ';<CR>', '<Esc><Plug>(leap)', { desc = 'Leap forward with Enter' })
+
 return { }

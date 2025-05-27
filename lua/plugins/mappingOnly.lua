@@ -311,13 +311,4 @@ end
 
 
 vim.keymap.set({ "n","i" }, ";vs", open_in_vscode, { desc = "Open in VS Code" })
--- Configure leap.nvim
-require('leap').setup({
-  -- Optional: Add any specific configurations if needed
-})
-
--- INFO: Map <Enter> to leap. This is same behaviour as helix. 
-vim.keymap.set({ 'n', 'x', 'o' }, '<CR>', '<Plug>(leap)', { desc = 'Leap forward with Enter' })
-vim.keymap.set({ 'i'}, ';<CR>', '<Esc><Plug>(leap)', { desc = 'Leap forward with Enter' })
-
 return {}

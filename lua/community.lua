@@ -17,12 +17,12 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     { import = "astrocommunity.motion.leap-nvim" },
     { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.motion.mini-move" },
-    { import = "astrocommunity.colorscheme.cyberdream-nvim" },
+    -- { import = "astrocommunity.colorscheme.cyberdream-nvim" },
     -- { import = "astrocommunity.color.transparent-nvim" },
     { import = "astrocommunity.editing-support.dial-nvim" },
     { import = "astrocommunity.editing-support.ultimate-autopair-nvim" },
-    -- { import = "astrocommunity.search.nvim-hlslens" },
-  }
+    { import = "astrocommunity.motion.tabout-nvim" },
+  } 
 else
   return {
     "AstroNvim/astrocommunity",
@@ -31,10 +31,9 @@ else
     { import = "astrocommunity.motion.leap-nvim" },
     { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.motion.mini-move" },
-    { import = "astrocommunity.motion.nvim-surround" },
     { import = "astrocommunity.editing-support.dial-nvim" },
     { import = "astrocommunity.editing-support.ultimate-autopair-nvim" },
-    { import = "astrocommunity.colorscheme.cyberdream-nvim" },
+    { import = "astrocommunity.motion.tabout-nvim" },
     -- { import = "astrocommunity.color.transparent-nvim" },
     -- { import = "astrocommunity.search.nvim-hlslens" },
   }
