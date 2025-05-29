@@ -308,7 +308,10 @@ local function open_in_vscode()
     print "No file to open in VS Code!"
   end
 end
+-- vim.keymap.set({ "n","i" }, ";vs", open_in_vscode, { desc = "Open in VS Code" })
+vim.keymap.set({ "n"}, "<C-v>","<Esc>P", { desc = "pure paste." })
+vim.keymap.set({ "i"}, "<C-v>","<Esc>pi", { desc = "pure paste." })
+-- For normal and visual mode deletion without yanking to the clipboard:
+vim.keymap.set({ "n", "x" }, "d", '"_d')
 
-
-vim.keymap.set({ "n","i" }, ";vs", open_in_vscode, { desc = "Open in VS Code" })
 return {}
