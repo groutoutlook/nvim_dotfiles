@@ -16,6 +16,7 @@
 -- filetype function.
 vim.filetype.add {
   extension = {
+    kbd = "lisp",
     tmp = "markdown",
     ini = "markdown",
     jrnl = "markdown",

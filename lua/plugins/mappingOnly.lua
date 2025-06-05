@@ -101,6 +101,9 @@ vim.keymap.set(
 -- LuaFormatter on
 
 vim.keymap.set( { "n", "i" }, "lwq", function() saveOnlySession() end, { noremap = false, silent = true, desc = "Alias to ;wq" })
+vim.keymap.set( { "n", "i" }, "lq", function()   
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<cmd>q!<CR>", true, true, true), "in", true)
+end, { noremap = false, silent = true, desc = "Alias to ;wq" })
 
 vim.keymap.set(
   { "n", "i" },
