@@ -14,27 +14,27 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     -- { import = "astrocommunity.code-runner.overseer-nvim" },
     -- { import = "astrocommunity.code-runner.conjure" },
     -- Neovide extra settings.
-    { import = "astrocommunity.motion.leap-nvim" },
-    { import = "astrocommunity.motion.flit-nvim" },
+    -- { import = "astrocommunity.motion.leap-nvim" },
+    -- { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.motion.mini-move" },
     { import = "astrocommunity.motion.nvim-spider" },
     { import = "astrocommunity.colorscheme.cyberdream-nvim" },
     -- { import = "astrocommunity.color.transparent-nvim" },
     { import = "astrocommunity.editing-support.dial-nvim" },
     { import = "astrocommunity.editing-support.ultimate-autopair-nvim" },
-    { import = "astrocommunity.motion.tabout-nvim" },
+    -- { import = "astrocommunity.motion.tabout-nvim" },
   } 
 else
   return {
     "AstroNvim/astrocommunity",
     { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
     -- { import = "astrocommunity.code-runner.overseer-nvim" },
-    { import = "astrocommunity.motion.leap-nvim" },
-    { import = "astrocommunity.motion.flit-nvim" },
+    -- { import = "astrocommunity.motion.leap-nvim" },
+    -- { import = "astrocommunity.motion.flit-nvim" },
     { import = "astrocommunity.motion.mini-move" },
     { import = "astrocommunity.editing-support.dial-nvim" },
     { import = "astrocommunity.editing-support.ultimate-autopair-nvim" },
-    { import = "astrocommunity.motion.tabout-nvim" },
+    -- { import = "astrocommunity.motion.tabout-nvim" },
     -- { import = "astrocommunity.color.transparent-nvim" },
     -- { import = "astrocommunity.search.nvim-hlslens" },
   }

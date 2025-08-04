@@ -57,13 +57,4 @@ for _, keymap in ipairs(opts.keymaps) do
   vim.keymap.set(keymap.mode, keymap.key, keymap.action, { desc = keymap.desc, noremap = true, silent = true })
 end
 
--- Configure leap.nvim
-require('leap').setup({
-  -- Optional: Add any specific configurations if needed
-})
-
--- INFO: Map <Enter> to leap. This is same behaviour as helix. 
-vim.keymap.set({ 'n', 'x', 'o' }, '<CR>', '<Plug>(leap)', { desc = 'Leap forward with Enter' })
-vim.keymap.set({ 'i'}, ';<CR>', '<Esc><Plug>(leap)', { desc = 'Leap forward with Enter' })
-
 return { }
