@@ -16,7 +16,6 @@ end
 require "lazy_setup"
 require "polish"
 
--- turn off tabline.
 -- vim.opt.showtabline = 0
 vim.cmd [[
 command! -bang Q quit<bang>

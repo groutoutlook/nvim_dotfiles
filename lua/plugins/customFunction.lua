@@ -1,21 +1,5 @@
 -- TODO: Add interesting configuration function in here.
 
--- copyPath function.
-local function copyPath()
-  local path = vim.fn.expand "%:p"
-  vim.fn.setreg("+", path)
-  vim.notify('Copied "' .. path .. '" to the clipboard!')
-end
-vim.api.nvim_create_user_command("Cppath", copyPath, {})
-vim.api.nvim_create_user_command("CPAT", copyPath, {})
-vim.api.nvim_create_user_command("Cpat", copyPath, {})
-
-vim.keymap.set(
-  { "n", "i" },
-  ";cpat",
-  function() copyPath() end,
-  { noremap = true, desc = "Comment the line in Insert Mode" }
-)
 vim.cmd [[
   "" From https://stackoverflow.com/a/6171215/340947
   " Based on this - http://peterodding.com/code/vim/profile/autoload/xolox/escape.vim
@@ -61,30 +45,6 @@ vim.api.nvim_set_keymap(
 )
 
 -- HACK: kludge to escape terminal mode and paste text in register * in(which we just copied)
-vim.keymap.set("t", "<M-r>", "<C-\\><C-N>pi", { noremap = true, silent = true })
-vim.keymap.set("t", "<M-p>", "<C-\\><C-N>pi", { noremap = true, silent = true })
--- INFO: capture word to find just like `#` in normal mode
--- But this is for custom search engine. For example, looking at Google..
--- Or docs, either offline or online. Even append it in some kind of URI builder.
-function expandSearchWord(opts, engine)
-  local currentWord = opts or vim.fn.expand "<cWORD>"
-  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-  -- HACK: or you could call lua directly, not through excommand...
-  -- Also nvim_replace_termcodes() could also help to reduce feedkey with present mapping.
-  -- vim.api.nvim_feedkeys("gg " .. currentWord .. " \X0D", "t", false)
-  -- vim.notify(currentWord .. "," .. row .. "," .. col)
-  vim.ui.open("https://duckduckgo.com/?q=" .. currentWord)
-end
-function expandSearchObsidian(opts, engine)
-  local currentWord = opts or vim.fn.expand "<cWORD>"
-  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-  vim.ui.open("obsidian://omnisearch?query=" .. currentWord)
-end
+vim.keymap.set("t", "<C-v>", "<C-\\><C-N>pi", { noremap = true, silent = true })
 
-vim.keymap.set(
-  { "n", "i" },
-  ";oo",
-  function() expandSearchObsidian() end,
-  { noremap = true, desc = "Obsidian (ready) in ToggleTerm " }
-)
-return {}
+return{}

@@ -1,13 +1,6 @@
 -- My course remap. Want to move it out of init.lua.
 vim.keymap.set(
   { "n", "i" },
-  ";wl",
-  "<cmd>wall<CR><cmd>lua require('resession').load()<cr>",
-  { noremap = true, silent = true, desc = "Write and Load session" }
-)
-
-vim.keymap.set(
-  { "n", "i" },
   ";fs",
   function() require("resession").load() end,
   { noremap = true, desc = "Select session" }

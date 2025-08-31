@@ -1,5 +1,4 @@
 -- INFO: mapping disable for some unwanted effects
-
 -- INFO: Editing abilities, mostly alias the `ci*` bracket things.
 -- And `yi*`, `vi*` as well?
 vim.keymap.set({ "i" }, "<C-Space>", "<C-n>", { silent = true, desc = "Edit: change in angle bracket." })
@@ -43,7 +42,6 @@ vim.api.nvim_set_keymap(
 )
 
 if vim.fn.has "gui_running" then
-  vim.keymap.set("c", "<M-p>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
   vim.keymap.set("c", "<C-v>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
   vim.keymap.set(
     { "c", "n", "i" },
@@ -52,7 +50,7 @@ if vim.fn.has "gui_running" then
     { noremap = true, silent = true, desc = "Write and Quit Insert Mode" }
   )
 else
-  vim.keymap.set("c", "<M-p>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
+  vim.keymap.set("c", "<C-v>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in Command Line" })
 end
 --Plugin related mapping.
 --Heavily related to plugins and astronvim core.
@@ -198,7 +196,8 @@ vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
 vim.keymap.set({ "n"}, "<C-v>","<Esc>P", { desc = "pure paste." })
 vim.keymap.set({ "i"}, "<C-v>","<Esc>pi", { desc = "pure paste." })
--- For normal and visual mode deletion without yanking to the clipboard:
+
+-- INFO: For normal and visual mode deletion without yanking to the clipboard:
 vim.keymap.set({ "n", "x" }, "d", '"_d')
 
 return {}
