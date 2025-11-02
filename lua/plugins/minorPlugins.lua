@@ -79,49 +79,7 @@ return {
     },
   },
   {
-  'liljaylj/codestats.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  event = { 'TextChanged', 'InsertEnter' },
-  cmd = { 'CodeStatsXpSend', 'CodeStatsProfileUpdate' },
-  config = function()
-    require('codestats').setup {
-      username = 'groutlloyd',  -- needed to fetch profile data
-      base_url = 'https://codestats.net',  -- codestats.net base url
-      api_key = 'SFMyNTY.WjNKdmRYUnNiRzk1WkE9PSMjTWpJMU56QT0.iLEQ-cqd3IwbpegIb-iAFWZm0cUUHBJspb77snvjg08',
-      send_on_exit = true,  -- send xp on nvim exit
-      send_on_timer = true,  -- send xp on timer
-      timer_interval = 60000,  -- timer interval in milliseconds (minimum 1000ms to prevent DDoSing codestat.net servers)
-      curl_timeout = 5,  -- curl request timeout in seconds
-    }
-    end,
-  }, 
-  {
     "groutoutlook/emacsinsert.nvim",
     lazy = false,
   },
-  {
-  "hat0uma/csvview.nvim",
-  ---@module "csvview"
-  ---@type CsvView.Options
-  opts = {
-    parser = { comments = { "#", "//" } },
-    keymaps = {
-      -- Text objects for selecting fields
-      textobject_field_inner = { "if", mode = { "o", "x" } },
-      textobject_field_outer = { "af", mode = { "o", "x" } },
-      -- Excel-like navigation:
-      -- Use <Tab> and <S-Tab> to move horizontally between fields.
-      -- Use <Enter> and <S-Enter> to move vertically between rows and place the cursor at the end of the field.
-      -- Note: In terminals, you may need to enable CSI-u mode to use <S-Tab> and <S-Enter>.
-      jump_next_field_end = { "<Tab>", mode = { "n", "v" } },
-      jump_prev_field_end = { "<S-Tab>", mode = { "n", "v" } },
-      jump_next_row = { "<Enter>", mode = { "n", "v" } },
-      jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
-    },
-  },
-  cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
-  },
-  -- {
-  -- "yochem/jq-playground.nvim",
-  -- }
 }

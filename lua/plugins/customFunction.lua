@@ -1,50 +1,48 @@
 -- TODO: Add interesting configuration function in here.
+-- INFO: to make things minimal... I abstain from doing this.
 
-vim.cmd [[
-  "" From https://stackoverflow.com/a/6171215/340947
-  " Based on this - http://peterodding.com/code/vim/profile/autoload/xolox/escape.vim
-  function! EscapeString (string)
-    let string=a:string
-    " Escape regex characters
-    let string = escape(string, '^$.*\/~[]')
-    " Escape the line endings
-    let string = substitute(string, '\n', '\\n', 'g')
-    return string
-  endfunction
-
-  function! GetVisual() range
-    " Save the current register and clipboard
-    let reg_save = getreg('"')
-    let regtype_save = getregtype('"')
-    let cb_save = &clipboard
-    set clipboard&
-    " Put the current visual selection in the " register
-    normal! ""gvy
-    let selection = getreg('"')
-    " Put the saved registers and clipboards back
-    call setreg('"', reg_save, regtype_save)
-    let &clipboard = cb_save
-    "Escape any special characters in the selection
-    let escaped_selection = EscapeString(selection)
-    return escaped_selection
-  endfunction
-  " vnoremap <c-r> <Esc>:%s/<c-r>=GetVisual()<cr>//g<left><left>
-]]
--- as what I typically do to replace.
-vim.api.nvim_set_keymap(
-  "v",
-  "<C-h>",
-  "<Esc>:%s/<c-r>=GetVisual()<cr>//g<left><left>",
-  { noremap = true, silent = true, desc = "Replace the selected text" }
-)
-vim.api.nvim_set_keymap(
-  "v",
-  "<C-r>",
-  "<Esc>:%s/<c-r>=GetVisual()<cr>//g<left><left>",
-  { noremap = true, silent = true, desc = "Replace the selected text" }
-)
-
--- HACK: kludge to escape terminal mode and paste text in register * in(which we just copied)
-vim.keymap.set("t", "<C-v>", "<C-\\><C-N>pi", { noremap = true, silent = true })
-
+-- vim.cmd [[
+--   "" From https://stackoverflow.com/a/6171215/340947
+--   " Based on this - http://peterodding.com/code/vim/profile/autoload/xolox/escape.vim
+--   function! EscapeString (string)
+--     let string=a:string
+--     " Escape regex characters
+--     let string = escape(string, '^$.*\/~[]')
+--     " Escape the line endings
+--     let string = substitute(string, '\n', '\\n', 'g')
+--     return string
+--   endfunction
+--
+--   function! GetVisual() range
+--     " Save the current register and clipboard
+--     let reg_save = getreg('"')
+--     let regtype_save = getregtype('"')
+--     let cb_save = &clipboard
+--     set clipboard&
+--     " Put the current visual selection in the " register
+--     normal! ""gvy
+--     let selection = getreg('"')
+--     " Put the saved registers and clipboards back
+--     call setreg('"', reg_save, regtype_save)
+--     let &clipboard = cb_save
+--     "Escape any special characters in the selection
+--     let escaped_selection = EscapeString(selection)
+--     return escaped_selection
+--   endfunction
+--   " vnoremap <c-r> <Esc>:%s/<c-r>=GetVisual()<cr>//g<left><left>
+-- ]]
+-- -- as what I typically do to replace.
+-- vim.api.nvim_set_keymap(
+--   "v",
+--   "<C-h>",
+--   "<Esc>:%s/<c-r>=GetVisual()<cr>//g<left><left>",
+--   { noremap = true, silent = true, desc = "Replace the selected text" }
+-- )
+-- vim.api.nvim_set_keymap(
+--   "v",
+--   "<C-r>",
+--   "<Esc>:%s/<c-r>=GetVisual()<cr>//g<left><left>",
+--   { noremap = true, silent = true, desc = "Replace the selected text" }
+-- )
+--
 return{}

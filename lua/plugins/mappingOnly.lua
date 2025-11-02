@@ -1,6 +1,14 @@
--- INFO: mapping disable for some unwanted effects
 -- INFO: Editing abilities, mostly alias the `ci*` bracket things.
 -- And `yi*`, `vi*` as well?
+
+vim.keymap.set({ "n"}, "<C-v>","<Esc>P", { desc = "pure paste." })
+vim.keymap.set({ "i"}, "<C-v>","<Esc>pi", { desc = "pure paste." })
+
+-- INFO: For normal and visual mode deletion without yanking to the clipboard:
+vim.keymap.set({ "n", "x" }, "d", '"_d')
+
+-- HACK: kludge to escape terminal mode and paste text in register * in(which we just copied)
+vim.keymap.set("t", "<C-v>", "<C-\\><C-N>pi", { noremap = true, silent = true })
 vim.keymap.set({ "i" }, "<C-Space>", "<C-n>", { silent = true, desc = "Edit: change in angle bracket." })
 
 vim.keymap.set(
@@ -196,11 +204,5 @@ local kopts = { noremap = true, silent = true, desc = "escape search mode for hl
 -- nvim-hlslens to stop search.
 vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
-
-vim.keymap.set({ "n"}, "<C-v>","<Esc>P", { desc = "pure paste." })
-vim.keymap.set({ "i"}, "<C-v>","<Esc>pi", { desc = "pure paste." })
-
--- INFO: For normal and visual mode deletion without yanking to the clipboard:
-vim.keymap.set({ "n", "x" }, "d", '"_d')
 
 return {}
