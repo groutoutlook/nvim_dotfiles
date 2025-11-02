@@ -158,15 +158,18 @@ vim.keymap.set(
   function() quitWindow() end,
   { noremap = true, desc = "nvim-window: Jump to window" }
 )
-vim.keymap.set(
-  { "n" },
-  "<c-w><c-e>",
-  function() evenWindow() end,
-  { noremap = true, desc = "nvim-window: Jump to window" }
-)
+
+vim.keymap.set({ "n" }, "<c-w><c-e>", function()
+  vim.wo.wrap = not vim.wo.wrap
+  vim.wo.linebreak = vim.wo.wrap
+  vim.wo.showbreak = vim.wo.wrap and "↪ " or ""
+  print("wrap:", vim.wo.wrap)
+end, { noremap = true, desc = "Toggle word wrap" })
+
 vim.keymap.set({ "n", "v" }, "<c-w><c-=>", "<esc><C-w>=", { noremap = true, desc = "Even panes." })
 
 -- INFO: Toggling UI/UX functions.
+-- HACK: dependent on astrocore... Tbf I will soon move out of this.
 vim.keymap.set(
   { "n", "i" },
   ";ud",
