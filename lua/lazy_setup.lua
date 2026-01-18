@@ -24,6 +24,7 @@ require("lazy").setup({
         "tarPlugin",
         "tohtml",
         "zipPlugin",
+        "LuaSnip",
       },
     },
   },

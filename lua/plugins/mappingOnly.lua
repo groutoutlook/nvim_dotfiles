@@ -1,6 +1,14 @@
--- INFO: mapping disable for some unwanted effects
 -- INFO: Editing abilities, mostly alias the `ci*` bracket things.
 -- And `yi*`, `vi*` as well?
+
+vim.keymap.set({ "n"}, "<C-v>","<Esc>P", { desc = "pure paste." })
+vim.keymap.set({ "i"}, "<C-v>","<Esc>pi", { desc = "pure paste." })
+
+-- INFO: For normal and visual mode deletion without yanking to the clipboard:
+vim.keymap.set({ "n", "x" }, "d", '"_d')
+
+-- HACK: kludge to escape terminal mode and paste text in register * in(which we just copied)
+vim.keymap.set("t", "<C-v>", "<C-\\><C-N>pi", { noremap = true, silent = true })
 vim.keymap.set({ "i" }, "<C-Space>", "<C-n>", { silent = true, desc = "Edit: change in angle bracket." })
 
 vim.keymap.set(
@@ -197,10 +205,7 @@ local kopts = { noremap = true, silent = true, desc = "escape search mode for hl
 vim.api.nvim_set_keymap("n", ";n", "<Cmd>noh<CR>", kopts)
 vim.api.nvim_set_keymap("n", ";<Esc>", "<Cmd>noh<CR>", kopts)
 
-vim.keymap.set({ "n"}, "<C-v>","<Esc>P", { desc = "pure paste." })
-vim.keymap.set({ "i"}, "<C-v>","<Esc>pi", { desc = "pure paste." })
-
--- INFO: For normal and visual mode deletion without yanking to the clipboard:
-vim.keymap.set({ "n", "x" }, "d", '"_d')
+local function cp() local p=vim.api.nvim_buf_get_name(0) if p=="" then return end p=p..":"..vim.api.nvim_win_get_cursor(0)[1] if vim.fn.executable('wl-copy')==1 then vim.fn.jobstart({'wl-copy'},{stdin=p}) else vim.fn.setreg('+',p) end vim.notify("Copied: "..p) end
+vim.keymap.set({'n','i'},'<C-w><C-p>',cp,{desc="Copy buf path:line"})
 
 return {}
